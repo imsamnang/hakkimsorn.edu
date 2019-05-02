@@ -11,8 +11,6 @@
 	<script src="{{asset('assets/js/popper.min.js')}}"></script>
 	<link  href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 	<script src="{{asset('assets/js/plupload.full.min.js')}}"></script>
-	<script src="{{asset('assets/js/jquery.chained.js')}}"></script>
-	<script src="{{asset('assets/js/jquery.validate.min.js')}}"></script>	
 	<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 	<link  href="{{asset('assets/css/main.css')}}" rel="stylesheet" type="text/css">
 	<link  href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
