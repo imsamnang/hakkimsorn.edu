@@ -15,6 +15,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('freeads.member_dashboard');
+        // return view('freeads.member_dashboard');
+         return view('member.home');
     }
 }
