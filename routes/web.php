@@ -2,10 +2,26 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.backend.khmer24_layout');
 });
 
 Auth::routes();
+
+	Route::get('get-district-list','Member\PostController@getDistrictList');
+	Route::get('get-commune-list','Member\PostController@getCommuneList');
+
+// free post ads route
+Route::prefix('post')->group(function(){	
+	Route::get('/','Member\PostController@index')->name('post.index');
+	Route::get('/{post_id}/create','Member\PostController@create')->name('post.create');
+	Route::post('/','Member\PostController@saveProperties')->name('post.store');
+	Route::get('/{id}/properties_edit','Member\PostController@editProperties')->name('post.edit');
+	Route::put('/{id}/update','Member\PostController@updateProperties')->name('post.update');
+	Route::delete('/{id}/destroy','Member\PostController@deleteProperties')->name('post.destroy');
+	Route::get('/{id}/properties_detail','Member\PostController@showProperties')->name('post.show');
+	Route::get('/list_by_category','Member\PostController@listProperties')->name('post.by_category');
+	Route::get('/allproperties','Member\PostController@allProperties')->name('post.allProperties');
+});
 
 Route::get('/home', 'Member\DashboardController@index')->name('home');
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');

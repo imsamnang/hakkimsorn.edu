@@ -4,7 +4,7 @@
 	<link  href="{{asset('assets/css/post.css')}}" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="{{asset('css/upload.css')}}">
 	<link rel="stylesheet" href="{{asset('css/bootstrap-fileupload.min.css')}}">
-	<link rel="stylesheet" href="{{asset('css/dropzone.css')}}">
+	{{-- <link rel="stylesheet" href="{{asset('css/dropzone.css')}}"> --}}
 	<style type="text/css">
     .pddb20 {
         padding-bottom: 20px;
@@ -55,7 +55,6 @@
 @endpush
 
 @section('content')
-
 	<div class="container">
 	<div class="post_form bg-white rounded border my_content">
 		<div class="header p-3">
@@ -67,19 +66,17 @@
 				</ul>
 			</div>
 		</div>
-
 		<div class="post_form p-3">
 			<div class="post_form">
 				<form action="{{route('post.store')}}" class="form form-horizontal" method="post" accept-charset="utf-8" enctype="multipart/form-data" id="form_post">
 					{{csrf_field()}}		
 						@include('freeads.form')
-		</div>
-	
+		</div>	
 @endsection
 
 @push('js')
 <script src="{{asset('js/upload.js')}}"></script>
-<script src="{{asset('js/dropzone.js')}}"></script>
+{{-- <script src="{{asset('js/dropzone.js')}}"></script> --}}
 <script>
 	$(document).ready(function(){
 	// distrct get data by provice change
