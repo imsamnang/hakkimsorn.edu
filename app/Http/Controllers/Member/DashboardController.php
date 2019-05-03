@@ -2,20 +2,28 @@
 
 namespace App\Http\Controllers\Member;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Property;
+use App\Model\PropertyGallery;
+use App\Model\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+  public function index()
+  {
+  	$user = User::where('id',Auth::user()->id)->first();
+  	$properties = Property::where('user_id',$user->id)->get();
+  	// foreach ($properties as $key => $property) {
+  	// 	$images[] = PropertyGallery::where('property_id',$property->id)->get();
+  	// }
+    return view('member.dashboard',compact('user','properties'));
+  }
 
-    public function index()
-    {
-        return view('freeads.member_dashboard');
-         // return view('member.home');
-    }
 }

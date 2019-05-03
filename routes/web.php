@@ -15,19 +15,22 @@ Route::prefix('post')->group(function(){
 	Route::get('/','Member\PostController@index')->name('post.index');
 	Route::get('/{post_id}/create','Member\PostController@create')->name('post.create');
 	Route::post('/','Member\PostController@saveProperties')->name('post.store');
-	Route::get('/{id}/properties_edit','Member\PostController@editProperties')->name('post.edit');
+	Route::get('/{id}/edit','Member\PostController@editProperties')->name('post.edit');
 	Route::put('/{id}/update','Member\PostController@updateProperties')->name('post.update');
 	Route::delete('/{id}/destroy','Member\PostController@deleteProperties')->name('post.destroy');
-	Route::get('/{id}/properties_detail','Member\PostController@showProperties')->name('post.show');
+	Route::get('/{id}/detail','Member\PostController@showProperties')->name('post.show');
 	Route::get('/list_by_category','Member\PostController@listProperties')->name('post.by_category');
 	Route::get('/allproperties','Member\PostController@allProperties')->name('post.allProperties');
 });
 
 Route::get('/home', 'Member\DashboardController@index')->name('home');
+Route::get('/likes', 'Member\DashboardController@index')->name('likes');
+Route::get('/notifications', 'Member\DashboardController@index')->name('notifications');
+Route::get('/setting', 'Member\DashboardController@index')->name('setting');
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::prefix('admin')->group(function() {
-    Route::get('/', 'Admin\DashboardController@index')->name('wincache_ocache_meminfo()');
+    Route::get('/', 'Admin\DashboardController@index')->name('admin.home');
     Route::get('/login', 'AuthAdmin\LoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'AuthAdmin\LoginController@login')->name('admin.login.submit');
     Route::post('/logout', 'AuthAdmin\LoginController@logout')->name('admin.logout');

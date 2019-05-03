@@ -11,4 +11,9 @@ class PropertyGallery extends Model
 		'property_id',
 		'gallery_image'
 	];
+
+  public function gallery()
+  {
+  	return $this->belongsTo(Property::class,'property_id','id');
+  }
 }

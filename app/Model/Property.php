@@ -49,6 +49,10 @@ class Property extends Eloquent
 	public function parent()
 	{
 		return $this->belongsTo(Category::class,'parent_id','id');
-	}	
+	}
 
+    public function properties()
+    {
+    	return $this->hasMany(PropertyGallery::class,'property_id','id');
+    }	
 }
