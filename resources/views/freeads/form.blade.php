@@ -78,10 +78,6 @@
 					<div class="clear"></div>
 				</div>
 			</div>
-			
-			{{-- @include('freeads.khmer24_upload_form') --}}
-			{{-- @include('freeads.kimsan_upload_form') --}}
-
 			{{-- Name --}}
 			<div class="form-group">
 				<label for="name" class="col control-label">Name <span class="red">*</span></label>
@@ -121,15 +117,17 @@
 					<div class="form-group">
 						<label for="province" class="col control-label">City/Province<i class="red">*</i></label>
 						<div class="col col-3 form-input">
-							<select data-placeholder="Select a province" id="province" name="province_id" class="form-control map_form" required="">
-								<option value="0" data-value="">Select a City/Province</option>
+							<select data-placeholder="Select a province" id="province" name="province_id" class="form-control map_form" required>
+								<option value="0" data-value="0">Select a City/Province</option>
 								@foreach ($provinces as $key => $province)
 									@if (isset($property))											
 										@if ($key==$property->id)
-											<option data-en-title="{{$province}}" value="{{$key}}" data-value="" selected>{{$province}}</option>
+											<option data-en-title="{{$province}}" value="{{$key}}" data-value="{{$province}}" data-chained="{{ $province }}" class="{{ $province }}" selected>{{$province}}</option>
 										@else
-											<option data-en-title="{{$province}}" value="{{$key}}" data-value="">{{$province}}</option>
+											<option data-en-title="{{$province}}" value="{{$key}}" data-value="{{ $province }}" data-chained="{{ $province }}" class="{{ $province }}">{{$province}}</option>
 										@endif
+									@else
+										<option data-en-title="{{$province}}" value="{{$key}}" data-value="{{ $province }}" data-chained="{{ $province }}" class="{{ $province }}">{{$province}}</option>
 									@endif
 								@endforeach
 							</select>
@@ -139,11 +137,17 @@
 					<div class="form-group">
 						<label for="district" class="col control-label">Khan/District <i class="red">*</i></label>
 						<div class="col col-3 form-input">
-						<select data-placeholder="Select a district" id="district" name="district_id" class="form-control map_form" required="" disabled="">
-							<option value="0" data-value="">Select a Khan/District</option>
-							@if (isset($property))
-								<option value="{{ $property->district_id}}" data-value="" selected="">{{ $property->district->name_en }}</option>
-							@endif
+						<select data-placeholder="Select a district" id="district" name="district_id" class="form-control map_form" required disabled>
+							<option value="0" data-value="0">Select a Khan/District</option>
+								@if (isset($property))
+									@foreach ($districts as $district)
+											@if ($district->id==$property->district_id)
+												<option data-en-title="{{$district->name_en}}" value="{{$district->id}}" data-value="{{$district->name_en}}" data-chained="{{$district->name_en}}" class="{{$district->name_en}}" selected>{{$district->name_en}}</option>
+											@else
+												<option data-en-title="{{$district->name_en}}" value="{{$district->id}}" data-value="{{$district->name_en}}" data-chained="{{$district->name_en}}" class="{{$district->name_en}}">{{$district->name_en}}</option>
+											@endif
+									@endforeach
+								@endif
 						</select>
 						</div>
 					</div>
@@ -151,11 +155,17 @@
 					<div class="form-group">
 						<label for="commune" class="col control-label">Sangkat/Commune <i class="red">*</i></label>
 						<div class="col col-3 form-input">
-							<select data-placeholder="Select a commune" id="commune" name="commune_id" class="form-control map_form" required="" disabled="">
+							<select data-placeholder="Select a commune" id="commune" name="commune_id" class="form-control map_form" required disabled>
 								<option value="0" data-value="">Select a Sangkat/Commune</option>
-								@if (isset($property))
-								<option value="{{ $property->commune_id}}" data-value="" selected="">{{ $property->commune->name_en }}</option>
-								@endif
+									@if (isset($property))
+										@foreach ($communes as $commune)
+												@if ($commune->id==$property->commune_id)
+													<option data-en-title="{{$commune->name_en}}" value="{{$commune->id}}" data-value="{{$commune->name_en}}" data-chained="{{$commune->name_en}}" class="{{$commune->name_en}}" selected>{{$commune->name_en}}</option>
+												@else
+													<option data-en-title="{{$commune->name_en}}" value="{{$commune->id}}" data-value="{{$commune->name_en}}" data-chained="{{$commune->name_en}}" class="{{$commune->name_en}}">{{$commune->name_en}}</option>
+												@endif
+										@endforeach
+									@endif
 							</select>
 						</div>
 					</div>
@@ -168,13 +178,7 @@
 						</textarea>
 						</div>
 					</div>
-				</div>
-				<script type="text/javascript">
-					$('document').ready(function(){
-						$("#district").chained("#province");
-						$("#commune").chained("#district");
-					});
-				</script>				
+				</div>	
 			</div>
 			{{-- save contact information --}}
 			<div class="form-group">

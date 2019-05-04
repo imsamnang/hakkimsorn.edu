@@ -105,8 +105,8 @@
 	    }else{
 	        $("#district").empty();
 	        $("#commune").empty();
-	        $("#district").append('<option value="0" data-value="">Select a Khan/District</option>');
-	        $("#commune").append('<option value="0" data-value="">Select a Sangkat/Commune</option>');
+	        $("#district").append('<option value="0" data-value="0">Select a Khan/District</option>');
+	        $("#commune").append('<option value="0" data-value="0">Select a Sangkat/Commune</option>');
 	        $("#district" ).prop( "disabled", true );
 	        $("#commune" ).prop( "disabled", true );
 	    }      
@@ -122,7 +122,7 @@
 	            if(res){
 	            		$("#commune" ).prop( "disabled", false );
 	                $("#commune").empty();
-	                $("#commune").append('<option value="0" data-value="">Select a Sangkat/Commune</option>');
+	                $("#commune").append('<option value="0" data-value="0">Select a Sangkat/Commune</option>');
 	                										
 	                $.each(res,function(key,value){
 	                  $("#commune").append('<option value="'+key+'">'+value+'</option>');

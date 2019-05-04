@@ -74,12 +74,11 @@ class PostController extends Controller
     $images = PropertyGallery::where('property_id',$property->id)->get();
     $provinces = Province::pluck('name_en','id');
     $districts = District::where('province_id',$property->province_id)->get();
-    return $districts;
-    $communes = Commune::where('id',$districts->id)->get();
+    // return $property->commune->district_id;
+    $communes = Commune::where('district_id',$property->commune->district_id)->get();
     $subcategory = Category::where(['id'=>$property->parent_id])->first();
     $category = Category::where('id',$property->category_id)->first();    
-    // return $category;
-    return view('freeads.edit',compact('property','subcategory','category','provinces','images'));
+    return view('freeads.edit',compact('property','subcategory','category','provinces','districts','communes','images'));
   }
 
   public function updateProperties(Request $request, $id)
