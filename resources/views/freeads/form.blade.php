@@ -126,12 +126,11 @@
 								@foreach ($provinces as $key => $province)
 									@if (isset($property))											
 										@if ($key==$property->id)
-											<option data-en-title="{{$province}}" value="{{$key}}" data-value="tboung-khmum" selected>{{$province}}</option>
+											<option data-en-title="{{$province}}" value="{{$key}}" data-value="" selected>{{$province}}</option>
 										@else
-											<option data-en-title="{{$province}}" value="{{$key}}" data-value="tboung-khmum">{{$province}}</option>
+											<option data-en-title="{{$province}}" value="{{$key}}" data-value="">{{$province}}</option>
 										@endif
 									@endif
-									<option data-en-title="{{$province}}" value="{{$key}}" data-value="tboung-khmum">{{$province}}</option>
 								@endforeach
 							</select>
 						</div>
@@ -170,6 +169,12 @@
 						</div>
 					</div>
 				</div>
+				<script type="text/javascript">
+					$('document').ready(function(){
+						$("#district").chained("#province");
+						$("#commune").chained("#district");
+					});
+				</script>				
 			</div>
 			{{-- save contact information --}}
 			<div class="form-group">
