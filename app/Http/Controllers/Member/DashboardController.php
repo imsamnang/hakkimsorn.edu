@@ -16,13 +16,10 @@ class DashboardController extends Controller
       $this->middleware('auth');
   }
 
-  public function index()
+  public function index($id)
   {
   	$user = User::where('id',Auth::user()->id)->first();
   	$properties = Property::where('user_id',$user->id)->get();
-  	// foreach ($properties as $key => $property) {
-  	// 	$images[] = PropertyGallery::where('property_id',$property->id)->get();
-  	// }
     return view('member.dashboard',compact('user','properties'));
   }
 

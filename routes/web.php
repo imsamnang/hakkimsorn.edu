@@ -1,8 +1,12 @@
 <?php
 
 
-Route::get('/', function () {
-    return view('layouts.backend.khmer24_layout');
+Route::view('/by_pro','front.property_by_province');
+
+Route::get('/','HomeController@index')->name('home');
+
+Route::prefix('property')->group(function(){	
+	Route::get('/{id}/properties_by_province','HomeController@property_by_province')->name('propery.by.province');
 });
 
 Auth::routes();
@@ -23,7 +27,7 @@ Route::prefix('post')->group(function(){
 	Route::get('/allproperties','Member\PostController@allProperties')->name('post.allProperties');
 });
 
-Route::get('/home', 'Member\DashboardController@index')->name('home');
+Route::get('/manage_ads', 'Member\DashboardController@index')->name('member.home');
 Route::get('/likes', 'Member\DashboardController@index')->name('likes');
 Route::get('/notifications', 'Member\DashboardController@index')->name('notifications');
 Route::get('/setting', 'Member\DashboardController@index')->name('setting');

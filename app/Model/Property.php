@@ -26,6 +26,11 @@ class Property extends Eloquent
 		'location',
 	];
 
+	public function user()
+	{
+		return $this->belongsTo(User::class,'user_id','id');
+	}
+
 	public function province()
 	{
 		return $this->belongsTo(Province::class,'province_id','id');
@@ -51,7 +56,7 @@ class Property extends Eloquent
 		return $this->belongsTo(Category::class,'parent_id','id');
 	}
 
-    public function properties()
+    public function galleries()
     {
     	return $this->hasMany(PropertyGallery::class,'property_id','id');
     }	

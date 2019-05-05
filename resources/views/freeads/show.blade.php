@@ -1,11 +1,11 @@
 @extends('layouts.backend.khmer24_layout')
 
 @push('css')
-	<link href="https://www.khmer24.com/khmer24-reform21/template/css/property.css" rel="stylesheet">
-	<link href="https://www.khmer24.com/khmer24-reform21/template/plugin/OwlCarousel2-2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
-	<link href="https://www.khmer24.com/khmer24-reform21/template/plugin/fancybox/jquery.fancybox.min.css" rel="stylesheet">
-	<script src="https://www.khmer24.com/khmer24-reform21/template/plugin/OwlCarousel2-2.3.4/owl.carousel.min.js"></script>
-	<script src="https://www.khmer24.com/khmer24-reform21/template/plugin/fancybox/jquery.fancybox.min.js"></script>
+	<link href="{{ asset('assets\css\property.css')}}" rel="stylesheet">
+	<link href="{{ asset('assets\css\owl.carousel.min.css')}}" rel="stylesheet">
+	<link href="{{ asset('assets\css\jquery.fancybox.min.css')}}" rel="stylesheet">
+	<script src="{{ asset('assets\js\owl.carousel.min.js')}}"></script>
+	<script src="{{ asset('assets\js\jquery.fancybox.min.js')}}"></script>
 @endpush
 
 @section('content')
@@ -16,11 +16,11 @@
 			<div class="my-container">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item" aria-current="page"><a href="https://www.khmer24.com/en/"><i class="icon-home"></i>Home</a>
+						<li class="breadcrumb-item" aria-current="page"><a href="{{ route('home') }}"><i class="icon-home"></i>Home</a>
 						</li>
-						<li class="breadcrumb-item" aria-current="page"><a href="https://www.khmer24.com/en/property.html">House & Lands</a>
+						<li class="breadcrumb-item" aria-current="page"><a href="#property.html">House & Lands</a>
 						</li>
-						<li class="breadcrumb-item" aria-current="page"><a href="https://www.khmer24.com/en/property/landed-properties-for-sale.html">Land for Sale </a>
+						<li class="breadcrumb-item" aria-current="page"><a href="#property/landed-properties-for-sale.html">Land for Sale </a>
 						</li>
 					</ol>
 				</nav>
@@ -318,8 +318,8 @@
 					</div>
 					<div class="modal-body">
 						<div class="message"></div>
-						<form action="https://www.khmer24.com/en/report" id="form_report" method="post" accept-charset="utf-8">
-							<input type="hidden" name="csrf_test_name" value="2f2d1e231bfc8c975a2ddfcb29979feb" />
+						<form action="/report" id="form_report" method="post" accept-charset="utf-8">
+							<input type="hidden" name="csrf_test_name" value="{{ csrf_token() }}" />
 							<input type="hidden" name="id" value="3016519" />
 							<div class="custom-control custom-radio form-group">
 							<input type="radio" name="report" class="custom-control-input" id="reason-1" value="1">
@@ -352,99 +352,94 @@
 		</div>
 
 		<script type="text/javascript">
-				$(document).ready(function() {
-
-					$.fancybox.defaults.hash = false;
-
-			        
-					var owl = $(".owl-carousel").owlCarousel({items:1, center:true, dots:false, margin:10, callbacks:true, URLhashListener:true, autoplayHoverPause:true, startPosition:'URLHash'});
-					$(".owl-nav div").click(function(e){
-						if($(this).attr('class')=="owl-prev") {
-							owl.trigger('prev.owl.carousel');
-						} else {
-							owl.trigger('next.owl.carousel');
-						}
-					});
-					owl.on('changed.owl.carousel', function(event) {
-						$('body').find('#slide-box .thumbs div').removeClass('active');
-						$('body').find('#slide-box .thumbs div.item-'+(event.item.index+1)).addClass('active');
-					});
-					// Custom options
-					$( '[data-fancybox="images"]' ).fancybox({
-					  buttons : [
-					    'close'
-					  ]
-					});
-					$('body').on('click','#slide-box .thumbs a', function(e){
-						e.preventDefault();
-						$('body').find('#slide-box .thumbs div').removeClass('active');
-						$(this).closest('div').addClass('active');
-						var id = $(this).attr('data-id');
-						owl.trigger('to.owl.carousel',id-1);
-					});
-
-			        var phone_show_status = false;
-			        $('.btn_show_phone').click(function(e){        	
-			        	if(phone_show_status == false) {
-			        		e.preventDefault();
-				        	$('.btn_show_phone').find('.btn_show_phone_box').addClass('d-none');
-				        	$('.btn_show_phone').find('.list_numbers').removeClass('d-none');
-				        	$('.post-description').find('.btn_show_phone');
-				            $($('body').find('p.post-description').find('a.btn_show_phone')).each(function( index ) {
-				                var phone = $(this).attr('data-value');
-				              $(this).html(phone);
-				            });
-			        	}
-			            if(phone_show_status==false) {
-			                 e.preventDefault();
-
-			                phone_show_status=true;
-			                	                $('.phone_box').addClass('active');
-
-			            }
-			        	
-			        	phone_show_status = true;
-			        });
-
-
-			        $('.btn-submit-report').click(function(e){
-			        	e.preventDefault();
-			        	
-			        	$('#report-modal').addClass('active');
-
-			        	$('#report-modal').find('.message').html('');
-			        	$.post($('#form_report').attr('action'),$('#form_report').serialize(),function(respone) {
-			        		$('#report-modal').removeClass('active');
-			        		if(respone.status) {
-				        		$('#report-modal').find('.modal-body').html('<div class="text-center p-3">'+respone.success+'</div>');
-				        		$('#report-modal').find('.modal-footer').remove();
-			        		} else {
-				        		$('#report-modal').find('.message').html(respone.error);
-			        		}
-			        	},'json');
-			        });
-
-
-			        $('#suggestion_text .text').click(function(){
-			        	$('#input-message').val($(this).text());
-			        	$('#message-form').submit();
-			        });
-
-			        $('.btn-save-item').click(function(e){
-			        	e.preventDefault();
-			        	$.get($(this).attr('href'),function(respone){
-			        		if(respone.save_status) {
-			        			$('.btn-save-item').addClass('active');
-			        		} else {
-			        			$('.btn-save-item').removeClass('active');
-			        		}
-			        	},'json');
-			        });
-
+			$(document).ready(function() {
+				$.fancybox.defaults.hash = false;			        
+				var owl = $(".owl-carousel").owlCarousel({items:1, center:true, dots:false, margin:10, callbacks:true, URLhashListener:true, autoplayHoverPause:true, startPosition:'URLHash'});
+				$(".owl-nav div").click(function(e){
+					if($(this).attr('class')=="owl-prev") {
+						owl.trigger('prev.owl.carousel');
+					} else {
+						owl.trigger('next.owl.carousel');
+					}
 				});
+				owl.on('changed.owl.carousel', function(event) {
+					$('body').find('#slide-box .thumbs div').removeClass('active');
+					$('body').find('#slide-box .thumbs div.item-'+(event.item.index+1)).addClass('active');
+				});
+				// Custom options
+				$( '[data-fancybox="images"]' ).fancybox({
+				  buttons : [
+				    'close'
+				  ]
+				});
+				$('body').on('click','#slide-box .thumbs a', function(e){
+					e.preventDefault();
+					$('body').find('#slide-box .thumbs div').removeClass('active');
+					$(this).closest('div').addClass('active');
+					var id = $(this).attr('data-id');
+					owl.trigger('to.owl.carousel',id-1);
+				});
+
+		        var phone_show_status = false;
+		        $('.btn_show_phone').click(function(e){        	
+		        	if(phone_show_status == false) {
+		        		e.preventDefault();
+			        	$('.btn_show_phone').find('.btn_show_phone_box').addClass('d-none');
+			        	$('.btn_show_phone').find('.list_numbers').removeClass('d-none');
+			        	$('.post-description').find('.btn_show_phone');
+			            $($('body').find('p.post-description').find('a.btn_show_phone')).each(function( index ) {
+			                var phone = $(this).attr('data-value');
+			              $(this).html(phone);
+			            });
+		        	}
+		            if(phone_show_status==false) {
+		                 e.preventDefault();
+
+		                phone_show_status=true;
+		                	                $('.phone_box').addClass('active');
+
+		            }
+		        	
+		        	phone_show_status = true;
+		        });
+
+
+		        $('.btn-submit-report').click(function(e){
+		        	e.preventDefault();
+		        	
+		        	$('#report-modal').addClass('active');
+
+		        	$('#report-modal').find('.message').html('');
+		        	$.post($('#form_report').attr('action'),$('#form_report').serialize(),function(respone) {
+		        		$('#report-modal').removeClass('active');
+		        		if(respone.status) {
+			        		$('#report-modal').find('.modal-body').html('<div class="text-center p-3">'+respone.success+'</div>');
+			        		$('#report-modal').find('.modal-footer').remove();
+		        		} else {
+			        		$('#report-modal').find('.message').html(respone.error);
+		        		}
+		        	},'json');
+		        });
+
+
+		        $('#suggestion_text .text').click(function(){
+		        	$('#input-message').val($(this).text());
+		        	$('#message-form').submit();
+		        });
+
+		        $('.btn-save-item').click(function(e){
+		        	e.preventDefault();
+		        	$.get($(this).attr('href'),function(respone){
+		        		if(respone.save_status) {
+		        			$('.btn-save-item').addClass('active');
+		        		} else {
+		        			$('.btn-save-item').removeClass('active');
+		        		}
+		        	},'json');
+		        });
+			});
 		</script>
 	</div>
-
 
 @endsection
 

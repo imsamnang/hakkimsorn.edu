@@ -57,10 +57,9 @@
 							<span class="status">Ad Active</span>
 						</div>
 							@foreach ($properties as $property)
-								{{-- @foreach ($property->properties as $image) --}}
 								<div class="detail_box ">
 									<a class="post_image" href="#" title="">
-										<img alt="" class="img-cover" src="{{asset('uploads/property/galleries/'.$property->properties[0]->gallery_image)}}" />
+										<img alt="" class="img-cover" src="{{isset($property->galleries[0]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[0]->gallery_image):asset('img/products.png')}}" />
 									</a>
 									<div class="post_detail">
 										<a class="title" href="{{ route('post.show',$property->id) }}" title="{{ $property->title }}">{{ $property->title }}</a>
@@ -190,7 +189,6 @@
 		                  }
 		              }   
 		          }
-
 		      });
 		      $('.btn_close_modal').click(function(e){
 		          e.preventDefault();
@@ -217,35 +215,34 @@
 		              $('#enter_reason').hide();
 		          }
 		      });
+
 		      $('#btn_delete_ad').click(function(e){
-		          e.preventDefault();
-		          if(id) {
-		              if(reason=='') {
-		                  $('#popup_message').html('<div class="alert">សូមធ្វើការជ្រើសរើសប្រភេទខាងក្រោមណារមួយដើម្បីធ្វើការលប់</div>');
-		              } else {
-		                  if(reason=='other' && $('#input_reason').val().length<15) {
-		                      $('#input_reason').focus();
-		                      return;
-		                  }
-		                  $('#delete_ad_reason').addClass('loading');
-
-		                  if(reason=='other') {
-		                      reason = $('#input_reason').val();
-		                  }
-
-		                  $.post(base_url+'manage-ads/delete-ad',{"csrf_test_name":csrf,"adid":id,"reason":reason,"status":ad_type},function(result){
-		                      $('#delete_ad_reason').removeClass('loading');
-		                      if(result.status==1 || result.status=='1') {
-		                          location.reload();
-		                      } else {
-		                          $('#popup_message').html('<div class="alert alert-danger alert-error">'+result.info+'</div>');
-		                      }
-		                  },'json');
-		              }
-		          }
+	          e.preventDefault();
+	          if(id) {
+              if(reason=='') {
+                $('#popup_message').html('<div class="alert">សូមធ្វើការជ្រើសរើសប្រភេទខាងក្រោមណារមួយដើម្បីធ្វើការលប់</div>');
+              } else {
+                if(reason=='other' && $('#input_reason').val().length<15) {
+                  $('#input_reason').focus();
+                  return;
+                }
+                $('#delete_ad_reason').addClass('loading');
+                if(reason=='other') {
+                    reason = $('#input_reason').val();
+                }
+                $.post(route('post.destroy'),{"csrf_test_name":csrf,"adid":id,"reason":reason,"status":ad_type},function(result){
+                  $('#delete_ad_reason').removeClass('loading');
+                  if(result.status==1 || result.status=='1') {
+                      location.reload();
+                  } else {
+                      $('#popup_message').html('<div class="alert alert-danger alert-error">'+result.info+'</div>');
+                  }
+                },'json');
+              }
+	          }
 		      });
 		  });
-		</script>->
+		</script>
 		<script>
 		  $(document).ready(function(e) {
 		    $('.auto_renew_checker').attr('checked', false);
