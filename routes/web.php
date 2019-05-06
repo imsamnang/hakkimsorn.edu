@@ -45,3 +45,7 @@ Route::prefix('admin')->group(function() {
     // Route::get('/password/reset/{token}', 'AuthAdmin\ResetPasswordController@showResetForm')->name('admin.password.reset');
     // Route::post('/password/reset', 'AuthAdmin\ResetPasswordController@reset');
 });
+
+
+// Ajax crud
+Route::get('ajax-index','AjaxController@index');

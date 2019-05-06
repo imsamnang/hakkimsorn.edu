@@ -16,20 +16,20 @@
                         <a href="https://www.khmer24.com/en/member/edit-profile" class="user-photo" style="background: url('https://www.khmer24.com/khmer24-reform21/template/img/default_profile.jpg') no-repeat center; background-size: cover;">
                         </a>
                         <div class="user-info">
-                            <div class="name">Hi! <span id="text_name">សុភ័ក្រ លាប</span>
+                            <div class="name">Hi! <span id="text_name">{{ $user->firstname }}</span>
                                 <a id="btn-edit-name" class="text " data-toggle="modal" data-target="#popup_change_name" href="#popup_change_name"><span class="icon icon-edit"></span></a>
-                                <a href="https://www.khmer24.com/en/membership.html" style="position: absolute; right: 15px;" class="btn btn-sm btn-warning btn_yellow_brown">Upgrade To Business Account</a>
+                                <a href="#membership.html" style="position: absolute; right: 15px;" class="btn btn-sm btn-warning btn_yellow_brown">Upgrade To Business Account</a>
                             </div>
                             <ul class="info list-unstyled">
                                 <li>
-                                <b>Username:</b> <span id="username_text">p-70393143</span>
+                                <b>Username:</b> <span id="username_text">p-{{ $user->phone }}</span>
                                 <a class="text " data-toggle="modal" data-target="#popup_change_username" href="#popup_change_username"><span class="icon icon-edit"></span> Edit</a>
                                 </li>
                                 <li>
-                                <b>Register Phone:</b> 070393143 <span class="icon icon-check"></span>
+                                <b>Register Phone:</b> {{ $user->phone }} <span class="icon icon-check"></span>
                                 <a class="text " data-toggle="modal" data-target="#popup_change_phone" href="#popup_change_phone"><span class="icon icon-edit"></span> Change</a>
                                 </li>
-                                <li><b>Account Type:</b> Normal Account <a href="https://www.khmer24.com/en/membership.html">Update</a></li>
+                                <li><b>Account Type:</b> {{ $user->account_type }} <a href="#membership.html">Update</a></li>
                                 <li>
                                 <b>Email:</b> <span id="email_text"></span>
                                 <a class="text " data-toggle="modal" data-target="#popup_change_email" href="#popup_change_email">Add Email</a>
@@ -37,10 +37,10 @@
                                 <li>
                                 <b>Connect with Facebook <span class="icon icon-facebook"></span></b>
                                 <span class="icon icon-delete"></span>
-                                <a href="https://www.facebook.com/v2.9/dialog/oauth?client_id=217361691621555&amp;state=8d0794f72be2e5fb7867a337634513d2&amp;response_type=code&amp;sdk=php-sdk-5.5.0&amp;redirect_uri=https%3A%2F%2Fwww.khmer24.com%2Fen%2Fsetting%2Fconnect-with-facebook&amp;scope=email">Conncet Now</a>
+                                <a href="http://facebook.com/">Conncet Now</a>
                                 </li>
                                 <li class="store_url">
-                                <b>Store URL:</b> <a id="store_url" class="btn-link" href="https://www.khmer24.com/p-70393143">https://www.khmer24.com/p-70393143</a>
+                                <b>Store URL:</b> <a id="store_url" class="btn-link" href="#p-70393143">https://www.tinhtoday.com/p-70393143</a>
                                 </li>
                             </ul>
                         </div>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            @if (Request::route()->getName() == "home")
+            @if (Request::route()->getName() == "member.home")
                 @include('member.my_ads')
             @endif
             @if (Request::route()->getName() == "likes")

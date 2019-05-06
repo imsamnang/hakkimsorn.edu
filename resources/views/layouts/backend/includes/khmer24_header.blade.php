@@ -25,7 +25,7 @@
 								<span class="icon-plus-full"></span> 
 								POST FREE AD
 							</a>
-							<a class="dropdown-item" href="{{route('home')}}" title="My Ads">
+							<a class="dropdown-item" href="{{route('member.home')}}" title="My Ads">
 								<span class="icon-folder"></span> 
 								My Ads
 							</a>

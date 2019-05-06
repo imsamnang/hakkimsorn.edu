@@ -19,8 +19,8 @@
 						<label>Filter: </label>
 						<select class="form-control" name="category" style="width: 160px;">
 							<option value="">All Categories</option>
-							<option value="property-housing-rentals" class="main_cate">{{ $properties[0]->category->category_name }}</option>
-							<option value="landed-properties-for-sale">- {{ $properties[0]->parent->category_name }}</option>
+		{{-- 					<option value="property-housing-rentals" class="main_cate">{{ isset($properties)?$properties[0]->category->category_name : '' }}</option>
+							<option value="landed-properties-for-sale">- {{ isset($properties)?$properties[0]->parent->category_name:'' }}</option> --}}
 						</select>
 					</span>
 					<span class="filter_right  form-group">
@@ -44,7 +44,7 @@
 				Hi <strong>p-{{ $user->phone }}</strong>, you currently have <strong>{{ $properties->count() }}</strong> ads (Active Ads)
 				</div>
 				<div>
-					<a class="btn btn-warning btn-md " href="https://www.khmer24.com/en/post">
+					<a class="btn btn-warning btn-md " href="{{ route('post.index') }}">
 						<span class="icon icon-plus-full"></span> Post an Ad
 					</a>
 				</div>

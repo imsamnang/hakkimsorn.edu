@@ -16,7 +16,7 @@ class DashboardController extends Controller
       $this->middleware('auth');
   }
 
-  public function index($id)
+  public function index()
   {
   	$user = User::where('id',Auth::user()->id)->first();
   	$properties = Property::where('user_id',$user->id)->get();
