@@ -48,4 +48,14 @@ Route::prefix('admin')->group(function() {
 
 
 // Ajax crud
-Route::get('ajax-index','AjaxController@index');
+Route::get('ajax','AjaxController@index')->name('ajax.index');
+Route::get('ajax-read','AjaxController@readData')->name('ajax.create');
+Route::post('ajax-store','AjaxController@store')->name('ajax.store');
+Route::post('ajax-destroy','AjaxController@destroy')->name('ajax.destroy');
+Route::get('ajax-edit','AjaxController@edit')->name('ajax.edit');
+Route::post('ajax-update','AjaxController@update')->name('ajax.update');
+Route::get('ajax-pagination','AjaxController@pagination')->name('ajax.pagination');
+Route::get('ajax-studentPage','AjaxController@studentPage')->name('ajax.studentPage');
+
+
+

@@ -13,7 +13,7 @@
             <div class="my-container">
                 <div class="user-profile">
                     <div>
-                        <a href="https://www.khmer24.com/en/member/edit-profile" class="user-photo" style="background: url('https://www.khmer24.com/khmer24-reform21/template/img/default_profile.jpg') no-repeat center; background-size: cover;">
+                        <a href="#member/edit-profile" class="user-photo" style="background: url('https://www.khmer24.com/khmer24-reform21/template/img/default_profile.jpg') no-repeat center; background-size: cover;">
                         </a>
                         <div class="user-info">
                             <div class="name">Hi! <span id="text_name">{{ $user->firstname }}</span>
@@ -196,13 +196,13 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" value="https://www.khmer24.com/" id="base_url">
-        <input type="hidden" value="https://www.khmer24.com/khmer24-reform21/template/" id="template_path">
+        <input type="hidden" value="" id="base_url">
+        <input type="hidden" value="" id="template_path">
 
         <script type="text/javascript">
             $('document').ready(function(){
               var xhr_topics = null;
-              var base_url = "https://www.khmer24.com/";
+              var base_url = "";
               var csrf = "a71bc44da8b47c07b2781c66cbf58cdc";
               var modal_type = '';
               var input_text = "";
@@ -222,7 +222,7 @@
                   $('.btn_set_username').addClass('disabled');
                   input_text = txt.val();           
                   $('#username_status_icon').attr('class','status_icon loading');
-                  xhr_topics = $.post('https://www.khmer24.com/en/ajax/check-username', {'username' : txt.val(), 'csrf_test_name' : csrf} , function(result){
+                  xhr_topics = $.post('#check-username', {'username' : txt.val(), 'csrf_test_name' : csrf} , function(result){
                       xhr_topics = null;
                       if(result.status=='1') {
                           $('.btn_set_username').removeClass('disabled');
@@ -555,7 +555,7 @@
         </script>
         <a href="#totop" id="totop"><i class="icon-up"></i></a>
         <div class="fix-feedback">
-            <a href="https://www.khmer24.com/en/feedback" class="btn btn-primary btn-sm">Feedback</a>
+            <a href="#feedback" class="btn btn-primary btn-sm">Feedback</a>
         </div>
     </div>
 
