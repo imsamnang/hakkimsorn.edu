@@ -2,15 +2,15 @@
 	<div class="my-container header-content">
 		@if (Auth::check())
 			<nav class="navbar row">
-				<a href="https://www.khmer24.com/en/" class="navbar-brand"><img src="https://www.khmer24.com/khmer24-reform21/template/img/khmer24.gif" alt="Khmer24"></a>
+				<a href="{{route('home')}}" class="navbar-brand"><img src="https://www.khmer24.com/khmer24-reform21/template/img/khmer24.gif" alt="Khmer24"></a>
 				<ul class="nav mr-auto left-nav">
 				<li class="nav-item">
-				<a class="nav-link disabled btn-change-lang" href="https://www.khmer24.com/km/manage-ads.html"><span class="icon khmer-flage"></span></a>
+				<a class="nav-link disabled btn-change-lang" href="#manage-ads.html"><span class="icon khmer-flage"></span></a>
 				</li>
 				</ul>
 				<ul class="nav nav-pills justify-content-end right-nav">
 				<li class="nav-item nav-item-login">
-				<a class="nav-link" href="https://www.khmer24.com/en/notifications"><span class="icon icon-notification-fill"></span><span id="notification-badge" class="badge badge-pill badge-danger d-none">0</span></a>
+				<a class="nav-link" href="#notifications"><span class="icon icon-notification-fill"></span><span id="notification-badge" class="badge badge-pill badge-danger d-none">0</span></a>
 				</li>
 
 				<li class="nav-item nav-item-login nav-user-photo">
@@ -51,7 +51,7 @@
 				</li>
 				<li class="nav-item ml-2">
 				<a class="nav-link btn-post btn-warning long-text" href="{{route('post.index')}}">POST FREE AD</a>
-				<a class="nav-link btn-post btn-warning short-text" href="https://www.khmer24.com/en/post">POST</a>
+				<a class="nav-link btn-post btn-warning short-text" href="{{route('post.index')}}">POST</a>
 				</li>
 				</ul>
 			</nav>	
@@ -60,7 +60,7 @@
 				<a href="#" class="navbar-brand"><img src="https://www.khmer24.com/khmer24-reform21/template/img/khmer24.gif" alt="Khmer24"></a>
 				<ul class="nav mr-auto left-nav">
 					<li class="nav-item">
-						<a class="nav-link disabled btn-change-lang" href="https://www.khmer24.com/km/post.html"><span class="icon khmer-flage"></span></a>
+						<a class="nav-link disabled btn-change-lang" href="{{route('post.index')}}"><span class="icon khmer-flage"></span></a>
 					</li>
 				</ul>
 				<ul class="nav nav-pills justify-content-end right-nav">
@@ -74,17 +74,17 @@
 						<a class="nav-link" href="{{route('register')}}">Register</a>
 					</li>				
 					<li class="nav-item item-small-screen">
-						<a class="nav-link" href="https://www.khmer24.com/en/register"><span class="icon icon-user2"></span></a>
+						<a class="nav-link" href="{{route('register')}}"><span class="icon icon-user2"></span></a>
 					</li>
 					<li class="nav-item ml-2">
 						<a class="nav-link btn-post btn-warning long-text" href="{{route('post.index')}}">POST FREE AD</a>
-						<a class="nav-link btn-post btn-warning short-text" href="https://www.khmer24.com/en/post">POST</a>
+						<a class="nav-link btn-post btn-warning short-text" href="{{route('post.index')}}">POST</a>
 					</li>
 				</ul>
 			</nav>
 		@endif
 		<div id="header-search">
-			<form class="form-inline form-mini-search p-0 pb-2 mr-auto" action="https://www.khmer24.com/en/search" method="get">
+			<form class="form-inline form-mini-search p-0 pb-2 mr-auto" action="#search" method="get">
 				<input class="form-control col-12 pr-4 input-keyword" type="search" placeholder="What are you looking for..." aria-label="What are you looking for..." value="" name="q">
 				<select name="category" class="form-control select-category">
 					<option value="">All Category</option>

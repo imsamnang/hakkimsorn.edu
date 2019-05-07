@@ -65,7 +65,7 @@ class PostController extends Controller
     if($property->save()){
       $property->imageGalleryUpload('imageGalleries',new PropertyGallery(),'property/galleries/',$property->id,'property_id');
     }
-      return redirect()->back();
+      return redirect()->route('member.home');
   }
   
   public function editProperties($id)

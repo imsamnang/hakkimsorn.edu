@@ -10,7 +10,7 @@
 				</div>
 			</div>
 			<div class="col text-right">
-				<form action="https://www.khmer24.com/en/manage-ads" id="filter_form" class="form-inline" method="get">
+				<form action="#manage-ads" id="filter_form" class="form-inline" method="get">
 					<span class="filter_left form-group">
 						<label>Search: </label>
 						<input type="text" name="search" class="form-control" placeholder="What are you looking for..." value="">
@@ -50,16 +50,17 @@
 				</div>
 			</div>
 			<ul class="list_posts list-unstyled">
+@foreach ($properties as $property)
 				<li id="item-3376753">
 					<div class="item_box">
 						<div class="ad_info">
 							<span class="icon-point green"></span>
 							<span class="status">Ad Active</span>
 						</div>
-							@foreach ($properties as $property)
+{{-- 							@foreach ($properties as $property) --}}
 								<div class="detail_box ">
 									<a class="post_image" href="#" title="">
-										<img alt="" class="img-cover" src="{{isset($property->galleries[0]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[0]->gallery_image):asset('img/products.png')}}" />
+										<img alt="" class="img-cover" src="{{isset($property->galleries[0]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[0]->gallery_image):asset('assets/img/no_image.gif')}}" />
 									</a>
 									<div class="post_detail">
 										<a class="title" href="{{ route('post.show',$property->id) }}" title="{{ $property->title }}">{{ $property->title }}</a>
@@ -90,7 +91,7 @@
 								<div class="controls ">
 									<div class="list_control text-center row">
 										<div class="col">
-											<a href="https://www.khmer24.com/en/promote-ad.html" class="btn btn-link " data-id="3376753" data-m="0" data-h="1" data-ampm="am"><span class="icon icon-renew"></span> Auto Renew
+											<a href="#promote-ad.html" class="btn btn-link " data-id="3376753" data-m="0" data-h="1" data-ampm="am"><span class="icon icon-renew"></span> Auto Renew
 											</a>
 										</div>
 										<div class="col">
@@ -107,10 +108,10 @@
 										</div>
 									</div>
 								</div>
-								{{-- @endforeach --}}
-							@endforeach
+							{{-- @endforeach --}}
 					</div>
 				</li>
+@endforeach
 			</ul>
 		</div>
 
@@ -127,24 +128,24 @@
 						<div id="popup_message"></div>
 						<div class="reason">
 							<div class="custom-control custom-radio form-group">
-							<input type="radio" name="delete_ad_reason" class="custom-control-input" id="reason-lang-reason-1" value="lang-reason-1">
-							<label class="custom-control-label" for="reason-lang-reason-1">This product has been sold</label>
+								<input type="radio" name="delete_ad_reason" class="custom-control-input" id="reason-lang-reason-1" value="lang-reason-1">
+								<label class="custom-control-label" for="reason-lang-reason-1">This product has been sold</label>
 							</div>
 							<div class="custom-control custom-radio form-group">
-							<input type="radio" name="delete_ad_reason" class="custom-control-input" id="reason-lang-reason-2" value="lang-reason-2">
-							<label class="custom-control-label" for="reason-lang-reason-2">Suspend this ads</label>
+								<input type="radio" name="delete_ad_reason" class="custom-control-input" id="reason-lang-reason-2" value="lang-reason-2">
+								<label class="custom-control-label" for="reason-lang-reason-2">Suspend this ads</label>
 							</div>
 							<div class="custom-control custom-radio form-group">
-							<input type="radio" name="delete_ad_reason" class="custom-control-input" id="reason-lang-reason-3" value="lang-reason-3">
-							<label class="custom-control-label" for="reason-lang-reason-3">Delete to post new ads</label>
+								<input type="radio" name="delete_ad_reason" class="custom-control-input" id="reason-lang-reason-3" value="lang-reason-3">
+								<label class="custom-control-label" for="reason-lang-reason-3">Delete to post new ads</label>
 							</div>
 							<div class="custom-control custom-radio form-group">
-							<input type="radio" name="delete_ad_reason" class="custom-control-input" id="reason-other" value="other">
-							<label class="custom-control-label" for="reason-other">Other</label>
+								<input type="radio" name="delete_ad_reason" class="custom-control-input" id="reason-other" value="other">
+								<label class="custom-control-label" for="reason-other">Other</label>
 							</div>
 						</div>
 						<div class="enter_reason" id="enter_reason">
-						<textarea id="input_reason" name="enter_reason" minlength="15" maxlength="255" placeholder="Comment..." class="form-control"></textarea>
+							<textarea id="input_reason" name="enter_reason" minlength="15" maxlength="255" placeholder="Comment..." class="form-control"></textarea>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -154,14 +155,26 @@
 				</div>
 			</div>
 		</div>
-		
-		<script type="text/javascript">
+{{-- 
+	<script type="text/javascript">
+	  // delete data from database
+	  $('body').delegate('#del', 'click', function(event) {
+	    event.preventDefault();
+	    var id = $(this).data('id');
+	    $.post('{{ route("ajax.destroy") }}',{id:id},function(data){
+	      console.log(data);
+	    })
+	  });				
+	</script> --}}
+	
+{{-- 		<script type="text/javascript">
 		  $('document').ready(function(){
-		      var base_url = 'https://www.khmer24.com/en/';
+		      var base_url = '{{route('home')}}';
 		      var csrf = '{{ csrf_token() }}';
 		      var id='';
 		      var ad_type='active';
 		      var reason='';
+
 		      $('.btn_delete').click(function(e){
 		          $('#delete_ad_reason').removeClass('loading');
 		          e.preventDefault();
@@ -173,23 +186,24 @@
 		          $('input[name="delete_ad_reason"]').prop('checked', false);
 		          var status = $(this).attr('data-status');
 		          if(id) {
-		              if(status=='active') {
-		                  $('#delete_ad_reason').modal('show');
-		              } else {
-		                  if(confirm('Are you sure to delete this item?')) {
-		                      $('#item-'+id).addClass('loading');
-		                      $.post(base_url+'manage-ads/delete-ad',{"csrf_test_name":csrf,"adid":id,"reason":status,"status":ad_type},function(result){
-		                          $('#item-'+id).removeClass('loading');
-		                          if(result.status==1 || result.status=='1') {
-		                              location.reload();
-		                          } else {
-		                              alert(result.info);
-		                          }
-		                      },'json');
-		                  }
-		              }   
+	              if(status=='active') {
+	                  $('#delete_ad_reason').modal('show');
+	              } else {
+                  if(confirm('Are you sure to delete this item?')) {
+                    $('#item-'+id).addClass('loading');
+                    $.post(base_url+'manage-ads/delete-ad',{"csrf_test_name":csrf,"adid":id,"reason":status,"status":ad_type},function(result){
+                        $('#item-'+id).removeClass('loading');
+                        if(result.status==1 || result.status=='1') {
+                          location.reload();
+                        } else {
+                          alert(result.info);
+                        }
+                    },'json');
+                  }
+	              }   
 		          }
 		      });
+
 		      $('.btn_close_modal').click(function(e){
 		          e.preventDefault();
 		          $('#delete_ad_reason').modal('hide');
@@ -201,16 +215,15 @@
 		          $('#popup_message').html('');
 		          $('#delete_ad_reason').removeClass('loading');
 		      });
+
 		      $('input[name="delete_ad_reason"]').change(function(){
 		          $('#popup_message').html('');
 		          var val = $(this).val();
-		          reason = val;
-		          
+		          reason = val;		          
 		          if(val=="other") {
 		              $('#enter_reason').show(function(){
 		                  $('#input_reason').focus();
 		              });
-
 		          } else {
 		              $('#enter_reason').hide();
 		          }
@@ -247,7 +260,7 @@
 		  $(document).ready(function(e) {
 		    $('.auto_renew_checker').attr('checked', false);
 		    $('.auto_renew_checker').on('change',function(event){
-		        window.location.href = "https://www.khmer24.com/en/membership.html";
+		        window.location.href = "{{route('home')}}";
 		    });
 		  });
 		</script>
@@ -305,5 +318,6 @@
 		        $('#filter_form').submit();
 		    });
 		  });
-		</script>
+		</script> --}}
+
 	</div>
