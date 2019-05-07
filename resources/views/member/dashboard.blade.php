@@ -201,7 +201,7 @@
     <input type="hidden" value="" id="base_url">
     <input type="hidden" value="" id="template_path">
 
-    <script type="text/javascript">
+{{--     <script type="text/javascript">
         $('document').ready(function(){
           var xhr_topics = null;
           var base_url = "";
@@ -335,7 +335,7 @@
                   var btn = $(this);
                   if(username.length>2) {
                       $('#confirm_popup').addClass('loading');
-                      $.post(base_url+"ajax/set-username",{"username":username, 'password':$('body').find('input#txt_password').val(), "csrf_test_name":csrf},function(result){
+                      $.post("ajax/set-username",{"username":username, 'password':$('body').find('input#txt_password').val(), "csrf_test_name":csrf},function(result){
                           $('#confirm_popup').removeClass('loading');
                           $('body').find('input#txt_password').val('');
                           if(result.status=="1" || result.status==1) {
@@ -554,7 +554,7 @@
             $('#confirm_popup').modal('show');
           });        
         });
-    </script>
+    </script> --}}
     <a href="#totop" id="totop"><i class="icon-up"></i></a>
     <div class="fix-feedback">
         <a href="#feedback" class="btn btn-primary btn-sm">Feedback</a>

@@ -117,16 +117,20 @@ class PostController extends Controller
       return redirect()->back();  
   }
 
-  public function deleteProperties($id)
+  public function deleteProperties(Request $request)
   {
-    $property = Property::findOrFail($id);
-    $imageGalleries = PropertyGallery::where('property_id',$property->id)->get();
-    if($property->delete()){
-      $dir = 'uploads/property/galleries/';
-      foreach ($imageGalleries as $key => $image) {
-        $image->delete();
-        File::delete($dir.$image->gallery_image);
+    if($request->ajax()){      
+      $property = Property::findOrFail($request->id);
+      $imageGalleries = PropertyGallery::where('property_id',$property->id)->get();
+      if($property->delete()){
+        $dir = 'uploads/property/galleries/';
+        foreach ($imageGalleries as $key => $image) {
+          $image->delete();
+          File::delete($dir.$image->gallery_image);
+        }
       }
+      return response(['message'=>'Student Deleated Succeessfully']);
+      // return response($property);
     }
   }
 

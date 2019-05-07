@@ -50,68 +50,71 @@
 				</div>
 			</div>
 			<ul class="list_posts list-unstyled">
-@foreach ($properties as $property)
-				<li id="item-3376753">
-					<div class="item_box">
-						<div class="ad_info">
-							<span class="icon-point green"></span>
-							<span class="status">Ad Active</span>
+				@foreach ($properties as $property)
+					<li id="item-{{ $property->id }}">
+						<div class="item_box">
+							<div class="ad_info">
+								@if ($property->status)
+									<span class="icon-point green"></span>
+									<span class="status">Ad Active</span>
+								@else
+									<span class="icon-point brown"></span>
+									<span class="status">Ad Expired</span>
+								@endif
+							</div>
+									<div class="detail_box ">
+										<a class="post_image" href="#" title="">
+											<img alt="" class="img-cover" src="{{isset($property->galleries[0]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[0]->gallery_image):asset('assets/img/no_image.gif')}}" />
+										</a>
+										<div class="post_detail">
+											<a class="title" href="{{ route('post.show',$property->id) }}" title="{{ $property->title }}">{{ $property->title }}</a>
+											<div class="ad_price">{{ $property->price }}</div>
+											<div class="save_ads_sumery">
+												<dl>
+													<dt>Ad ID:</dt>
+														<dd>{{ $property->id }}</dd>
+												</dl>
+												<dl>
+													<dt>Posted On:</dt>
+														<dd>{{ $property->created_at }}</dd>
+												</dl>
+												<dl>
+													<dt>Renew On:</dt>
+														<dd>{{ $property->updated_at }}</dd>
+												</dl>
+												<dl>
+													<dt>View:</dt>
+														<dd>0</dd>
+												</dl>
+											</div>
+											<p class="save_post_detail">
+												{{ str_limit($property->description,100) }}
+											</p>
+										</div>
+									</div>
+									<div class="controls ">
+										<div class="list_control text-center row">
+											<div class="col">
+												<a href="#promote-ad.html" class="btn btn-link " data-id="{{ $property->id }}" data-m="0" data-h="1" data-ampm="am"><span class="icon icon-renew"></span> Auto Renew
+												</a>
+											</div>
+											<div class="col">
+												<a class="btn btn_renew disable disabled" data-disable="true" data-renewdate="20190413" title="Renew" href="#"><span class="icon icon-repost"></span> <span class="text">Renew</span>
+												</a>
+											</div>
+											<div class="col">
+												<a class="btn btn_edit " title="Edit" data-id="{{ $property->id }}" href="{{ route('post.edit',$property->id) }}"><span class="icon icon-edit"></span> <span class="text">Edit</span>
+												</a>
+											</div>
+											<div class="col">
+												<a data-status="active" class="btn btn_delete " title="Delete" data-id="{{ $property->id }}" href="#delete_ad_reason"><span class="icon icon-delete"></span> <span class="text">Delete</span>
+												</a>
+											</div>
+										</div>
+									</div>
 						</div>
-{{-- 							@foreach ($properties as $property) --}}
-								<div class="detail_box ">
-									<a class="post_image" href="#" title="">
-										<img alt="" class="img-cover" src="{{isset($property->galleries[0]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[0]->gallery_image):asset('assets/img/no_image.gif')}}" />
-									</a>
-									<div class="post_detail">
-										<a class="title" href="{{ route('post.show',$property->id) }}" title="{{ $property->title }}">{{ $property->title }}</a>
-										<div class="ad_price">{{ $property->price }}</div>
-										<div class="save_ads_sumery">
-											<dl>
-												<dt>Ad ID:</dt>
-													<dd>3376753</dd>
-											</dl>
-											<dl>
-												<dt>Posted On:</dt>
-													<dd>{{ $property->created_at }}</dd>
-											</dl>
-											<dl>
-												<dt>Renew On:</dt>
-													<dd>{{ $property->updated_at }}</dd>
-											</dl>
-											<dl>
-												<dt>View:</dt>
-													<dd>0</dd>
-											</dl>
-										</div>
-										<p class="save_post_detail">
-											{{ str_limit($property->description,100) }}
-										</p>
-									</div>
-								</div>
-								<div class="controls ">
-									<div class="list_control text-center row">
-										<div class="col">
-											<a href="#promote-ad.html" class="btn btn-link " data-id="3376753" data-m="0" data-h="1" data-ampm="am"><span class="icon icon-renew"></span> Auto Renew
-											</a>
-										</div>
-										<div class="col">
-											<a class="btn btn_renew disable disabled" data-disable="true" data-renewdate="20190413" title="Renew" href="#"><span class="icon icon-repost"></span> <span class="text">Renew</span>
-											</a>
-										</div>
-										<div class="col">
-											<a class="btn btn_edit " title="Edit" href="{{ route('post.edit',$property->id) }}"><span class="icon icon-edit"></span> <span class="text">Edit</span>
-											</a>
-										</div>
-										<div class="col">
-											<a data-status="active" class="btn btn_delete " title="Delete" data-id="3376753" href="#delete_ad_reason"><span class="icon icon-delete"></span> <span class="text">Delete</span>
-											</a>
-										</div>
-									</div>
-								</div>
-							{{-- @endforeach --}}
-					</div>
-				</li>
-@endforeach
+					</li>
+				@endforeach
 			</ul>
 		</div>
 
@@ -155,17 +158,23 @@
 				</div>
 			</div>
 		</div>
-{{-- 
+
 	<script type="text/javascript">
-	  // delete data from database
-	  $('body').delegate('#del', 'click', function(event) {
-	    event.preventDefault();
-	    var id = $(this).data('id');
-	    $.post('{{ route("ajax.destroy") }}',{id:id},function(data){
-	      console.log(data);
-	    })
-	  });				
-	</script> --}}
+    $(document).ready(function(){
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+		  $('body').delegate('.btn_delete', 'click', function(event) {
+		    event.preventDefault();
+		    var id = $(this).data('id');
+		    $.post('{{ route("post.destroy") }}',{id:id},function(data){
+		      location.reload();
+		    })
+		  });
+	  });					
+	</script>
 	
 {{-- 		<script type="text/javascript">
 		  $('document').ready(function(){

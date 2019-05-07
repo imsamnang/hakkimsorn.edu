@@ -21,7 +21,7 @@ Route::prefix('post')->group(function(){
 	Route::post('/','Member\PostController@saveProperties')->name('post.store');
 	Route::get('/{id}/edit','Member\PostController@editProperties')->name('post.edit');
 	Route::put('/{id}/update','Member\PostController@updateProperties')->name('post.update');
-	Route::delete('/{id}/destroy','Member\PostController@deleteProperties')->name('post.destroy');
+	Route::post('/destroy','Member\PostController@deleteProperties')->name('post.destroy');
 	Route::get('/{id}/detail','Member\PostController@showProperties')->name('post.show');
 	Route::get('/list_by_category','Member\PostController@listProperties')->name('post.by_category');
 	Route::get('/allproperties','Member\PostController@allProperties')->name('post.allProperties');
