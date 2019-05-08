@@ -31,7 +31,7 @@
 					<form action="{{route('post.update',$property->id)}}" class="form form-horizontal" method="post" accept-charset="utf-8" enctype="multipart/form-data" id="form_post">
 						{{csrf_field()}}
 						{{ method_field('PUT') }}
-		@include('freeads.form')
+							@include('freeads.form')
 	</div>
 	
 @endsection

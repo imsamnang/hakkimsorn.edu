@@ -66,6 +66,7 @@ class PostController extends Controller
       $property->imageGalleryUpload('imageGalleries',new PropertyGallery(),'property/galleries/',$property->id,'property_id');
     }
       return redirect()->route('member.home');
+      alert()->success('SuccessAlert','Property Update Successfully!')->autoClose(2000);
   }
   
   public function editProperties($id)
@@ -74,10 +75,11 @@ class PostController extends Controller
     $images = PropertyGallery::where('property_id',$property->id)->get();
     $provinces = Province::pluck('name_en','id');
     $districts = District::where('province_id',$property->province_id)->get();
-    // return $property->commune->district_id;
     $communes = Commune::where('district_id',$property->commune->district_id)->get();
+
     $subcategory = Category::where(['id'=>$property->parent_id])->first();
-    $category = Category::where('id',$property->category_id)->first();    
+    $category = Category::where('id',$property->category_id)->first();
+
     return view('freeads.edit',compact('property','subcategory','category','provinces','districts','communes','images'));
   }
 
@@ -114,7 +116,8 @@ class PostController extends Controller
         $property->imageGalleryUpload('imageGalleries',new PropertyGallery(),'property/galleries/',$property->id,'property_id');
       }
     }
-      return redirect()->back();  
+      alert()->success('SuccessAlert','Property Update Successfully!')->autoClose(2000);
+      return redirect()->route('member.home');      
   }
 
   public function deleteProperties(Request $request)
@@ -137,7 +140,8 @@ class PostController extends Controller
   public function showProperties($id)
   {
     $property = Property::findOrFail($id);
-    return view('freeads.show',compact('property'));
+    $images = PropertyGallery::where('property_id',$property->id)->get();
+    return view('freeads.show',compact('property','images'));
   }
 
   public function listProperties()

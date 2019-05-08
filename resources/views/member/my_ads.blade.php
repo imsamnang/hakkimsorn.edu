@@ -166,12 +166,47 @@
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
       });
+
 		  $('body').delegate('.btn_delete', 'click', function(event) {
 		    event.preventDefault();
 		    var id = $(this).data('id');
-		    $.post('{{ route("post.destroy") }}',{id:id},function(data){
-		      location.reload();
-		    })
+				Swal.fire({
+				  title: 'Are you sure?',
+				  text: "You won't be able to revert this!",
+				  type: 'warning',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: 'Yes, delete it!'
+				}).then((result) => {
+				  if (result.value) {
+				    $.post('{{ route("post.destroy") }}',{id:id},function(data){
+				      location.reload();
+				    })				  	
+						Swal.fire({
+						  title: 'Successful Deleted!',
+						  html: 'It will close in <strong></strong> seconds.',
+						  timer: 2000,
+						  onBeforeOpen: () => {
+						    Swal.showLoading()
+						    timerInterval = setInterval(() => {
+						      Swal.getContent().querySelector('strong')
+						        .textContent = Swal.getTimerLeft()
+						    }, 200)
+						  },
+						  onClose: () => {
+						    clearInterval(timerInterval)
+						  }
+						}).then((result) => {
+						  if (
+						    // Read more about handling dismissals
+						    result.dismiss === Swal.DismissReason.timer
+						  ) {
+						    console.log('I was closed by the timer')
+						  }
+						})		    
+				  }
+				})
 		  });
 	  });					
 	</script>

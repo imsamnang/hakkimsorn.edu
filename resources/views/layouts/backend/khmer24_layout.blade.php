@@ -34,7 +34,7 @@
 	{{-- footer --}}
 		{{-- @include('products.footer') --}}
 	{{-- end footer --}}
-	
+	@include('sweetalert::alert')
 	<div class="fix-feedback">
 		<a href="https://www.tinhtoday.com/feedback" class="btn btn-primary btn-sm">Feedback</a>
 	</div>

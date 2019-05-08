@@ -2,7 +2,7 @@
 
 @push('css')
   <link rel="stylesheet" href="{{asset('assets/css/members.css')}}">
-  <script src="{{asset('assets/sweetalert2/sweetalert2.min.js')}}"></script>
+  {{-- <script src="{{asset('assets/sweetalert2/sweetalert2.min.js')}}"></script> --}}
   <link rel="stylesheet" href="{{asset('assets/sweetalert2/sweetalert2.min.css')}}">
 @endpush
 
@@ -33,8 +33,15 @@
                             </li>
                             <li><b>Account Type:</b> {{ $user->account_type }} <a href="#membership.html">Update</a></li>
                             <li>
-                            <b>Email:</b> <span id="email_text"></span>
-                            <a class="text " data-toggle="modal" data-target="#popup_change_email" href="#popup_change_email">Add Email</a>
+                              <b>Email:</b> 
+                              @if ($user->email)
+                                {{$user->email}}
+                                <span id="email_text"></span>
+                              <a class="text " data-toggle="modal" data-target="#popup_change_email" href="#popup_change_email">Change Email</a>
+                              @else
+                                <span id="email_text"></span>
+                                <a class="text " data-toggle="modal" data-target="#popup_change_email" href="#popup_change_email">Add Email</a>                                
+                              @endif                              
                             </li>
                             <li>
                             <b>Connect with Facebook <span class="icon icon-facebook"></span></b>

@@ -71,7 +71,23 @@
 				<form action="{{route('post.store')}}" class="form form-horizontal" method="post" accept-charset="utf-8" enctype="multipart/form-data" id="form_post">
 					{{csrf_field()}}		
 						@include('freeads.form')
-		</div>	
+				</form>
+			</div>
+			{{-- Posting Rule --}}
+			<div class="posting_rule hidden">
+				<span class="rule_title"><i class="icon-warning"></i> Posting Rule</span>
+				<ul>
+					<li>No posting of same ad or similar ad to multiple categories and inappropriate category</li>
+					<li>No posting of false, inaccurate, misleading, defamatory content</li>
+					<li>You must honestly and accurately describe the item for which you are posting an ad.</li>
+					<li>khmer24.com assumes no responsibility for the accuracy of any advertisements posted on the site</li>
+				</ul>
+				<div>
+					<a target="_blank" href="https://www.khmer24.com/en/posting-rule.html">More rules...</a>
+				</div>
+			</div>
+		</div>
+	</div>
 @endsection
 
 @push('js')
@@ -140,8 +156,71 @@
 	      $("#commune" ).prop( "disabled", true );
 	    }        
 	  });
+
+	  $(".number").keypress(function(evt) {
+	  	if (evt.keyCode != 8) {
+	  		var theEvent = evt || window.event;
+	  		var key = theEvent.keyCode || theEvent.which;
+	  		key = String.fromCharCode(key);
+	  		var regex = /[0-9]|\./;
+	  		if (!regex.test(key)) {
+	  			theEvent.returnValue = false;
+	  			if (theEvent.preventDefault)
+	  				theEvent.preventDefault();
+	  		}
+	  	}
+	  });
+
+	  $('.phone a').click(function(e) {
+	  	e.preventDefault();
+			if($(this).attr('data-id') == 'add') {
+				if($( "body" ).find('div.phone-2').hasClass( "d-none" )) {
+					$('.phone-2').removeClass('d-none');
+				} else {
+					$('.phone-3').removeClass('d-none');
+					$('a.add_phone').addClass('d-none');
+				}
+			} else {
+				if ($(this).attr('data-id') == 'phone-2') {
+					if($('input[name="phone-3"]').val()) {
+						$('input[name="phone-2"]').val($('input[name="phone-3"]').val());
+						$('input[name="phone-3"]').val('');
+					} else {
+						if($('input[name="phone-2"]').val()) {
+							$('input[name="phone-2"]').val('');
+						} else {
+							if(!$('input[name="phone-2"]').val()) {
+								$('.phone-2').addClass('d-none');
+							}
+							$('.phone-3').addClass('d-none');
+							$('a.add_phone').removeClass('d-none');
+						}
+					}
+				}
+				if ($(this).attr('data-id') == 'phone-3') {             
+					if($('input[name="phone-3"]').val()) {
+						$('input[name="phone-3"]').val('');
+					} else {
+						$('a.add_phone').removeClass('d-none');
+						$('.phone-3').addClass('d-none');
+						$('input[name="phone-3"]').val('');
+					}
+				}
+			}
+		});
+
+	  $('.phone input').on('keypress keyup focus change', function() {
+	  	if ($(this).val()) {
+	  		var input_name = $(this).attr('name');
+	  		if (input_name == 'phone-1') {
+	  			$('.phone-2').removeClass('d-none');
+	  		}
+	  		if (input_name == 'phone-2') {
+	  			$('.phone-3').removeClass('d-none');
+	  		}
+	  	}
+	  });
+
 	});
 </script>
-{{-- @include('freeads.script.kimsan') --}}
-{{-- @include('freeads.script.khmer24') --}}
 @endpush

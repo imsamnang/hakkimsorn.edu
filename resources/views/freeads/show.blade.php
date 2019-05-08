@@ -32,78 +32,29 @@
 					<div class="col col-8">
 						<div class="bg-white border rounded">
 							<div class="item-header border-bottom">
-
+								{{-- slider --}}
 								<div id="slide-box">
-
 									<div class="owl-carousel imglist">
-										<div class="item item-1">
-											<a class="w-100" href="http://imagescdn.khmer24.com/19-01-28/332733-land-for-sale62-b.jpg" data-fancybox="images">
-											<img class="img-contain" src="http://imagescdn.khmer24.com/19-01-28/332733-land-for-sale62-b.jpg" alt="Land for Sale ដីលក់  土地出售">
-											</a>
-										</div>
-										<div class="item item-2">
-											<a class="w-100" href="http://imagescdn.khmer24.com/19-01-28/332733-land-for-sale62-c.jpg" data-fancybox="images">
-											<img class="img-contain" src="http://imagescdn.khmer24.com/19-01-28/332733-land-for-sale62-c.jpg" alt="Land for Sale ដីលក់  土地出售">
-											</a>
-										</div>
-										<div class="item item-3">
-											<a class="w-100" href="http://imagescdn.khmer24.com/19-01-28/332733-land-for-sale62-d.jpg" data-fancybox="images">
-											<img class="img-contain" src="http://imagescdn.khmer24.com/19-01-28/332733-land-for-sale62-d.jpg" alt="Land for Sale ដីលក់  土地出售">
-											</a>
-										</div>
-										<div class="item item-4">
-											<a class="w-100" href="http://imagescdn.khmer24.com/19-01-28/332733-land-for-sale62-e.jpg" data-fancybox="images">
-											<img class="img-contain" src="http://imagescdn.khmer24.com/19-01-28/332733-land-for-sale62-e.jpg" alt="Land for Sale ដីលក់  土地出售">
-											</a>
-										</div>
-										<div class="item item-5">
-											<a class="w-100" href="http://imagescdn.khmer24.com/19-01-28/332733-land-for-sale26-b.jpg" data-fancybox="images">
-											<img class="img-contain" src="http://imagescdn.khmer24.com/19-01-28/332733-land-for-sale26-b.jpg" alt="Land for Sale ដីលក់  土地出售">
-											</a>
-										</div>
-										<div class="item item-6">
-											<a class="w-100" href="http://imagescdn.khmer24.com/19-01-28/332733-land-for-sale62-g.jpg" data-fancybox="images">
-											<img class="img-contain" src="http://imagescdn.khmer24.com/19-01-28/332733-land-for-sale62-g.jpg" alt="Land for Sale ដីលក់  土地出售">
-											</a>
-										</div>
+										@foreach ($images as $image)
+											<div class="item item-{{$image->id}}">
+												<a class="w-100" href="" data-fancybox="images">
+												<img class="img-contain" src="{{asset('uploads/property/galleries/'.$image->gallery_image)}}" alt="{{$property->title}}">
+												</a>
+											</div>
+										@endforeach
 									</div>
-
 									<div class="owl-nav">
 										<div class="owl-prev"><span class="icon icon-prev"></span></div>
 										<div class="owl-next"><span class="icon icon-next"></span></div>
 									</div>
-
 									<div class="thumbs">
-										<div class="item item-1 active">
-											<a class="" href="#slide-1" data-id="1">
-												<img class="img-cover" src="http://imagescdn.khmer24.com/19-01-28/s-332733-land-for-sale62-b.jpg" alt="Land for Sale ដីលក់  土地出售">
-											</a>
-										</div>
-										<div class="item item-2 ">
-											<a class="" href="#slide-2" data-id="2">
-												<img class="img-cover" src="http://imagescdn.khmer24.com/19-01-28/s-332733-land-for-sale62-c.jpg" alt="Land for Sale ដីលក់  土地出售">
-											</a>
-										</div>
-										<div class="item item-3 ">
-											<a class="" href="#slide-3" data-id="3">
-											 	<img class="img-cover" src="http://imagescdn.khmer24.com/19-01-28/s-332733-land-for-sale62-d.jpg" alt="Land for Sale ដីលក់  土地出售">
-											</a>
-										</div>
-										<div class="item item-4 ">
-											<a class="" href="#slide-4" data-id="4">
-												<img class="img-cover" src="http://imagescdn.khmer24.com/19-01-28/s-332733-land-for-sale62-e.jpg" alt="Land for Sale ដីលក់  土地出售">
-											</a>
-										</div>
-										<div class="item item-5 ">
-											<a class="" href="#slide-5" data-id="5">
-												<img class="img-cover" src="http://imagescdn.khmer24.com/19-01-28/s-332733-land-for-sale26-b.jpg" alt="Land for Sale ដីលក់  土地出售">
-											</a>
-										</div>
-										<div class="item item-6 ">
-											<a class="" href="#slide-6" data-id="6">
-												<img class="img-cover" src="http://imagescdn.khmer24.com/19-01-28/s-332733-land-for-sale62-g.jpg" alt="Land for Sale ដីលក់  土地出售">
-											</a>
-										</div>
+										@foreach ($images as $image)
+											<div class="item item-{{$image->id}} active">
+												<a class="" href="#slide-{{$image->id}}" data-id="{{$image->id}}">
+													<img class="img-cover" src="{{asset('uploads/property/galleries/'.$image->gallery_image)}}" alt="{{$property->title}}">
+												</a>
+											</div>
+										@endforeach
 									</div>
 								</div>
 
@@ -135,6 +86,7 @@
 											<i class="icon icon-share text_gray"></i>
 										</a>
 								</div>
+
 							</div>
 							<div class="item-detail p-3">
 								<h2>Description</h2>
@@ -152,21 +104,8 @@
 								</ul>
 								<p class="post-description">{{$property->title}}<br />
 								<br />
-									- តំលៃ: 1,300 ដុល្លា/ម៉ែត្រការ៉េ <br />
-									- សង្កាត់: ព្រែកហូ<br />
-									- ទំហំដី: 7,780 ម៉ែត្រការ៉េ <br />
-									- ពិពណ៌នាសង្ខេប: វាគឺជាទីតាំងដ៏ធំនិងមានទីតាំងល្អសម្រាប់ធ្វើអាជីវកម្ម, រៀបចំសណ្ឋាគារ, អាផាតមិន, ខុនដូឬរោងចក្រ។<br />
-									- ដែលមានទីតាំងនៅកាច់ជ្រុងផ្លូវសម្តេចតេជោហ៊ុនសែន (60 ម៉ែត) និងផ្លូវជាតិលេខ 2 (ជិះ១៥នាទីពី ក្បាលថ្នល់) ។<br />
-									- Price: 1,300$ /m2<br />
-									- Sangkat: Prek Ho<br />
-									- Land size: 7,780m2<br />
-									- Description: It is so big and good location for business, Set up Hotel, Apartment ,Condo or Factory. <br />
-									- located on the corner of Samdech decho Hun Sen (60M) and National road #2 (15minute drive from kbalthnal). <br />
-									- 价格：1,300美元/平方米<br />
-									- 公社：Prek Ho<br />
-									- 土地面积：7,780平方米<br />
-									- 描述：它是如此之大和良好的位置 商务，设置酒店，公寓，公寓或 厂。<br />
-									- 位于Samdech Decho Hun Sen（60M）和国道＃2（距离kbalthnal 15分钟车程）的拐角处。</p>
+									{{$property->description}}
+								</p>
 							</div>
 							<div class="p-3 item-contact">
 								<div class="item-mention">
@@ -174,27 +113,27 @@
 									<div>Please click on phone number to show and don't forget to mention that you found this ad on Khmer24.com.</div>
 								</div>
 								<div class="phone_box btn_show_phone">
-									<a href="#show_phone" rel="nofollow" class="btn_show_phone_box"><span class="icon_phone"></span><div class="num">095882xxx</div>
+									<a href="#show_phone" rel="nofollow" class="btn_show_phone_box"><span class="icon_phone"></span><div class="num">{{str_limit($property->phone1, 5, 'xxx')}}</div>
 										<div class="btn_link">Click to show phone number</div>
 									</a>
 									<div class="list_numbers d-none">
 									<ul class="list-unstyled m-0">
 										<li class="number">
 										<a href="tel:095882000" rel="nofollow" class="number-0 small" title="Cellcard:095882000">
-										<img class="icon-provider" src="https://www.khmer24.com/khmer24-reform21/template/img/sim/cellcard.png" alt="cellcard">
-										<div class="num">095 882 000</div>
+										<img class="icon-provider" src="{{asset('assets/img/sim/cellcard.png')}}" alt="cellcard">
+										<div class="num">{{$property->phone1?$property->phone1:''}}</div>
 										</a>
 										</li>
 										<li class="number">
-										<a href="tel:086882000" rel="nofollow" class="number-1 small" title="Smart:086882000">
-										<img class="icon-provider" src="https://www.khmer24.com/khmer24-reform21/template/img/sim/smart.png" alt="smart">
-										<div class="num">086 882 000</div>
+										<a href="tel:{{$property->phone2}}" rel="nofollow" class="number-1 small" title="Smart:{{$property->phone2}}">
+										<img class="icon-provider" src="{{asset('assets/img/sim/smart.png')}}" alt="smart">
+										<div class="num">{{$property->phone2?$property->phone2:''}}</div>
 										</a>
 										</li>
 										<li class="number">
-										<a href="tel:067882000" rel="nofollow" class="number-2 small" title="Metfone:067882000">
-										<img class="icon-provider" src="https://www.khmer24.com/khmer24-reform21/template/img/sim/metfone.png" alt="metfone">
-										<div class="num">067 882 000</div>
+										<a href="tel:{{$property->phone3}}" rel="nofollow" class="number-2 small" title="Metfone:{{$property->phone3}}">
+										<img class="icon-provider" src="{{asset('assets/img/sim/metfone.png')}}" alt="metfone">
+										<div class="num">{{$property->phone3?$property->phone3:''}}</div>
 										</a>
 										</li>
 									 </ul>
@@ -207,29 +146,12 @@
 								<a class="btn btn-link text-primary btn-sm float-right" data-toggle="modal" data-target="#report-modal"><span class="icon icon-warning"></span> Report</a>
 							</div>
 						</div>
+
 						<div class="disclaimer p-3 bg-white border mt-3">
 							<div class="title">ការមិនទទួលខុសត្រូវ / Disclaimer</div>
 							<div class="info">យើងខ្ញុំមិនគ្រប់គ្រងមាតិកា ដែលបានបង្ហោះឡើងដោយសមាជិកឡើយ។ ដូច្នេះយើងមិនទទួលខុសត្រូវលើការផ្សាយផលិតផលនេះទេ ហើយក៏មិនធានាចំពោះបញ្ហាដែលទាក់ទងដោយផ្ទាល់ ឬ ប្រយោលទៅនឹងសកម្មភាព ឬ អសកម្មណាមួយឡើយ។<br>We does not control the content posted by members and therefore assumes no responsibility and disclaims any liability for any consequence relating directly or indirectly to any action or inaction.</div>
 						</div>
 						<div class="relate-items mt-3">
-							<div class="item-header">
-								<div class="profile">
-									<a class="cover-image" href="https://www.khmer24.com/en/BusinessChannel" style="height:91px">
-									<img class="img-cover" src="http://imagescdn.khmer24.com/members/332733/banner/businesschannel_83.png">
-									</a>
-									<div class="profile-detail">
-										<a class="image profile-image" href="https://www.khmer24.com/en/BusinessChannel">
-										<img class="img-cover" src="http://imagescdn.khmer24.com/members/332733/businesschann_a4.jpg">
-										</a>
-										<div class="user_detail">
-											<a class="name" href="https://www.khmer24.com/en/BusinessChannel">Business Channel Cambodia</a>
-											<div class="member_status ">Last Active Yesterday</div>
-											<a class="link" href="https://www.khmer24.com/en/BusinessChannel">https://www.khmer24.com/BusinessChannel</a>
-											<a class="btn btn_gotostore btn btn-warning btn-sm" href="https://www.khmer24.com/en/BusinessChannel">Go to Store</a>
-										</div>
-									</div>
-								</div>
-							</div>
 							<div class="item-content">
 								<ul class="list-unstyled items">
 									<li class="item">
@@ -247,11 +169,12 @@
 							</div>
 						</div>
 					</div>
+
 					<aside class="col-4 right-side">
 						<div class="bg-white border rounded profile">
-						<a class="header" href="https://www.khmer24.com/en/BusinessChannel">
+						<a class="header" href="#BusinessChannel">
 						<div class="image">
-						<img class="img-cover" src="http://imagescdn.khmer24.com/members/332733/businesschann_a4.jpg" />
+						<img class="img-cover" src="{{asset('assets/img/businesschann_a4.jpg')}}" />
 						</div>
 						<div class="detail">
 						<p class="name">Business Channel Cambodia</p>
@@ -272,13 +195,13 @@
 						</li>
 						<li class="number">
 						<a href="tel:086882000" rel="nofollow" class="number-1 small" title="Smart:086882000">
-						<img class="icon-provider" src="https://www.khmer24.com/khmer24-reform21/template/img/sim/smart.png" alt="smart">
+						<img class="icon-provider" src="{{asset('assets/img/sim/smart.png')}}" alt="smart">
 						<div class="num">086 882 000</div>
 						</a>
 						</li>
 						<li class="number">
 						<a href="tel:067882000" rel="nofollow" class="number-2 small" title="Metfone:067882000">
-						<img class="icon-provider" src="https://www.khmer24.com/khmer24-reform21/template/img/sim/metfone.png" alt="metfone">
+						<img class="icon-provider" src="{{asset('assets/img/sim/metfone.png')}}" alt="metfone">
 						<div class="num">067 882 000</div>
 						</a>
 						</li>
@@ -287,7 +210,7 @@
 						</div>
 						<ul class="list-unstyled user-info m-0">
 						<li>
-						<a class="btn-link" href="https://www.khmer24.com/en/BusinessChannel"><span class="icon icon-store"></span> https://www.khmer24.com/en/BusinessChannel</a>
+						<a class="btn-link" href="#BusinessChannel"><span class="icon icon-store"></span> https://www.khmer24.com/en/BusinessChannel</a>
 						</li>
 						<li>
 						<span class="icon icon-location"></span> Kandal , Samdech decho Hun Sen (60M) and National road #2 (15minute drive from kbalthnal). </li>
@@ -297,12 +220,11 @@
 						</a>
 						</div>
 						<div class="footer border-top">
-						<a class="btn btn-warning btn-block" href="https://www.khmer24.com/en/chats?adid=3016519"><span class="icon icon-chat"></span> Chat</a>
+						<a class="btn btn-warning btn-block" href="/"><span class="icon icon-chat"></span> Chat</a>
 						</div>
 						</div>
-						<div class="sponsors text-center pt-3"><ins data-revive-zoneid="8" data-revive-id="015d25e957e6ef856e6d5cad1815bf26"></ins>
-						<script async src="//banner.khmer24.ws/www/delivery/asyncjs.php"></script></div>
 					</aside>
+
 				</div>
 			</div>
 		</section>

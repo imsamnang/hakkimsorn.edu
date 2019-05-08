@@ -1,5 +1,5 @@
 			<input type="hidden" name="category_id" value="{{$category->id}}">
-			<input type="hidden" name="parent_id" value="{{$subcategory->id}}" >
+			<input type="hidden" name="parent_id" value="{{$subcategory->id}}">
 			{{-- category --}}
 			<div class="form-group">
 				<label for="title" class="col control-label">Category</label>
@@ -9,7 +9,7 @@
 							<li>{{$category->category_name}}</li>
 							<li>{{$subcategory->category_name}}</li>
 						</ul>
-						<a class="btn btn-sm  btn-primary btn_change_cat" href="{{route('post.index')}}">Change</a>
+							<a class="btn btn-sm  btn-primary btn_change_cat" href="{{route('post.index')}}">Change</a>
 					</div>
 				</div>
 			</div>
@@ -43,9 +43,9 @@
 			<div class="form-group">
 				<label for="ad_text" class="col control-label">Description <span class="red">*</span></label>
 				<div class="col col-8 form-input">
-				<textarea name="description" id="description" class="required form-control" rows="4" required>
-					{{ isset($property->description)?$property->description :'' }}
-				</textarea>
+					<textarea name="description" id="description" class="form-control" rows="4" required>
+						{{isset($property->description)?$property->description :''}}
+					</textarea>
 				</div>
 			</div>
 			{{-- Photo --}}
@@ -195,26 +195,8 @@
 			<div class="form-group submit_box">
 				<div class="col-sm-offset-2 col col-3 btn_submit">
 					<input type="submit" value="Submit" class="btn btn-lg btnsavead btn-warning btn-block">
-					{{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
 				</div>
 			</div>
-		</form>
-		{{-- Posting Rule --}}
-		<div class="posting_rule hidden">
-			<span class="rule_title"><i class="icon-warning"></i> Posting Rule</span>
-			<ul>
-				<li>No posting of same ad or similar ad to multiple categories and inappropriate category</li>
-				<li>No posting of false, inaccurate, misleading, defamatory content</li>
-				<li>You must honestly and accurately describe the item for which you are posting an ad.</li>
-				<li>khmer24.com assumes no responsibility for the accuracy of any advertisements posted on the site</li>
-			</ul>
-			<div>
-				<a target="_blank" href="https://www.khmer24.com/en/posting-rule.html">More rules...</a>
-			</div>
-		</div>
-	</div>
-</div>
-
 
 {{-- 	<div class="modal fade" id="account-question" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
