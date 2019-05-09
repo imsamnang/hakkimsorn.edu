@@ -4,13 +4,10 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        $this->call(CommunesTableSeeder::class);
-    }
+
+  public function run()
+  {
+      $this->call(CommunesTableSeeder::class);
+      $this->call(PhoneOperatorSeeder::class);
+  }
 }
