@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers\Member;
 
+use App\Http\Controllers\Controller;
 use App\Model\Category;
 use App\Model\Commune;
 use App\Model\District;
+use App\Model\Operator;
 use App\Model\Property;
 use App\Model\PropertyGallery;
 use App\Model\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
+  protected $operator_name1 = '';
+  protected $operator_name2 = '';
+  protected $operator_name3 = '';
   public function getDistrictList(Request $request)
   {
     $districts = District::where("province_id",$request->province_id)
@@ -140,8 +144,48 @@ class PostController extends Controller
   public function showProperties($id)
   {
     $property = Property::findOrFail($id);
+    $cellcards = Operator::pluck('cellcard')->toArray();
+    $smarts = Operator::pluck('smart')->toArray();
+    $metfones = Operator::pluck('metfone')->toArray();
+    $qbs = Operator::pluck('qb')->toArray();
+    $operator1 = substr($property->phone1, 0,3);
+    $operator2 = substr($property->phone2, 0,3);
+    $operator3 = substr($property->phone3, 0,3);
+    if(in_array($operator1,  $cellcards)){
+      $operator_name1 = 'Cellcard';
+    } else if(in_array($operator1,  $smarts)){
+      $operator_name1 = 'Smart';
+    } else if(in_array($operator1,  $metfones)){
+      $operator_name1 = 'Metfone';
+    } else if(in_array($operator1,  $qbs)){
+      $operator_name1 = 'Qb';
+    } else {
+      $operator_name1 = 'Other';
+    }
+    if(in_array($operator2,  $cellcards)){
+      $operator_name2 = 'Cellcard';
+    } else if(in_array($operator2,  $smarts)){
+      $operator_name2 = 'Smart';
+    } else if(in_array($operator2,  $metfones)){
+      $operator_name2 = 'Metfone';
+    } else if(in_array($operator2,  $qbs)){
+      $operator_name2 = 'Qb';
+    } else {
+      $operator_name2 = 'Other';
+    }
+    if(in_array($operator3,  $cellcards)){
+      $operator_name3 = 'Cellcard';
+    } else if(in_array($operator3,  $smarts)){
+      $operator_name3 = 'Smart';
+    } else if(in_array($operator3,  $metfones)){
+      $operator_name3 = 'Metfone';
+    } else if(in_array($operator3,  $qbs)){
+      $operator_name3 = 'Qb';
+    } else {
+      $operator_name3 = 'Other';
+    }        
     $images = PropertyGallery::where('property_id',$property->id)->get();
-    return view('freeads.show',compact('property','images'));
+    return view('freeads.show',compact('property','images','cellcards','smarts','metfones','qbs','operator_name1','operator_name2','operator_name3'));
   }
 
   public function listProperties()

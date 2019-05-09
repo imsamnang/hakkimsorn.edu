@@ -31,6 +31,7 @@
 				<div class="row">
 					<div class="col col-8">
 						<div class="bg-white border rounded">
+
 							<div class="item-header border-bottom">
 								{{-- slider --}}
 								<div id="slide-box">
@@ -57,7 +58,6 @@
 										@endforeach
 									</div>
 								</div>
-
 								<div class="item-short-description p-3 position-relative">
 									<h1>{{$property->title}}</h1>
 									<p class="price price_tag"><b class="price">{{$property->price}}</b></p>
@@ -86,8 +86,8 @@
 											<i class="icon icon-share text_gray"></i>
 										</a>
 								</div>
-
 							</div>
+
 							<div class="item-detail p-3">
 								<h2>Description</h2>
 								<ul class="list-unstyled item-fields">
@@ -107,39 +107,73 @@
 									{{$property->description}}
 								</p>
 							</div>
+
 							<div class="p-3 item-contact">
 								<div class="item-mention">
-									<div>សូមចុចលើលេខទូរស័ព្ទ ដើម្បីបង្ហាញ ហើយកំុភ្លេចនិយាយថាអ្នកបានឃើញការផ្សព្វផ្សាយនេះនៅលើ Khmer24.com។</div>
-									<div>Please click on phone number to show and don't forget to mention that you found this ad on Khmer24.com.</div>
+									<div>សូមចុចលើលេខទូរស័ព្ទ ដើម្បីបង្ហាញ ហើយកំុភ្លេចនិយាយថាអ្នកបានឃើញការផ្សព្វផ្សាយនេះនៅលើ tinhtoday.com។</div>
+									<div>Please click on phone number to show and don't forget to mention that you found this ad on tinhtoday.com.</div>
 								</div>
 								<div class="phone_box btn_show_phone">
-									<a href="#show_phone" rel="nofollow" class="btn_show_phone_box"><span class="icon_phone"></span><div class="num">{{str_limit($property->phone1, 5, 'xxx')}}</div>
+									<a href="#show_phone" rel="nofollow" class="btn_show_phone_box">
+										<span class="icon_phone"></span>
+										<div class="num">{{str_limit($property->phone1, 5, 'xxx')}}</div>
 										<div class="btn_link">Click to show phone number</div>
 									</a>
 									<div class="list_numbers d-none">
-									<ul class="list-unstyled m-0">
+										<ul class="list-unstyled m-0">
 										<li class="number">
-										<a href="tel:095882000" rel="nofollow" class="number-0 small" title="Cellcard:095882000">
-										<img class="icon-provider" src="{{asset('assets/img/sim/cellcard.png')}}" alt="cellcard">
-										<div class="num">{{$property->phone1?$property->phone1:''}}</div>
+											<a href="tel:{{$property->phone1?$property->phone1:''}}" rel="nofollow" class="number-0 small" title="{{$operator_name1}}:{{$property->phone1?$property->phone1:''}}">
+											<img class="icon-provider"
+												@if ($operator_name1=="Cellcard")
+													src="{{asset('assets/img/sim/cellcard.png')}}"												
+												@endif
+												@if ($operator_name1=="Smart")
+													src="{{asset('assets/img/sim/smart.png')}}"												
+												@endif
+												@if ($operator_name1=="Metfone")
+													src="{{asset('assets/img/sim/metfone.png')}}"												
+												@endif											
+											alt="{{$operator_name1}}">
+											<div class="num">{{$property->phone1?$property->phone1:''}}</div>
+											</a>
+										</li>
+										<li class="number">
+											<a href="tel:{{$property->phone2?$property->phone2:''}}" rel="nofollow" class="number-1 small" title="{{$operator_name2}}:{{$property->phone2?$property->phone2:''}}">
+											<img class="icon-provider" 
+												@if ($operator_name2=="Cellcard")
+													src="{{asset('assets/img/sim/cellcard.png')}}"												
+												@endif
+												@if ($operator_name2=="Smart")
+													src="{{asset('assets/img/sim/smart.png')}}"												
+												@endif
+												@if ($operator_name2=="Metfone")
+													src="{{asset('assets/img/sim/metfone.png')}}"												
+												@endif											
+											alt="{{$operator_name2}}">
+											<div class="num">{{$property->phone2?$property->phone2:''}}</div>
 										</a>
 										</li>
 										<li class="number">
-										<a href="tel:{{$property->phone2}}" rel="nofollow" class="number-1 small" title="Smart:{{$property->phone2}}">
-										<img class="icon-provider" src="{{asset('assets/img/sim/smart.png')}}" alt="smart">
-										<div class="num">{{$property->phone2?$property->phone2:''}}</div>
-										</a>
-										</li>
-										<li class="number">
-										<a href="tel:{{$property->phone3}}" rel="nofollow" class="number-2 small" title="Metfone:{{$property->phone3}}">
-										<img class="icon-provider" src="{{asset('assets/img/sim/metfone.png')}}" alt="metfone">
-										<div class="num">{{$property->phone3?$property->phone3:''}}</div>
-										</a>
-										</li>
+											<a href="tel:{{$property->phone3?$property->phone3:''}}" rel="nofollow" class="number-2 small" title="{{$operator_name3}}:{{$property->phone3?$property->phone3:''}}">
+											<img class="icon-provider" 
+												@if ($operator_name3=="Cellcard")
+													src="{{asset('assets/img/sim/cellcard.png')}}"												
+												@endif
+												@if ($operator_name3=="Smart")
+													src="{{asset('assets/img/sim/smart.png')}}"												
+												@endif
+												@if ($operator_name3=="Metfone")
+													src="{{asset('assets/img/sim/metfone.png')}}"												
+												@endif	
+											alt="{{$operator_name3}}">
+											<div class="num">{{$property->phone3?$property->phone3:''}}</div>
+											</a>
+											</li>
 									 </ul>
 									</div>
 								</div>
 							</div>
+
 							<div class="item-footer border-top p-1">
 								<a class="btn btn-link text-primary btn-sm" rel="nofollow" onclick="javascript:void window.open('https://www.facebook.com/sharer/sharer.php?u=https://www.khmer24.com/en/property/land-for-sale-ដលក-土地出售-adid-3016519.html','1422871850498','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.khmer24.com/en/property/land-for-sale-ដលក-土地出售-adid-3016519.html">
 									<span class="icon icon-share"></span> Share</a>
@@ -151,16 +185,17 @@
 							<div class="title">ការមិនទទួលខុសត្រូវ / Disclaimer</div>
 							<div class="info">យើងខ្ញុំមិនគ្រប់គ្រងមាតិកា ដែលបានបង្ហោះឡើងដោយសមាជិកឡើយ។ ដូច្នេះយើងមិនទទួលខុសត្រូវលើការផ្សាយផលិតផលនេះទេ ហើយក៏មិនធានាចំពោះបញ្ហាដែលទាក់ទងដោយផ្ទាល់ ឬ ប្រយោលទៅនឹងសកម្មភាព ឬ អសកម្មណាមួយឡើយ។<br>We does not control the content posted by members and therefore assumes no responsibility and disclaims any liability for any consequence relating directly or indirectly to any action or inaction.</div>
 						</div>
+
 						<div class="relate-items mt-3">
 							<div class="item-content">
 								<ul class="list-unstyled items">
 									<li class="item">
-										<a href="https://www.khmer24.com/en/land-for-sale-ដសមរបលក-土地待售-adid-3183897.html" title="Land for Sale ដីសម្រាប់លក់​ 土地待售" class="bg-white border rounded">
+										<a href="{{route('post.show',$property->id)}}" title="{{$property->title}}" class="bg-white border rounded">
 										<article>
-										<div class="image"><img class="img-cover" src="http://imagescdn.khmer24.com/19-01-23/s-332733-land-for-sale9-b.jpg" alt="Land for Sale ដីសម្រាប់លក់​ 土地待售"></div>
+										<div class="image"><img class="img-cover" src="{{asset('uploads/property/galleries/'.$image->gallery_image)}}" alt="{{$property->title}}"></div>
 										<div class="detail">
-										<h4 class="title truncate truncate-2">Land for Sale ដីសម្រាប់លក់​ 土地待售</h4>
-										<p class="price text-red m-0">$4,000</p>
+										<h4 class="title truncate truncate-2">{{$property->title}}</h4>
+										<p class="price text-red m-0">${{$property->price}}</p>
 										</div>
 										</article>
 										</a>
@@ -168,6 +203,7 @@
 								</ul>
 							</div>
 						</div>
+
 					</div>
 
 					<aside class="col-4 right-side">
@@ -183,34 +219,68 @@
 						</div>
 						</a>
 						<div class="content">
-						<div class="phone_box btn_show_phone">
-						<a href="#show_phone" rel="nofollow" class="btn_show_phone_box"><span class="icon_phone"></span><div class="num">095882xxx</div> <div class="btn_link">Click to show phone number</div></a>
-						<div class="list_numbers d-none">
-						<ul class="list-unstyled m-0">
-						<li class="number">
-						<a href="tel:095882000" rel="nofollow" class="number-0 small" title="Cellcard:095882000">
-						<img class="icon-provider" src="https://www.khmer24.com/khmer24-reform21/template/img/sim/cellcard.png" alt="cellcard">
-						<div class="num">095 882 000</div>
-						</a>
-						</li>
-						<li class="number">
-						<a href="tel:086882000" rel="nofollow" class="number-1 small" title="Smart:086882000">
-						<img class="icon-provider" src="{{asset('assets/img/sim/smart.png')}}" alt="smart">
-						<div class="num">086 882 000</div>
-						</a>
-						</li>
-						<li class="number">
-						<a href="tel:067882000" rel="nofollow" class="number-2 small" title="Metfone:067882000">
-						<img class="icon-provider" src="{{asset('assets/img/sim/metfone.png')}}" alt="metfone">
-						<div class="num">067 882 000</div>
-						</a>
-						</li>
-						</ul>
-						</div>
-						</div>
+							<div class="phone_box btn_show_phone">
+								<a href="#show_phone" rel="nofollow" class="btn_show_phone_box">
+									<span class="icon_phone"></span>
+									<div class="num">{{str_limit($property->phone1, 5, 'xxx')}}</div>
+									<div class="btn_link">Click to show phone number</div>
+								</a>
+								<div class="list_numbers d-none">
+									<ul class="list-unstyled m-0">
+									<li class="number">
+										<a href="tel:{{$property->phone1?$property->phone1:''}}" rel="nofollow" class="number-0 small" title="{{$operator_name1}}:{{$property->phone1?$property->phone1:''}}">
+										<img class="icon-provider"
+											@if ($operator_name1=="Cellcard")
+												src="{{asset('assets/img/sim/cellcard.png')}}"												
+											@endif
+											@if ($operator_name1=="Smart")
+												src="{{asset('assets/img/sim/smart.png')}}"												
+											@endif
+											@if ($operator_name1=="Metfone")
+												src="{{asset('assets/img/sim/metfone.png')}}"												
+											@endif											
+										alt="{{$operator_name1}}">
+										<div class="num">{{$property->phone1?$property->phone1:''}}</div>
+										</a>
+									</li>
+									<li class="number">
+										<a href="tel:{{$property->phone2?$property->phone2:''}}" rel="nofollow" class="number-1 small" title="{{$operator_name2}}:{{$property->phone2?$property->phone2:''}}">
+										<img class="icon-provider" 
+											@if ($operator_name2=="Cellcard")
+												src="{{asset('assets/img/sim/cellcard.png')}}"												
+											@endif
+											@if ($operator_name2=="Smart")
+												src="{{asset('assets/img/sim/smart.png')}}"												
+											@endif
+											@if ($operator_name2=="Metfone")
+												src="{{asset('assets/img/sim/metfone.png')}}"												
+											@endif											
+										alt="{{$operator_name2}}">
+										<div class="num">{{$property->phone2?$property->phone2:''}}</div>
+									</a>
+									</li>
+									<li class="number">
+										<a href="tel:{{$property->phone3?$property->phone3:''}}" rel="nofollow" class="number-2 small" title="{{$operator_name3}}:{{$property->phone3?$property->phone3:''}}">
+										<img class="icon-provider" 
+											@if ($operator_name3=="Cellcard")
+												src="{{asset('assets/img/sim/cellcard.png')}}"												
+											@endif
+											@if ($operator_name3=="Smart")
+												src="{{asset('assets/img/sim/smart.png')}}"												
+											@endif
+											@if ($operator_name3=="Metfone")
+												src="{{asset('assets/img/sim/metfone.png')}}"												
+											@endif	
+										alt="{{$operator_name3}}">
+										<div class="num">{{$property->phone3?$property->phone3:''}}</div>
+										</a>
+										</li>
+								 </ul>
+								</div>
+							</div>
 						<ul class="list-unstyled user-info m-0">
 						<li>
-						<a class="btn-link" href="#BusinessChannel"><span class="icon icon-store"></span> https://www.khmer24.com/en/BusinessChannel</a>
+						<a class="btn-link" href="#BusinessChannel"><span class="icon icon-store"></span> https://www.tinhtoday.com/BusinessChannel</a>
 						</li>
 						<li>
 						<span class="icon icon-location"></span> Kandal , Samdech decho Hun Sen (60M) and National road #2 (15minute drive from kbalthnal). </li>

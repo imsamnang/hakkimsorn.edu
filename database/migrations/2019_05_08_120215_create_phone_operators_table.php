@@ -15,10 +15,10 @@ class CreatePhoneOperatorsTable extends Migration
     {
         Schema::create('phone_operators', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cellcard',15);
-            $table->string('smart',15);
-            $table->string('metfone',15);
-            $table->string('qb',15);
+            $table->string('cellcard',15)->nullable();
+            $table->string('smart',15)->nullable();
+            $table->string('metfone',15)->nullable();
+            $table->string('qb',15)->nullable();
             $table->timestamps();
         });
     }
