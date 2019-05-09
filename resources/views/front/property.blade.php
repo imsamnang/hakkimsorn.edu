@@ -69,46 +69,15 @@
 										<input type="text" class="form-control" name="q" placeholder="Search House & Lands...">
 										<select class="form-control col-3" name="category" required>
 											<option value="">Category</option>
-											<option value="house-for-sale">House for Sale</option>
-											<option value="house-for-rent">House for Rent</option>
-											<option value="apartment-for-sale">Apartment for Sale</option>
-											<option value="apartment-for-rent">Apartment for Rent</option>
-											<option value="landed-properties-for-sale">Land for Sale</option>
-											<option value="landed-properties-for-rent">Landed Properties for Rent</option>
-											<option value="commercial-properties-for-sale">Commercial for Sale</option>
-											<option value="commercial-properties-for-rent">Commercial for Rent</option>
-											<option value="room-for-rent">Room for Rent</option>
-											<option value="properties-wanted">Properties Wanted</option>
-											<option value="agent-services">Agent Services</option>
-											<option value="others-properties">Others</option>
-										</select>
+											@foreach ($category_by_properties as $category)
+												<option value="{{$category->category_name}}">{{$category->category_name}}</option>
+											@endforeach
+											</select>
 										<select class="form-control col-3" name="location">
 											<option value="">Locations</option>
-											<option value="phnom-penh">Phnom Penh</option>
-											<option value="preah-sihanouk">Preah Sihanouk</option>
-											<option value="kampong-cham">Kampong Cham</option>
-											<option value="siem-reap">Siem Reap</option>
-											<option value="battambang">Battambang</option>
-											<option value="kandal">Kandal</option>
-											<option value="banteay-meanchey">Banteay Meanchey</option>
-											<option value="kampong-chhnang">Kampong Chhnang</option>
-											<option value="kampong-speu">Kampong Speu</option>
-											<option value="kampong-thom">Kampong Thom</option>
-											<option value="kampot">Kampot</option>
-											<option value="kep">Kep</option>
-											<option value="koh-kong">Koh Kong</option>
-											<option value="kratie">Kratie</option>
-											<option value="mondulkiri">Mondulkiri</option>
-											<option value="oddar-meanchey">Otdar Meanchey</option>
-											<option value="pailin">Pailin</option>
-											<option value="preah-vihear">Preah Vihear</option>
-											<option value="prey-veng">Prey Veng</option>
-											<option value="pursat">Pursat</option>
-											<option value="ratanakiri">Ratanakiri</option>
-											<option value="stung-treng">Stung Treng</option>
-											<option value="svay-rieng">Svay Rieng</option>
-											<option value="takeo">Takeo</option>
-											<option value="tboung-khmum">Tboung Khmum</option>
+											@foreach ($provinces as $province)
+												<option value="{{$province->name_en}}">{{$province->name_en}}</option>
+											@endforeach
 										</select>
 										<input type="submit" value="Search" name="" class="form-control btn btn-primary col-2">
 									</div>
@@ -246,6 +215,42 @@
 									</li>
 								@endforeach
 							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Recent House & Lands -->
+			<section class="list-last-items pt-3">
+				<div class="my-container">
+					<div class="last-items pt-3 pb-3">
+						<div class="header">
+							<h2 class="title">Recent House & Lands</h2>
+							<a class="btn btn-link btn-sm" href="#all-property.html">View All</a>
+						</div>
+						<div class="content">
+							<ul class="list-unstyled">
+								@foreach ($properties as $property)								
+									<li class="item">
+										<a class="item border bg-white rounded" href="{{ route('post.show',$property->id) }}" title="{{ $property->title }}">
+											<article>
+												<div class="image">
+													<img class="img-cover" src="{{isset($property->galleries[0]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[0]->gallery_image):asset('assets/img/no_image.gif')}}" alt="{{ $property->title }}">
+												</div>
+												<div class="detail">
+													<h3 class="title truncate truncate-2">{{ $property->title }}</h3>
+													<p class="price text-red m-0">${{ $property->price }}</p>
+												</div>
+											</article>
+										</a>
+									</li>
+								@endforeach
+							</ul>
+							<div class="row justify-content-md-center pt-3">
+								<div class="col-8">
+									<a href="#all-property.html" class="btn btn-primary btn-block">View All</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

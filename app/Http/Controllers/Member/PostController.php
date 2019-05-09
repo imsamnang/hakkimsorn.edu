@@ -11,6 +11,7 @@ use App\Model\Property;
 use App\Model\PropertyGallery;
 use App\Model\Province;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
@@ -43,34 +44,38 @@ class PostController extends Controller
     $provinces = Province::pluck('name_en','id');
     $subcategory = Category::where(['id'=>$id])->first();
 		$category = Category::where('id',$subcategory->parent_id)->first();
-  	return view('freeads.create',compact('subcategory','category','provinces'));
+    $categories = Category::where(['parent_id'=>0])->get();
+  	return view('freeads.create',compact('subcategory','category','provinces','categories'));
   }
 
 	public function saveProperties(Request $request)
   {
-  	$this->middleware('auth');
-    $property = new Property();
-    $property->user_id = auth()->user()->id;
-    $property->category_id = $request->category_id;
-    $property->parent_id = $request->parent_id;
-    $property->title = $request->title;
-    $property->size = $request->size;
-    $property->price = $request->price;
-    $property->description = $request->description;
-    $property->name = $request->name;
-    $property->phone1 = $request->phone_1;
-    $property->phone2 = $request->phone_2;
-    $property->phone3 = $request->phone_3;
-    $property->email = $request->email;
-    $property->province_id = $request->province_id;
-    $property->district_id = $request->district_id;
-    $property->commune_id = $request->commune_id;
-    $property->location = $request->location;
-    if($property->save()){
-      $property->imageGalleryUpload('imageGalleries',new PropertyGallery(),'property/galleries/',$property->id,'property_id');
+    if (Auth::check()){
+      $property = new Property();
+      $property->user_id = auth()->user()->id;
+      $property->category_id = $request->category_id;
+      $property->parent_id = $request->parent_id;
+      $property->title = $request->title;
+      $property->size = $request->size;
+      $property->price = $request->price;
+      $property->description = $request->description;
+      $property->name = $request->name;
+      $property->phone1 = $request->phone_1;
+      $property->phone2 = $request->phone_2;
+      $property->phone3 = $request->phone_3;
+      $property->email = $request->email;
+      $property->province_id = $request->province_id;
+      $property->district_id = $request->district_id;
+      $property->commune_id = $request->commune_id;
+      $property->location = $request->location;
+      if($property->save()){
+        $property->imageGalleryUpload('imageGalleries',new PropertyGallery(),'property/galleries/',$property->id,'property_id');
+      }
+        return redirect()->route('member.home');
+        alert()->success('SuccessAlert','Property Update Successfully!')->autoClose(2000);
+    } else {      
+      return redirect()->route('login');
     }
-      return redirect()->route('member.home');
-      alert()->success('SuccessAlert','Property Update Successfully!')->autoClose(2000);
   }
   
   public function editProperties($id)

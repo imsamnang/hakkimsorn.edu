@@ -238,6 +238,14 @@ class CommunesTableSeeder extends Seeder
 			 \DB::table('communes')->insert(['name_en' => 'Tong Rong','name_kh' => '','district_id'=>21]);
 
 
+
+
+
+
+
+
+
+
 			 // Siem Reap communes
 			    \DB::table('communes')->insert(['name_en' => 'Char Chhouk','name_kh' => '','district_id'=>27]);
 				\DB::table('communes')->insert(['name_en' => 'Daun Peng','name_kh' => '','district_id'=>27]);

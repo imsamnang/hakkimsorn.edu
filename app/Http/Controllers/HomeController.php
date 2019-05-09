@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Category;
 use App\Model\Property;
 use App\Model\Province;
 use App\Model\User;
@@ -13,9 +14,11 @@ class HomeController extends Controller
 
   public function index()
   {
+    $categories = Category::where(['parent_id'=>0])->get();
     $properties = Property::OrderBy('created_at','desc')->get();
     $provinces = Province::get();
-    return view('front.property',compact('properties','provinces'));
+    $category_by_properties = Category::where(['parent_id'=>4])->get();
+    return view('front.property',compact('properties','provinces','categories','category_by_properties'));
   }
 
   public function property_by_province($id)
