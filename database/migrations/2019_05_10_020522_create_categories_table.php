@@ -13,10 +13,12 @@ class CreateCategoriesTable extends Migration
           $table->increments('id');
           $table->integer('parent_id')->unsigned();
           $table->string('category_name',50);
+          $table->string('category_name_kh',50)->nullable();
           $table->string('description',200)->nullable();
           $table->string('icon',255)->nullable();
           $table->string('url',255)->nullable();
-          $table->increments('is_active')->default(1);
+          $table->tinyInteger('is_active')->default(1);
+          $table->softDeletes();
           $table->timestamps();
       });
   }

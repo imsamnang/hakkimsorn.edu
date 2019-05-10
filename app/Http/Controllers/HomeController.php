@@ -17,7 +17,7 @@ class HomeController extends Controller
     $categories = Category::where(['parent_id'=>0])->get();
     $properties = Property::OrderBy('created_at','desc')->get();
     $provinces = Province::get();
-    $category_by_properties = Category::where(['parent_id'=>4])->get();
+    $category_by_properties = Category::where(['parent_id'=>6])->get();
     return view('front.property',compact('properties','provinces','categories','category_by_properties'));
   }
 

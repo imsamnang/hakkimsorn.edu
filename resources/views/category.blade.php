@@ -231,6 +231,7 @@
 										</ul>
 									</div>
 								</li>
+								
 								<li>
 									<a href="#Computers & Accessories" class="btn_main_cat"><img class="icon img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/computer-and-accessories.png" /> Computers & Accessories</a>
 									<div class="sub_cat">
@@ -241,6 +242,7 @@
 									</ul>
 									</div>
 								</li>
+
 								<li>
 									<a href="#Electronics & Appliances" class="btn_main_cat"><img class="icon img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/electronics-appliances.png" /> Electronics & Appliances</a>
 									<div class="sub_cat">
@@ -254,6 +256,7 @@
 										</ul>
 									</div>
 								</li>
+
 								<li>
 									<a href="#Cars and Vehicles" class="btn_main_cat"><img class="icon img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/cars-and-vehicles.png" /> Cars and Vehicles</a>
 									<div class="sub_cat">
@@ -270,6 +273,7 @@
 										</ul>
 									</div>
 								</li>
+
 								<li>
 									<a href="#House & Land" class="btn_main_cat"><img class="icon img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/property-housing-rentals.png" /> House & Lands</a>
 									<div class="sub_cat">
@@ -289,6 +293,7 @@
 										</ul>
 									</div>
 								</li>
+
 								<li>
 									<a href="#Jobs" class="btn_main_cat"><img class="icon img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/jobs.png" /> Jobs</a>
 									<div class="sub_cat">
@@ -332,6 +337,7 @@
 										</ul>
 									</div>
 								</li>
+
 								<li>
 									<a href="#Services" class="btn_main_cat"><img class="icon img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/services.png" /> Services</a>
 									<div class="sub_cat">
@@ -361,6 +367,7 @@
 									</ul>
 									</div>
 								</li>
+
 								<li>
 									<a href="#Fashion & Beauty" class="btn_main_cat"><img class="icon img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/fashion-beauty.png" /> Fashion & Beauty</a>
 									<div class="sub_cat">
@@ -371,6 +378,7 @@
 									</ul>
 									</div>
 								</li>
+
 								<li>
 									<a href="#Books, Sports & hobbies" class="btn_main_cat"><img class="icon img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/books-sports-hobbies.png" /> Books, Sports & Hobbies</a>
 									<div class="sub_cat">
@@ -382,6 +390,7 @@
 									</ul>
 									</div>
 								</li>
+
 								<li>
 									<a href="#Furniture & Decor" class="btn_main_cat"><img class="icon img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/furniture-decor.png" /> Furniture & Decor</a>
 									<div class="sub_cat">
@@ -394,6 +403,7 @@
 										</ul>
 									</div>
 								</li>
+
 								<li>
 									<a href="#Pets" class="btn_main_cat"><img class="icon img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/pets.png" /> Pets</a>
 									<div class="sub_cat">
@@ -408,6 +418,7 @@
 									</ul>
 									</div>
 								</li>
+
 								<li>
 									<a href="#Foods" class="btn_main_cat"><img class="icon img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/foods.png" /> Foods</a>
 									<div class="sub_cat">
