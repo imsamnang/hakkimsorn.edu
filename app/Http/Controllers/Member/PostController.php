@@ -148,6 +148,7 @@ class PostController extends Controller
 
   public function showProperties($id)
   {
+    $categories = Category::where(['parent_id'=>0])->get();
     $property = Property::findOrFail($id);
     $cellcards = Operator::pluck('cellcard')->toArray();
     $smarts = Operator::pluck('smart')->toArray();
@@ -190,7 +191,7 @@ class PostController extends Controller
       $operator_name3 = 'Other';
     }        
     $images = PropertyGallery::where('property_id',$property->id)->get();
-    return view('freeads.show',compact('property','images','cellcards','smarts','metfones','qbs','operator_name1','operator_name2','operator_name3'));
+    return view('freeads.show',compact('property','images','categories','cellcards','smarts','metfones','qbs','operator_name1','operator_name2','operator_name3'));
   }
 
   public function listProperties()
