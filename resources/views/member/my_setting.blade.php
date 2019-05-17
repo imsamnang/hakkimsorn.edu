@@ -6,8 +6,8 @@
 			</div>
 			<div class="list-items">
 				<ul class="list-unstyled mb-0">
-					<li class=""><a href="https://www.khmer24.com/en/member/edit-profile">Edit Profile</a></li>
-					<li class=""><a href="https://www.khmer24.com/en/member/change-password">Change Password</a></li>
+					<li class=""><a href="#member/edit-profile">Edit Profile</a></li>
+					<li class=""><a href="#member/change-password">Change Password</a></li>
 				</ul>
 			</div>
 		</section>
@@ -17,8 +17,8 @@
 			</div>
 			<div class="list-items">
 				<ul class="list-unstyled mb-0">
-					<li class=""><a href="https://www.khmer24.com/en/member/store">Store Information</a></li>
-					<li class=""><a href="https://www.khmer24.com/en/member/store-banner">Store Banner</a></li>
+					<li class=""><a href="#member/store">Store Information</a></li>
+					<li class=""><a href="#member/store-banner">Store Banner</a></li>
 				</ul>
 			</div>
 		</section>

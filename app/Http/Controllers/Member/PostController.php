@@ -80,6 +80,7 @@ class PostController extends Controller
   
   public function editProperties($id)
   {
+    $categories = Category::where(['parent_id'=>0])->get();
     $property = Property::findOrFail($id);
     $images = PropertyGallery::where('property_id',$property->id)->get();
     $provinces = Province::pluck('name_en','id');
@@ -89,7 +90,7 @@ class PostController extends Controller
     $subcategory = Category::where(['id'=>$property->parent_id])->first();
     $category = Category::where('id',$property->category_id)->first();
 
-    return view('freeads.edit',compact('property','subcategory','category','provinces','districts','communes','images'));
+    return view('freeads.edit',compact('property','subcategory','category','provinces','districts','communes','images','categories'));
   }
 
   public function updateProperties(Request $request, $id)

@@ -10,7 +10,6 @@
 
 @section('content')
 
-
 	<div class="detail-page">
 		<div class="my-breadcrumb">
 			<div class="my-container">
@@ -79,10 +78,10 @@
 											<span class="value">333</span>
 										</li>
 									</ul>
-										<a rel="nofollow" href="https://www.khmer24.com/en/save-ad/3016519.html" class="btn-save-item save_ad">
+										<a rel="nofollow" href="#" class="btn-save-item save_ad">
 											<i class="icon icon-like text_gray"></i>
 										</a>
-										<a rel="nofollow" onclick="javascript:void window.open('https://www.facebook.com/sharer/sharer.php?u=https://www.khmer24.com/en/property/land-for-sale-ដលក-土地出售-adid-3016519.html','1422871850498','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.khmer24.com/en/property/land-for-sale-ដលក-土地出售-adid-3016519.html" class="btn-share-item share_ad">
+										<a rel="nofollow" onclick="javascript:void window.open('https://www.facebook.com/sharer/sharer.php?u=','1422871850498','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=" class="btn-share-item share_ad">
 											<i class="icon icon-share text_gray"></i>
 										</a>
 								</div>
@@ -175,7 +174,7 @@
 							</div>
 
 							<div class="item-footer border-top p-1">
-								<a class="btn btn-link text-primary btn-sm" rel="nofollow" onclick="javascript:void window.open('https://www.facebook.com/sharer/sharer.php?u=https://www.khmer24.com/en/property/land-for-sale-ដលក-土地出售-adid-3016519.html','1422871850498','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.khmer24.com/en/property/land-for-sale-ដលក-土地出售-adid-3016519.html">
+								<a class="btn btn-link text-primary btn-sm" rel="nofollow" onclick="javascript:void window.open('https://www.facebook.com/sharer/sharer.php?u={{ $property->title }}','1422871850498','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$property->title}}">
 									<span class="icon icon-share"></span> Share</a>
 								<a class="btn btn-link text-primary btn-sm float-right" data-toggle="modal" data-target="#report-modal"><span class="icon icon-warning"></span> Report</a>
 							</div>
@@ -192,7 +191,7 @@
 									<li class="item">
 										<a href="{{route('post.show',$property->id)}}" title="{{$property->title}}" class="bg-white border rounded">
 										<article>
-										<div class="image"><img class="img-cover" src="{{asset('uploads/property/galleries/'.$image->gallery_image)}}" alt="{{$property->title}}"></div>
+										<div class="image"><img class="img-cover" src="{{isset($property->galleries[0]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[0]->gallery_image):asset('assets/img/no_image.gif')}}" alt="{{$property->title}}"></div>
 										<div class="detail">
 										<h4 class="title truncate truncate-2">{{$property->title}}</h4>
 										<p class="price text-red m-0">${{$property->price}}</p>

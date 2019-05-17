@@ -15,7 +15,7 @@
         <div class="my-container">
             <div class="user-profile">
                 <div>
-                    <a href="#member/edit-profile" class="user-photo" style="background: url('https://www.khmer24.com/khmer24-reform21/template/img/default_profile.jpg') no-repeat center; background-size: cover;">
+                    <a href="#member/edit-profile" class="user-photo" style="background: url('{{ asset('assets/img/default_profile.jpg') }}') no-repeat center; background-size: cover;">
                     </a>
                     <div class="user-info">
                         <div class="name">Hi! <span id="text_name">{{ $user->firstname }}</span>
@@ -56,22 +56,22 @@
                 </div>
                 <div class="nav-controls">
                     <ul class="nav nav-pills nav-fill">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('home') }}">
-                                <span class="icon icon-folder"></span> My Ads</a>
+                        <li class="nav-item {{ Request::segment(1)=='manage_ads'?'active' :'' }}">
+                          <a class="nav-link" href="{{ route('member.home') }}">
+                          <span class="icon icon-folder"></span> My Ads</a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{{ route('likes') }}">
-                                <span class="icon icon-like"></span> Likes</a>
-                            </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{{ route('notifications') }}">
-                                <span class="icon icon-notification"></span> Notification</a>
-                            </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{{ route('setting') }}">
-                                <span class="icon icon-setting-outline"></span> Setting</a>
-                            </li>
+                        <li class="nav-item {{ Request::segment(1)=='likes'?'active' :'' }}">
+                           <a class="nav-link" href="{{ route('likes') }}">
+                           <span class="icon icon-like"></span> Likes</a>
+                        </li>
+                        <li class="nav-item {{ Request::segment(1)=='notifications'?'active' :'' }}">
+                          <a class="nav-link" href="{{ route('notifications') }}">
+                          <span class="icon icon-notification"></span> Notification</a>
+                        </li>
+                        <li class="nav-item {{ Request::segment(1)=='setting'?'active' :'' }}">
+                          <a class="nav-link" href="{{ route('setting') }}">
+                          <span class="icon icon-setting-outline"></span> Setting</a>
+                        </li>
                     </ul>
                 </div>
             </div>

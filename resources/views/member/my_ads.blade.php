@@ -5,8 +5,8 @@
 		<div class="row filter pb-3">
 			<div class="col col-3">
 				<div class="btn-group manage_ads_tab" role="group" aria-label="Basic example">
-					<a class="disabled active_ads btn btn-default" href="https://www.khmer24.com/en/manage-ads.html">Active Ads <span class="counter badge badge-primary ml-1">1</span></a>
-					<a class=" expired_ads btn btn-default" href="https://www.khmer24.com/en/manage-ads/expired-ads.html">Expired Ads </a>
+					<a class="disabled active_ads btn btn-default" href="#manage-ads.html">Active Ads <span class="counter badge badge-primary ml-1">1</span></a>
+					<a class=" expired_ads btn btn-default" href="#expired-ads.html">Expired Ads </a>
 				</div>
 			</div>
 			<div class="col text-right">
