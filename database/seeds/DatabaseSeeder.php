@@ -11,6 +11,6 @@ class DatabaseSeeder extends Seeder
   	// $this->call(DistrictsTableSeeder::class);
    //  $this->call(CommunesTableSeeder::class);
    //  $this->call(PhoneOperatorSeeder::class);
-    // $this->call(CategoryTableSeeder::class);
+   $this->call(CategoryTableSeeder::class);
   }
 }
