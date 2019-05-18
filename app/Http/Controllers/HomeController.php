@@ -23,8 +23,9 @@ class HomeController extends Controller
 
   public function property_by_province($id)
   {
+    $categories = Category::where(['parent_id'=>0])->get();
     $property_by_province = Property::where('province_id',$id)->paginate($this->limit);
-    return view('front.property_by_province',compact('property_by_province'));
+    return view('front.property_by_province',compact('property_by_province','categories'));
   }
 
 }

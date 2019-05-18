@@ -19,6 +19,7 @@ class PostController extends Controller
   protected $operator_name1 = '';
   protected $operator_name2 = '';
   protected $operator_name3 = '';
+
   public function getDistrictList(Request $request)
   {
     $districts = District::where("province_id",$request->province_id)
@@ -56,6 +57,7 @@ class PostController extends Controller
       $property->category_id = $request->category_id;
       $property->parent_id = $request->parent_id;
       $property->title = $request->title;
+      $property->slug = str_slug($request->title);
       $property->size = $request->size;
       $property->price = $request->price;
       $property->description = $request->description;
@@ -143,14 +145,14 @@ class PostController extends Controller
         }
       }
       return response(['message'=>'Student Deleated Succeessfully']);
-      // return response($property);
     }
   }
 
-  public function showProperties($id)
+  public function showProperties($slug)
   {
+    // $property = Property::findOrFail($id);
     $categories = Category::where(['parent_id'=>0])->get();
-    $property = Property::findOrFail($id);
+    $property = Property::where('slug',$slug)->first();
     $cellcards = Operator::pluck('cellcard')->toArray();
     $smarts = Operator::pluck('smart')->toArray();
     $metfones = Operator::pluck('metfone')->toArray();
@@ -158,6 +160,7 @@ class PostController extends Controller
     $operator1 = substr($property->phone1, 0,3);
     $operator2 = substr($property->phone2, 0,3);
     $operator3 = substr($property->phone3, 0,3);
+
     if(in_array($operator1,  $cellcards)){
       $operator_name1 = 'Cellcard';
     } else if(in_array($operator1,  $smarts)){
@@ -169,6 +172,7 @@ class PostController extends Controller
     } else {
       $operator_name1 = 'Other';
     }
+
     if(in_array($operator2,  $cellcards)){
       $operator_name2 = 'Cellcard';
     } else if(in_array($operator2,  $smarts)){
@@ -180,6 +184,7 @@ class PostController extends Controller
     } else {
       $operator_name2 = 'Other';
     }
+
     if(in_array($operator3,  $cellcards)){
       $operator_name3 = 'Cellcard';
     } else if(in_array($operator3,  $smarts)){
@@ -190,7 +195,8 @@ class PostController extends Controller
       $operator_name3 = 'Qb';
     } else {
       $operator_name3 = 'Other';
-    }        
+    } 
+
     $images = PropertyGallery::where('property_id',$property->id)->get();
     return view('freeads.show',compact('property','images','categories','cellcards','smarts','metfones','qbs','operator_name1','operator_name2','operator_name3'));
   }

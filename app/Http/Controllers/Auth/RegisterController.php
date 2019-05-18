@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Model\User;
+use App\Model\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -18,6 +19,12 @@ class RegisterController extends Controller
   {
       $this->middleware('guest');
   }
+
+  public function showRegistrationForm()
+  {
+    $categories = Category::where(['parent_id'=>0])->get();
+    return view('auth.register',compact('categories'));
+  }  
 
   protected function validator(array $data)
   {

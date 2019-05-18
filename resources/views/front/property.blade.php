@@ -183,7 +183,7 @@
 								<div class="list-top-items owl-carousel owl-carousel-top-items">
 									@foreach ($properties as $property)
 										<div class="item">
-											<a class="item" href="{{ route('post.show',$property->id) }}" title="{{ $property->title }}">
+											<a class="item" href="{{ route('post.show',$property->slug) }}" title="{{ $property->title }}">
 											<article>
 											<div class="company-logo">
 											<img class="img-cover" src="{{isset($property->galleries[0]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[0]->gallery_image):asset('assets/img/no_image.gif')}}" alt="{{ $property->title }}">
@@ -211,7 +211,7 @@
 							<ul class="list-unstyled">
 								@foreach ($provinces as $province)
 									<li class="big">
-									<a href="{{ route('propery.by.province',$province->id) }}" title="Phnom Penh" class="truncate">{{ $province->name_en }}</a>
+									<a href="{{ route('propery.by.province',$province->slug_en) }}" title="Phnom Penh" class="truncate">{{ $province->name_en }}</a>
 									</li>
 								@endforeach
 							</ul>
@@ -232,7 +232,7 @@
 							<ul class="list-unstyled">
 								@foreach ($properties as $property)								
 									<li class="item">
-										<a class="item border bg-white rounded" href="{{ route('post.show',$property->id) }}" title="{{ $property->title }}">
+										<a class="item border bg-white rounded" href="{{ route('post.show',$property->slug) }}" title="{{ $property->title }}">
 											<article>
 												<div class="image">
 													<img class="img-cover" src="{{isset($property->galleries[0]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[0]->gallery_image):asset('assets/img/no_image.gif')}}" alt="{{ $property->title }}">

@@ -13,7 +13,8 @@ class CreatePropertiesTable extends Migration
       $table->integer('user_id')->unsigned();
       $table->integer('category_id')->unsigned();
       $table->integer('parent_id')->unsigned();
-      $table->string('title',150);
+      $table->string('title',250);
+      $table->string('slug',250);
       $table->string('size');
       $table->float('price');
       $table->text('description')->nullable();

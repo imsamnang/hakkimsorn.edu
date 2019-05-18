@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Model\Category;
 
 class LoginController extends Controller
 {
@@ -33,5 +34,11 @@ class LoginController extends Controller
     {
         Auth::guard('admin')->logout();
         return redirect('/');
+    }
+
+    public function showLoginForm()
+    {
+      $categories = Category::where(['parent_id'=>0])->get();
+      return view('auth.login',compact('categories'));
     }
 }

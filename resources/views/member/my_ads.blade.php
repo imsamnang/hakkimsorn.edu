@@ -19,7 +19,7 @@
 						<label>Filter: </label>
 						<select class="form-control" name="category" style="width: 160px;">
 							<option value="">All Categories</option>
-		{{-- 					<option value="property-housing-rentals" class="main_cate">{{ isset($properties)?$properties[0]->category->category_name : '' }}</option>
+					{{-- <option value="property-housing-rentals" class="main_cate">{{ isset($properties)?$properties[0]->category->category_name : '' }}</option>
 							<option value="landed-properties-for-sale">- {{ isset($properties)?$properties[0]->parent->category_name:'' }}</option> --}}
 						</select>
 					</span>
@@ -67,7 +67,7 @@
 											<img alt="" class="img-cover" src="{{isset($property->galleries[0]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[0]->gallery_image):asset('assets/img/no_image.gif')}}" />
 										</a>
 										<div class="post_detail">
-											<a class="title" href="{{ route('post.show',$property->id) }}" title="{{ $property->title }}">{{ $property->title }}</a>
+											<a class="title" href="{{ route('post.show',$property->slug) }}" title="{{ $property->title }}">{{ $property->title }}</a>
 											<div class="ad_price">{{ $property->price }}</div>
 											<div class="save_ads_sumery">
 												<dl>

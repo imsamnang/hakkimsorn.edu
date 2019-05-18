@@ -5,7 +5,7 @@ Route::view('/by_pro','front.property_by_province');
 Route::get('/','HomeController@index')->name('home');
 
 Route::prefix('property')->group(function(){	
-	Route::get('/{id}/properties_by_province','HomeController@property_by_province')->name('propery.by.province');
+	Route::get('/{slug}','HomeController@property_by_province')->name('propery.by.province');
 });
 
 Auth::routes();
@@ -21,7 +21,7 @@ Auth::routes();
 		Route::get('/{id}/edit','Member\PostController@editProperties')->name('post.edit');
 		Route::put('/{id}/update','Member\PostController@updateProperties')->name('post.update');
 		Route::post('/destroy','Member\PostController@deleteProperties')->name('post.destroy');
-		Route::get('/{id}/detail','Member\PostController@showProperties')->name('post.show');
+		Route::get('/{slug}','Member\PostController@showProperties')->name('post.show');
 		Route::get('/list_by_category','Member\PostController@listProperties')->name('post.by_category');
 		Route::get('/allproperties','Member\PostController@allProperties')->name('post.allProperties');
 	});

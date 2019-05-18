@@ -683,7 +683,8 @@ CREATE TABLE IF NOT EXISTS `properties` (
   `user_id` int(10) unsigned NOT NULL,
   `category_id` int(10) unsigned NOT NULL,
   `parent_id` int(10) unsigned NOT NULL,
-  `title` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
   `size` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(8,2) NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci,
@@ -705,18 +706,18 @@ CREATE TABLE IF NOT EXISTS `properties` (
 
 -- Dumping data for table hakkimsorn.edu.properties: 11 rows
 /*!40000 ALTER TABLE `properties` DISABLE KEYS */;
-INSERT INTO `properties` (`id`, `user_id`, `category_id`, `parent_id`, `title`, `size`, `price`, `description`, `name`, `phone1`, `phone2`, `phone3`, `email`, `province_id`, `district_id`, `commune_id`, `location`, `deleted_at`, `status`, `created_at`, `updated_at`) VALUES
-	(1, 1, 5, 35, 'ដីសំរាប់ជួល កុងត្រា 3ឆ្នាំ នៅក្រោយផ្សារឈកមាស', '2250', 2200.00, 'ដីសំរាប់ជួលកុងត្រា3ឆ្នាំ នៅក្រោយផ្សារឈូកមាស\r\nដីកំពុងមានសក្តានុពលភាព សំរាប់អភិវឌ្ឍន៍អាជីវកម្មគ្រប់ប្រភេទ ដែលពោពេញទៅដោយសំណង់ផ្ទះល្វែងថ្មីៗ និង បុរឺពិភពថ្មី ដែលមានផ្ទះរាប់ពាន់ខ្នង ល្អបំផុតសំរាប់ បើកហាងលក់ឡាន លាងឡាន រឺ បើកលក់អាជីវកម្មផ្សេងៗ។\r\nទំហំដី: 45x50 \r\nទីតាំង: នៅខាងក្រោយផ្សារឈូកមាស\r\nបើមានចំណាំអារម្មណ៌ រឺសាកសួរពត៌មានបន្ថែម សូមទាក់ទងលេខទូរស័ព្ទម្ចាស់ដីផ្ទាល់\r\nCellcard: 078/099636xxx ចុចដើម្បីតេ/Click To Call\r\nSmart Axiata: 087/098636xxx ចុចដើម្បីតេ/Click To Call\r\nMetfone: 068636xxx ចុចដើម្បីតេ/Click To Call \r\nសូមអរគុណ!', 'Samnang', '078343143', NULL, NULL, 'applephagna@gmail.com', 1, 1, 1, 'ទីតាំង: នៅខាងក្រោយផ្សារឈូកមាស', NULL, 1, '2019-04-23 01:43:37', '2019-05-04 02:48:23'),
-	(2, 1, 5, 35, 'ដីជួលភូមិស្លក្រាម', '2500', 1500.00, 'ដីជួលភូមិស្លក្រាម', 'Administrator', '012563698', NULL, NULL, 'user1@gmail.cm', 4, 30, 21, 'ដីជួលភូមិស្លក្រាម', NULL, 1, '2019-05-07 08:23:52', '2019-05-07 08:23:52'),
-	(3, 1, 5, 35, 'ដីភូមត្រពាំងសេះ', '5000', 800.00, 'ដីភូមត្រពាំងសេះ', 'Heng Heng', '011582369', NULL, NULL, 'hengheng@gmail.com', 1, 3, 7, 'ដីភូមត្រពាំងសេះ', NULL, 1, '2019-05-07 08:25:38', '2019-05-07 08:25:38'),
-	(4, 1, 5, 35, 'ដីជួលនៅស្រុកក្រឡាញ់', '2500', 250.00, 'ដីជួលនៅស្រុកក្រឡាញ់', 'karas', '016555444', NULL, NULL, 'kara@gmail.com', 4, 31, 22, 'ដីជួលនៅស្រុកក្រឡាញ់', NULL, 1, '2019-05-07 08:27:04', '2019-05-07 08:27:04'),
-	(5, 1, 5, 35, 'ដីជួលនៅស្រុកក្រឡាញ់', '2500', 250.00, 'ដីជួលនៅស្រុកក្រឡាញ់', 'karas', '016555444', NULL, NULL, 'kara@gmail.com', 5, 31, 22, 'ដីជួលនៅស្រុកក្រឡាញ់', NULL, 1, '2019-05-07 08:27:04', '2019-05-07 08:44:28'),
-	(6, 1, 5, 35, 'ដីភូមត្រពាំងសេះ', '5000', 800.00, 'ដីភូមត្រពាំងសេះ', 'Heng Heng', '011582369', NULL, NULL, 'hengheng@gmail.com', 6, 0, 7, 'ដីភូមត្រពាំងសេះ', NULL, 1, '2019-05-07 08:25:38', '2019-05-07 09:27:46'),
-	(7, 1, 5, 35, 'ដីជួលភូមិស្លក្រាម', '2500', 1500.00, 'ដីជួលភូមិស្លក្រាម', 'Administrator', '012563698', NULL, NULL, 'user1@gmail.cm', 4, 30, 21, 'ដីជួលភូមិស្លក្រាម', NULL, 1, '2019-05-07 08:23:52', '2019-05-07 08:23:52'),
-	(8, 1, 5, 35, 'ដីសំរាប់ជួល កុងត្រា 3ឆ្នាំ នៅក្រោយផ្សារឈកមាស', '2250', 2200.00, 'ដីសំរាប់ជួលកុងត្រា3ឆ្នាំ នៅក្រោយផ្សារឈូកមាស\r\nដីកំពុងមានសក្តានុពលភាព សំរាប់អភិវឌ្ឍន៍អាជីវកម្មគ្រប់ប្រភេទ ដែលពោពេញទៅដោយសំណង់ផ្ទះល្វែងថ្មីៗ និង បុរឺពិភពថ្មី ដែលមានផ្ទះរាប់ពាន់ខ្នង ល្អបំផុតសំរាប់ បើកហាងលក់ឡាន លាងឡាន រឺ បើកលក់អាជីវកម្មផ្សេងៗ។\r\nទំហំដី: 45x50 \r\nទីតាំង: នៅខាងក្រោយផ្សារឈូកមាស\r\nបើមានចំណាំអារម្មណ៌ រឺសាកសួរពត៌មានបន្ថែម សូមទាក់ទងលេខទូរស័ព្ទម្ចាស់ដីផ្ទាល់\r\nCellcard: 078/099636xxx ចុចដើម្បីតេ/Click To Call\r\nSmart Axiata: 087/098636xxx ចុចដើម្បីតេ/Click To Call\r\nMetfone: 068636xxx ចុចដើម្បីតេ/Click To Call \r\nសូមអរគុណ!', 'Samnang', '078343143', NULL, NULL, 'applephagna@gmail.com', 1, 1, 1, 'ទីតាំង: នៅខាងក្រោយផ្សារឈូកមាស', NULL, 1, '2019-04-23 01:43:37', '2019-05-04 02:48:23'),
-	(9, 1, 5, 35, 'ដីភូមត្រពាំងសេះ', '5000', 800.00, 'ដីភូមត្រពាំងសេះ', 'Heng Heng', '011582369', NULL, NULL, 'hengheng@gmail.com', 1, 3, 7, 'ដីភូមត្រពាំងសេះ', NULL, 1, '2019-05-07 08:25:38', '2019-05-07 08:25:38'),
-	(10, 1, 5, 35, 'ដីជួលនៅស្រុកក្រឡាញ់', '2500', 250.00, 'ដីជួលនៅស្រុកក្រឡាញ់', 'karas', '016555444', NULL, NULL, 'kara@gmail.com', 4, 31, 22, 'ដីជួលនៅស្រុកក្រឡាញ់', NULL, 1, '2019-05-07 08:27:04', '2019-05-07 08:27:04'),
-	(11, 1, 5, 35, 'ដីភូមត្រពាំងសេះ', '5000', 800.00, 'ដីភូមត្រពាំងសេះ', 'Heng Heng', '011582369', NULL, NULL, 'hengheng@gmail.com', 1, 3, 7, 'ដីភូមត្រពាំងសេះ', NULL, 1, '2019-05-07 08:25:38', '2019-05-07 08:25:38');
+INSERT INTO `properties` (`id`, `user_id`, `category_id`, `parent_id`, `title`, `slug`, `size`, `price`, `description`, `name`, `phone1`, `phone2`, `phone3`, `email`, `province_id`, `district_id`, `commune_id`, `location`, `deleted_at`, `status`, `created_at`, `updated_at`) VALUES
+	(1, 1, 5, 35, 'ដីសំរាប់ជួល កុងត្រា 3ឆ្នាំ នៅក្រោយផ្សារឈកមាស', 'ដីសំរាប់ជួល-កុងត្រា-3ឆ្នាំ-នៅក្រោយផ្សារឈកមាស', '2250', 2200.00, 'ដីសំរាប់ជួលកុងត្រា3ឆ្នាំ នៅក្រោយផ្សារឈូកមាស\r\nដីកំពុងមានសក្តានុពលភាព សំរាប់អភិវឌ្ឍន៍អាជីវកម្មគ្រប់ប្រភេទ ដែលពោពេញទៅដោយសំណង់ផ្ទះល្វែងថ្មីៗ និង បុរឺពិភពថ្មី ដែលមានផ្ទះរាប់ពាន់ខ្នង ល្អបំផុតសំរាប់ បើកហាងលក់ឡាន លាងឡាន រឺ បើកលក់អាជីវកម្មផ្សេងៗ។\r\nទំហំដី: 45x50 \r\nទីតាំង: នៅខាងក្រោយផ្សារឈូកមាស\r\nបើមានចំណាំអារម្មណ៌ រឺសាកសួរពត៌មានបន្ថែម សូមទាក់ទងលេខទូរស័ព្ទម្ចាស់ដីផ្ទាល់\r\nCellcard: 078/099636xxx ចុចដើម្បីតេ/Click To Call\r\nSmart Axiata: 087/098636xxx ចុចដើម្បីតេ/Click To Call\r\nMetfone: 068636xxx ចុចដើម្បីតេ/Click To Call \r\nសូមអរគុណ!', 'Samnang', '078343143', '070393143', '071343143', 'applephagna@gmail.com', 1, 1, 1, 'ទីតាំង: នៅខាងក្រោយផ្សារឈូកមាស', NULL, 1, '2019-04-23 01:43:37', '2019-05-17 04:33:04'),
+	(2, 1, 5, 35, 'ដីជួលភូមិស្លក្រាម', 'ដីជួលភូមិស្លក្រាម', '2500', 1500.00, 'ដីជួលភូមិស្លក្រាម', 'Administrator', '012563698', NULL, NULL, 'user1@gmail.cm', 4, 30, 21, 'ដីជួលភូមិស្លក្រាម', NULL, 1, '2019-05-07 08:23:52', '2019-05-07 08:23:52'),
+	(3, 1, 5, 35, 'ដីភូមត្រពាំងសេះ', 'ដីភូមត្រពាំងសេះ', '5000', 800.00, 'ដីភូមត្រពាំងសេះ', 'Heng Heng', '011582369', NULL, NULL, 'hengheng@gmail.com', 1, 3, 7, 'ដីភូមត្រពាំងសេះ', NULL, 1, '2019-05-07 08:25:38', '2019-05-07 08:25:38'),
+	(4, 1, 5, 35, 'ដីជួលនៅស្រុកក្រឡាញ់', 'ដីជួលនៅស្រុកក្រឡាញ់', '2500', 250.00, 'ដីជួលនៅស្រុកក្រឡាញ់', 'karas', '016555444', NULL, NULL, 'kara@gmail.com', 4, 31, 22, 'ដីជួលនៅស្រុកក្រឡាញ់', NULL, 1, '2019-05-07 08:27:04', '2019-05-07 08:27:04'),
+	(5, 1, 5, 35, 'ដីជួលនៅស្រុកក្រឡាញ់', 'ដីជួលនៅស្រុកក្រឡាញ់', '2500', 250.00, 'ដីជួលនៅស្រុកក្រឡាញ់', 'karas', '016555444', NULL, NULL, 'kara@gmail.com', 5, 31, 22, 'ដីជួលនៅស្រុកក្រឡាញ់', NULL, 1, '2019-05-07 08:27:04', '2019-05-07 08:44:28'),
+	(6, 1, 5, 35, 'ដីភូមត្រពាំងសេះ', 'ដីភូមត្រពាំងសេះ', '5000', 800.00, 'ដីភូមត្រពាំងសេះ', 'Heng Heng', '011582369', NULL, NULL, 'hengheng@gmail.com', 6, 0, 7, 'ដីភូមត្រពាំងសេះ', NULL, 1, '2019-05-07 08:25:38', '2019-05-07 09:27:46'),
+	(7, 1, 5, 35, 'ដីជួលភូមិស្លក្រាម', 'ដីជួលភូមិស្លក្រាម', '2500', 1500.00, 'ដីជួលភូមិស្លក្រាម', 'Administrator', '012563698', NULL, NULL, 'user1@gmail.cm', 4, 30, 21, 'ដីជួលភូមិស្លក្រាម', NULL, 1, '2019-05-07 08:23:52', '2019-05-07 08:23:52'),
+	(8, 1, 5, 35, 'ដីសំរាប់ជួល កុងត្រា 3ឆ្នាំ នៅក្រោយផ្សារឈកមាស', 'ដីសំរាប់ជួល-កុងត្រា-3ឆ្នាំ-នៅក្រោយផ្សារឈកមាស', '2250', 2200.00, 'ដីសំរាប់ជួលកុងត្រា3ឆ្នាំ នៅក្រោយផ្សារឈូកមាស\r\nដីកំពុងមានសក្តានុពលភាព សំរាប់អភិវឌ្ឍន៍អាជីវកម្មគ្រប់ប្រភេទ ដែលពោពេញទៅដោយសំណង់ផ្ទះល្វែងថ្មីៗ និង បុរឺពិភពថ្មី ដែលមានផ្ទះរាប់ពាន់ខ្នង ល្អបំផុតសំរាប់ បើកហាងលក់ឡាន លាងឡាន រឺ បើកលក់អាជីវកម្មផ្សេងៗ។\r\nទំហំដី: 45x50 \r\nទីតាំង: នៅខាងក្រោយផ្សារឈូកមាស\r\nបើមានចំណាំអារម្មណ៌ រឺសាកសួរពត៌មានបន្ថែម សូមទាក់ទងលេខទូរស័ព្ទម្ចាស់ដីផ្ទាល់\r\nCellcard: 078/099636xxx ចុចដើម្បីតេ/Click To Call\r\nSmart Axiata: 087/098636xxx ចុចដើម្បីតេ/Click To Call\r\nMetfone: 068636xxx ចុចដើម្បីតេ/Click To Call \r\nសូមអរគុណ!', 'Samnang', '078343143', NULL, NULL, 'applephagna@gmail.com', 1, 1, 1, 'ទីតាំង: នៅខាងក្រោយផ្សារឈូកមាស', NULL, 1, '2019-04-23 01:43:37', '2019-05-04 02:48:23'),
+	(9, 1, 5, 35, 'ដីភូមត្រពាំងសេះ', 'ដីភូមត្រពាំងសេះ', '5000', 800.00, 'ដីភូមត្រពាំងសេះ', 'Heng Heng', '011582369', NULL, NULL, 'hengheng@gmail.com', 1, 3, 7, 'ដីភូមត្រពាំងសេះ', NULL, 1, '2019-05-07 08:25:38', '2019-05-07 08:25:38'),
+	(10, 1, 5, 35, 'ដីជួលនៅស្រុកក្រឡាញ់', 'ដីជួលនៅស្រុកក្រឡាញ់', '2500', 250.00, 'ដីជួលនៅស្រុកក្រឡាញ់', 'karas', '016555444', NULL, NULL, 'kara@gmail.com', 4, 31, 22, 'ដីជួលនៅស្រុកក្រឡាញ់', NULL, 1, '2019-05-07 08:27:04', '2019-05-07 08:27:04'),
+	(11, 1, 5, 35, 'ដីភូមត្រពាំងសេះ', 'ដីភូមត្រពាំងសេះ', '5000', 800.00, 'ដីភូមត្រពាំងសេះ', 'Heng Heng', '011582369', NULL, NULL, 'hengheng@gmail.com', 1, 3, 7, 'ដីភូមត្រពាំងសេះ', NULL, 1, '2019-05-07 08:25:38', '2019-05-07 08:25:38');
 /*!40000 ALTER TABLE `properties` ENABLE KEYS */;
 
 -- Dumping structure for table hakkimsorn.edu.property_galleries
@@ -728,10 +729,17 @@ CREATE TABLE IF NOT EXISTS `property_galleries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table hakkimsorn.edu.property_galleries: 0 rows
+-- Dumping data for table hakkimsorn.edu.property_galleries: 6 rows
 /*!40000 ALTER TABLE `property_galleries` DISABLE KEYS */;
+INSERT INTO `property_galleries` (`id`, `property_id`, `gallery_image`, `created_at`, `updated_at`) VALUES
+	(1, 1, '1517784892.jpg', '2019-05-17 04:25:17', '2019-05-17 04:25:17'),
+	(2, 1, '206266141.jpg', '2019-05-17 04:25:17', '2019-05-17 04:25:17'),
+	(3, 1, '1944920392.jpg', '2019-05-17 04:25:17', '2019-05-17 04:25:17'),
+	(4, 1, '1006613910.jpg', '2019-05-17 04:25:17', '2019-05-17 04:25:17'),
+	(5, 1, '1464742288.jpg', '2019-05-17 04:25:17', '2019-05-17 04:25:17'),
+	(6, 1, '980025900.jpg', '2019-05-17 04:25:17', '2019-05-17 04:25:17');
 /*!40000 ALTER TABLE `property_galleries` ENABLE KEYS */;
 
 -- Dumping structure for table hakkimsorn.edu.provinces
@@ -739,7 +747,9 @@ DROP TABLE IF EXISTS `provinces`;
 CREATE TABLE IF NOT EXISTS `provinces` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name_en` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug_en` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name_kh` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug_kh` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -747,32 +757,32 @@ CREATE TABLE IF NOT EXISTS `provinces` (
 
 -- Dumping data for table hakkimsorn.edu.provinces: 25 rows
 /*!40000 ALTER TABLE `provinces` DISABLE KEYS */;
-INSERT INTO `provinces` (`id`, `name_en`, `name_kh`, `created_at`, `updated_at`) VALUES
-	(1, 'Phnom Penh', 'ភ្នំពេញ', NULL, NULL),
-	(2, 'Preah Sihanouk', 'ព្រះសីហនុ', NULL, NULL),
-	(3, 'Kampong Cham', 'កំពង់ចាម', NULL, NULL),
-	(4, 'Siem Reap', 'សៀមរាប', NULL, NULL),
-	(5, 'Battambang', 'បាត់ដំបង', NULL, NULL),
-	(6, 'Kandal', 'កណ្តាល', NULL, NULL),
-	(7, 'Banteay Meanchey', 'បន្ទាយមានជ័យ', NULL, NULL),
-	(8, 'Kampong Chhnang', 'កំពង់ឆ្នាំង', NULL, NULL),
-	(9, 'Kampong Speu', 'កំពង់ស្ពឺ', NULL, NULL),
-	(10, 'Kampong Thom', 'កំពង់ធំ', NULL, NULL),
-	(11, 'Kampot', 'កំពត', NULL, NULL),
-	(12, 'Kep', 'កែប', NULL, NULL),
-	(13, 'Koh Kong', 'កោះកុង', NULL, NULL),
-	(14, 'Kratie', 'ក្រចេះ', NULL, NULL),
-	(15, 'Mondulkiri', 'មណ្ឌលគិរី', NULL, NULL),
-	(16, 'Oddar Meanchey', 'ឧត្តរមានជ័យ', NULL, NULL),
-	(17, 'Pailin', 'ប៉ៃលិន', NULL, NULL),
-	(18, 'Preah Vihear', 'ព្រះវិហារ', NULL, NULL),
-	(19, 'Prey Veng', 'ព្រៃវែង', NULL, NULL),
-	(20, 'Pursat', 'ពោធ៌សាត់', NULL, NULL),
-	(21, 'Ratanakiri', 'រតនគីរី', NULL, NULL),
-	(22, 'Stung Treng', 'ស្ទឹងត្រែង', NULL, NULL),
-	(23, 'Svay Rieng', 'ស្វាយរៀង', NULL, NULL),
-	(24, 'Takeo', 'តាកែវ', NULL, NULL),
-	(25, 'Tboung Khmum', 'ត្បូងឃ្មុំ', NULL, NULL);
+INSERT INTO `provinces` (`id`, `name_en`, `slug_en`, `name_kh`, `slug_kh`, `created_at`, `updated_at`) VALUES
+	(1, 'Phnom Penh', 'phnom-penh', 'ភ្នំពេញ', '', NULL, NULL),
+	(2, 'Preah Sihanouk', 'preah-sihanouk', 'ព្រះសីហនុ', '', NULL, NULL),
+	(3, 'Kampong Cham', 'kampong-cham', 'កំពង់ចាម', '', NULL, NULL),
+	(4, 'Siem Reap', 'siem-reap', 'សៀមរាប', '', NULL, NULL),
+	(5, 'Battambang', 'Battambang', 'បាត់ដំបង', '', NULL, NULL),
+	(6, 'Kandal', 'Kandal', 'កណ្តាល', '', NULL, NULL),
+	(7, 'Banteay Meanchey', 'Banteay-Meanchey', 'បន្ទាយមានជ័យ', '', NULL, NULL),
+	(8, 'Kampong Chhnang', 'Kampong-Chhnang', 'កំពង់ឆ្នាំង', '', NULL, NULL),
+	(9, 'Kampong Speu', 'Kampong-Speu', 'កំពង់ស្ពឺ', '', NULL, NULL),
+	(10, 'Kampong Thom', 'Kampong-Thom', 'កំពង់ធំ', '', NULL, NULL),
+	(11, 'Kampot', 'Kampot', 'កំពត', '', NULL, NULL),
+	(12, 'Kep', 'Kep', 'កែប', '', NULL, NULL),
+	(13, 'Koh Kong', 'Koh-Kong', 'កោះកុង', '', NULL, NULL),
+	(14, 'Kratie', 'Kratie', 'ក្រចេះ', '', NULL, NULL),
+	(15, 'Mondulkiri', 'Mondulkiri', 'មណ្ឌលគិរី', '', NULL, NULL),
+	(16, 'Oddar Meanchey', 'Oddar-Meanchey', 'ឧត្តរមានជ័យ', '', NULL, NULL),
+	(17, 'Pailin', 'Pailin', 'ប៉ៃលិន', '', NULL, NULL),
+	(18, 'Preah Vihear', 'Preah-Vihear', 'ព្រះវិហារ', '', NULL, NULL),
+	(19, 'Prey Veng', 'Prey-Veng', 'ព្រៃវែង', '', NULL, NULL),
+	(20, 'Pursat', 'Pursat', 'ពោធ៌សាត់', '', NULL, NULL),
+	(21, 'Ratanakiri', 'Ratanakiri', 'រតនគីរី', '', NULL, NULL),
+	(22, 'Stung Treng', 'Stung-Treng', 'ស្ទឹងត្រែង', '', NULL, NULL),
+	(23, 'Svay Rieng', 'Svay-Rieng', 'ស្វាយរៀង', '', NULL, NULL),
+	(24, 'Takeo', 'Takeo', 'តាកែវ', '', NULL, NULL),
+	(25, 'Tboung Khmum', 'Tboung-Khmum', 'ត្បូងឃ្មុំ', '', NULL, NULL);
 /*!40000 ALTER TABLE `provinces` ENABLE KEYS */;
 
 -- Dumping structure for table hakkimsorn.edu.users
@@ -798,7 +808,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table hakkimsorn.edu.users: 1 rows
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `phone`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Samnang', 'Im', 'user', '07343143', 'user@gmail.com', NULL, '$2y$10$OW9fQs1Z2PqQxaW/3RBequAQVpxx7ONCiNNr2I2WRPD7dnoYcGisG', 'kLNtccDcG7WvOKMWfqxxYzj4FJZsPWjPeOEO1jnNzk8eEfKW9e3jAbx9m2ML', '2019-05-10 12:29:05', '2019-05-10 12:29:05');
+	(1, 'Samnang', 'Im', 'user', '07343143', 'user@gmail.com', NULL, '$2y$10$OW9fQs1Z2PqQxaW/3RBequAQVpxx7ONCiNNr2I2WRPD7dnoYcGisG', 'VsOxNxw0q69GX5SZ6IPdxktCUBNvdejLYj6yIlLdqIAoucRp0DwBb6qdDoeh', '2019-05-10 12:29:05', '2019-05-10 12:29:05');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

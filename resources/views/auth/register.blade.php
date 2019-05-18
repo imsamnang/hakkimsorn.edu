@@ -1,4 +1,5 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
+@extends('layouts.backend.khmer24_layout')
 
 @section('content')
 <div class="container">
