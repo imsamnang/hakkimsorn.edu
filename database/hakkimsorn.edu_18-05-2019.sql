@@ -13,10 +13,8 @@
 
 
 -- Dumping database structure for hakkimsorn.edu
-DROP DATABASE IF EXISTS `hakkimsorn.edu`;
-CREATE DATABASE IF NOT EXISTS `hakkimsorn.edu` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `hakkimsorn.edu`;
 
+USE `ecompa18`;
 -- Dumping structure for table hakkimsorn.edu.admins
 DROP TABLE IF EXISTS `admins`;
 CREATE TABLE IF NOT EXISTS `admins` (

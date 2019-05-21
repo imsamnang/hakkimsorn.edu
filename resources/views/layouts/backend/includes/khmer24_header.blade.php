@@ -2,7 +2,7 @@
 	<div class="my-container header-content">
 		@if (Auth::check())
 			<nav class="navbar row">
-				<a href="{{route('home')}}" class="navbar-brand"><img src="https://www.khmer24.com/khmer24-reform21/template/img/khmer24.gif" alt="Khmer24"></a>
+				<a href="{{route('home')}}" class="navbar-brand"><img src="{{asset('assets/img/tinhtoday_navbar.png')}}" alt="Khmer24"></a>
 				<ul class="nav mr-auto left-nav">
 				<li class="nav-item">
 				<a class="nav-link disabled btn-change-lang" href="#manage-ads.html"><span class="icon khmer-flage"></span></a>
@@ -57,7 +57,7 @@
 			</nav>	
 		@else	
 			<nav class="navbar row">
-				<a href="#" class="navbar-brand"><img src="https://www.khmer24.com/khmer24-reform21/template/img/khmer24.gif" alt="Khmer24"></a>
+				<a href="#" class="navbar-brand"><img src="{{asset('assets/img/tinhtoday_navbar.png')}}" alt="Khmer24"></a>
 				<ul class="nav mr-auto left-nav">
 					<li class="nav-item">
 						<a class="nav-link disabled btn-change-lang" href="{{route('post.index')}}"><span class="icon khmer-flage"></span></a>

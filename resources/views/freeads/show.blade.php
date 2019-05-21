@@ -194,10 +194,11 @@
 						<div class="relate-items mt-3">
 							<div class="item-content">
 								<ul class="list-unstyled items">
+									@foreach ($random_properties as $key => $property)
 									<li class="item">
 										<a href="{{route('post.show',$property->slug)}}" title="{{$property->title}}" class="bg-white border rounded">
 										<article>
-										<div class="image"><img class="img-cover" src="{{isset($property->galleries[0]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[0]->gallery_image):asset('assets/img/no_image.gif')}}" alt="{{$property->title}}"></div>
+										<div class="image"><img class="img-cover" src="{{isset($property->galleries[$key]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[$key]->gallery_image):asset('assets/img/no_image.gif')}}" alt="{{$property->title}}"></div>
 										<div class="detail">
 										<h4 class="title truncate truncate-2">{{$property->title}}</h4>
 										<p class="price text-red m-0">${{$property->price}}</p>
@@ -205,6 +206,7 @@
 										</article>
 										</a>
 									</li>
+									@endforeach
 								</ul>
 							</div>
 						</div>

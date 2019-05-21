@@ -50,7 +50,7 @@
 				</div>
 			</div>
 			<ul class="list_posts list-unstyled">
-				@foreach ($properties as $property)
+				@foreach ($properties as $key => $property)
 					<li id="item-{{ $property->id }}">
 						<div class="item_box">
 							<div class="ad_info">
@@ -64,7 +64,7 @@
 							</div>
 									<div class="detail_box ">
 										<a class="post_image" href="#" title="">
-											<img alt="" class="img-cover" src="{{isset($property->galleries[0]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[0]->gallery_image):asset('assets/img/no_image.gif')}}" />
+											<img alt="" class="img-cover" src="{{isset($property->galleries[$key]->gallery_image) ? asset('uploads/property/galleries/'.$property->galleries[$key]->gallery_image):asset('assets/img/no_image.gif')}}" />
 										</a>
 										<div class="post_detail">
 											<a class="title" href="{{ route('post.show',$property->slug) }}" title="{{ $property->title }}">{{ $property->title }}</a>
