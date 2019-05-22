@@ -28,7 +28,7 @@
 		@endif											
 	alt="{{$operator_name2}}">
 	<div class="num">{{$property->phone2?$property->phone2:''}}</div>
-</a>
+	</a>
 </li>
 <li class="number">
 	<a href="tel:{{$property->phone3?$property->phone3:''}}" rel="nofollow" class="number-2 small" title="{{$operator_name3}}:{{$property->phone3?$property->phone3:''}}">
@@ -45,4 +45,4 @@
 	alt="{{$operator_name3}}">
 	<div class="num">{{$property->phone3?$property->phone3:''}}</div>
 	</a>
-	</li>
+</li>

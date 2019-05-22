@@ -3,7 +3,7 @@
 		<ul class="list-unstyled items-main-categories">
 			@foreach ($categories as $category)
 				<li>
-					<a href="#Mobile Phones &Tablets" class="btn_main_cat"><img class="icon img-cover" src="{{asset('assets/img/mobile-phones-tablets.png')}}" /> {{$category->category_name}}</a>
+					<a href="#Mobile Phones &Tablets" class="btn_main_cat"><img class="icon img-cover" src="{{asset('assets/img/'.$category->icon)}}" /> {{$category->category_name}}</a>
             @if(count($category->childs))
                 @include('freeads.loadsubmenu',['childs' => $category->childs])
             @endif
