@@ -196,7 +196,7 @@ class PostController extends Controller
     } else {
       $operator_name3 = 'Other';
     } 
-    $random_properties = Property::inRandomOrder()->take(9)->get();
+    $random_properties = Property::inRandomOrder()->take(15)->get();
     // return $random_properties;
     $images = PropertyGallery::where('property_id',$property->id)->get();
     return view('freeads.show',compact('property','images','categories','cellcards','smarts','metfones','qbs','operator_name1','operator_name2','operator_name3','random_properties'));
