@@ -44,9 +44,10 @@ class PostController extends Controller
   {
     $provinces = Province::pluck('name_en','id');
     $subcategory = Category::where(['id'=>$id])->first();
+    $view_name = $subcategory->form_name;
 		$category = Category::where('id',$subcategory->parent_id)->first();
     $categories = Category::where(['parent_id'=>0])->get();
-  	return view('freeads.create',compact('subcategory','category','provinces','categories'));
+  	return view($view_name,compact('subcategory','category','provinces','categories'));
   }
 
 	public function saveProperties(Request $request)
