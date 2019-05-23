@@ -58,7 +58,7 @@
 									</div>
 								</div>
 								<div class="item-short-description p-3 position-relative">
-									<h1>{{$property->title}}</h1>
+									<h1>{!!$property->title!!}</h1>
 									<p class="price price_tag"><b class="price">{{$property->price}}</b></p>
 									<ul class="list-unstyled item-info m-0">
 										<li>
@@ -101,9 +101,9 @@
 										</div>
 									</li>
 								</ul>
-								<p class="post-description">{{$property->title}}<br />
+								<p class="post-description">{!!$property->title!!}<br />
 								<br />
-									{{$property->description}}
+									{!!$property->description!!}
 								</p>
 							</div>
 
@@ -231,64 +231,64 @@
 									<div class="num">{{str_limit($property->phone1, 5, 'xxx')}}</div>
 									<div class="btn_link">Click to show phone number</div>
 								</a>
-								<div class="list_numbers d-none">
-									<ul class="list-unstyled m-0">
-										@if (isset($property->phone1))
-											<li class="number">
-												<a href="tel:{{$property->phone1}}" rel="nofollow" class="number-0 small" title="{{$operator_name1}}:{{$property->phone1}}">
-												<img class="icon-provider"
-													@if ($operator_name1=="Cellcard")
-														src="{{asset('assets/img/sim/cellcard.png')}}"												
-													@endif
-													@if ($operator_name1=="Smart")
-														src="{{asset('assets/img/sim/smart.png')}}"												
-													@endif
-													@if ($operator_name1=="Metfone")
-														src="{{asset('assets/img/sim/metfone.png')}}"												
-													@endif											
-												alt="{{$operator_name1}}">
-												<div class="num">{{$property->phone1}}</div>
-												</a>
-											</li>
-										@endif
-										@if (isset($property->phone2))
-											<li class="number">
-												<a href="tel:{{$property->phone2}}" rel="nofollow" class="number-1 small" title="{{$operator_name2}}:{{$property->phone2}}">
-												<img class="icon-provider" 
-													@if ($operator_name2=="Cellcard")
-														src="{{asset('assets/img/sim/cellcard.png')}}"												
-													@endif
-													@if ($operator_name2=="Smart")
-														src="{{asset('assets/img/sim/smart.png')}}"												
-													@endif
-													@if ($operator_name2=="Metfone")
-														src="{{asset('assets/img/sim/metfone.png')}}"												
-													@endif											
-												alt="{{$operator_name2}}">
-												<div class="num">{{$property->phone2}}</div>
-												</a>
-											</li>
-										@endif
-										@if (isset($property->phone3))
-											<li class="number">
-												<a href="tel:{{$property->phone3}}" rel="nofollow" class="number-2 small" title="{{$operator_name3}}:{{$property->phone3}}">
-												<img class="icon-provider" 
-													@if ($operator_name3=="Cellcard")
-														src="{{asset('assets/img/sim/cellcard.png')}}"												
-													@endif
-													@if ($operator_name3=="Smart")
-														src="{{asset('assets/img/sim/smart.png')}}"												
-													@endif
-													@if ($operator_name3=="Metfone")
-														src="{{asset('assets/img/sim/metfone.png')}}"												
-													@endif	
-												alt="{{$operator_name3}}">
-												<div class="num">{{$property->phone3}}</div>
-												</a>
-											</li>
-										@endif											
-								 	</ul>
-								</div>
+									<div class="list_numbers d-none">
+										<ul class="list-unstyled m-0">
+											@if (isset($property->phone1))
+												<li class="number">
+													<a href="tel:{{$property->phone1}}" rel="nofollow" class="number-0 small" title="{{$operator_name1}}:{{$property->phone1}}">
+													<img class="icon-provider"
+														@if ($operator_name1=="Cellcard")
+															src="{{asset('assets/img/sim/cellcard.png')}}"												
+														@endif
+														@if ($operator_name1=="Smart")
+															src="{{asset('assets/img/sim/smart.png')}}"												
+														@endif
+														@if ($operator_name1=="Metfone")
+															src="{{asset('assets/img/sim/metfone.png')}}"												
+														@endif											
+													alt="{{$operator_name1}}">
+													<div class="num">{{$property->phone1}}</div>
+													</a>
+												</li>
+											@endif
+											@if (isset($property->phone2))
+												<li class="number">
+													<a href="tel:{{$property->phone2}}" rel="nofollow" class="number-1 small" title="{{$operator_name2}}:{{$property->phone2}}">
+													<img class="icon-provider" 
+														@if ($operator_name2=="Cellcard")
+															src="{{asset('assets/img/sim/cellcard.png')}}"												
+														@endif
+														@if ($operator_name2=="Smart")
+															src="{{asset('assets/img/sim/smart.png')}}"												
+														@endif
+														@if ($operator_name2=="Metfone")
+															src="{{asset('assets/img/sim/metfone.png')}}"												
+														@endif											
+													alt="{{$operator_name2}}">
+													<div class="num">{{$property->phone2}}</div>
+													</a>
+												</li>
+											@endif
+											@if (isset($property->phone3))
+												<li class="number">
+													<a href="tel:{{$property->phone3}}" rel="nofollow" class="number-2 small" title="{{$operator_name3}}:{{$property->phone3}}">
+													<img class="icon-provider" 
+														@if ($operator_name3=="Cellcard")
+															src="{{asset('assets/img/sim/cellcard.png')}}"												
+														@endif
+														@if ($operator_name3=="Smart")
+															src="{{asset('assets/img/sim/smart.png')}}"												
+														@endif
+														@if ($operator_name3=="Metfone")
+															src="{{asset('assets/img/sim/metfone.png')}}"												
+														@endif	
+													alt="{{$operator_name3}}">
+													<div class="num">{{$property->phone3}}</div>
+													</a>
+												</li>
+											@endif											
+									 </ul>
+									</div>
 							</div>
 						<ul class="list-unstyled user-info m-0">
 						<li>

@@ -13,6 +13,7 @@ use App\Model\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -58,7 +59,7 @@ class PostController extends Controller
       $property->category_id = $request->category_id;
       $property->parent_id = $request->parent_id;
       $property->title = $request->title;
-      $property->slug = str_slug($request->title);
+      $property->slug = $this->make_slug($request->title);
       $property->size = $request->size;
       $property->price = $request->price;
       $property->description = $request->description;
@@ -215,5 +216,10 @@ class PostController extends Controller
   {
     return view('freeads.all_properties');
   }
+
+function make_slug($string) {
+    return preg_replace('/\s+/u', '-', trim($string));
+}
+
 
 }
