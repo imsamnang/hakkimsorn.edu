@@ -13,32 +13,60 @@
 					</div>
 				</div>
 			</div>
-			{{-- Title --}}
+			{{-- Job Title --}}
 			<div class="form-group">
-				<label for="ad_headline" class="col control-label">Title <span class="red">*</span></label>
+				<label for="ad_headline" class="col control-label">Job Title <span class="red">*</span></label>
 				<div class="col col-6 form-input">
 				<input id="title" class="form-control" type="text" name="title" value="{{ isset($property->title)?$property->title :'' }}" required="">
 				</div>
 			</div>
-			{{-- Size --}}
-			<div class="form-group input-ad_year">
-				<label for="size" class="col-sm-3 control-label">Size(m<sup>2</sup>)</label>
+			{{-- Job Type			 --}}
+			<div class="form-group input-ad_field">
+				<label for="ad_field" class="col-sm-3 control-label">Job Type <i class="red">*</i></label>
 				<div class="form-input col-sm-6 col-lg-3">
-					<input type="text" name="size" value="{{ isset($property->size)?$property->size :'' }}" id="size" class="form-control  number" />
+					<select id="ad_field" name="ad_field" class="form-control " required="">
+						<option value="" data-value=""></option>
+						<option value="full-time" data-value="full-time" class="empty1">Full-time</option>
+						<option value="part-time" data-value="part-time" class="empty1">Part-time</option>
+						<option value="internships" data-value="internships" class="empty1">Internships</option>
+						<option value="freelance" data-value="freelance" class="empty1">Freelance</option>
+						<option value="contract" data-value="contract" class="empty1">Contract</option>
+						<option value="volunteer" data-value="volunteer" class="empty1">Volunteer</option>
+						<option value="other" data-value="other" class="empty1">Other</option>
+					</select>
 				</div>
 			</div>
-			{{-- Price --}}
+			{{-- Experience --}}
+			<div class="form-group input-ad_year">
+				<label for="ad_year" class="col-sm-3 control-label">Experience <i class="red">*</i></label>
+				<div class="form-input col-sm-6 col-lg-3">
+					<select id="ad_year" name="ad_year" class="form-control">
+						<option value=""></option><option selected="" value="0">No experience needed</option>
+						<option value="1">1 Year+</option>
+						<option value="2">2 Year+</option>
+						<option value="3">3 Year+</option>
+						<option value="4">4 Year+</option>
+						<option value="5">5 Year+</option>
+						<option value="6">6 Year+</option>
+						<option value="7">7 Year+</option>
+						<option value="8">8 Year+</option>
+						<option value="9">9 Year+</option>
+						<option value="10">10 Year+</option>
+					</select>
+				</div>
+			</div>
+			{{-- Salary Start From			 --}}
 			<div class="form-group input-ad_price">
-				<label for="ad_price" class="col-sm-3 control-label">Price <i class="red">*</i></label>
+				<label for="ad_price" class="col-sm-3 control-label">Salary Start From</label>
 				<div class="form-input col-sm-6 col-lg-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="inputGroupPrepend_ad_price">$</span>
 						</div>
-						<input type="number" min="1" name="price" id="price" class="form-control  number " required aria-describedby="basic-addon1" value="{{ isset($property->price)?$property->price :'' }}">
+						<input type="number" min="1" name="ad_price" id="ad_price" class="form-control  number " aria-describedby="basic-addon1" value="">
 					</div>
 				</div>
-			</div>
+			</div>			
 			{{-- Description --}}
 			<div class="form-group">
 				<label for="ad_text" class="col control-label">Description <span class="red">*</span></label>
@@ -130,42 +158,6 @@
 										<option data-en-title="{{$province}}" value="{{$key}}" data-value="{{ $province }}" data-chained="{{ $province }}" class="{{ $province }}">{{$province}}</option>
 									@endif
 								@endforeach
-							</select>
-						</div>
-					</div>
-					{{-- District --}}
-					<div class="form-group">
-						<label for="district" class="col control-label">Khan/District <i class="red">*</i></label>
-						<div class="col col-3 form-input">
-						<select data-placeholder="Select a district" id="district" name="district_id" class="form-control map_form" required disabled>
-							<option value="0" data-value="0">Select a Khan/District</option>
-								@if (isset($property))
-									@foreach ($districts as $district)
-											@if ($district->id==$property->district_id)
-												<option data-en-title="{{$district->name_en}}" value="{{$district->id}}" data-value="{{$district->name_en}}" data-chained="{{$district->name_en}}" class="{{$district->name_en}}" selected>{{$district->name_en}}</option>
-											@else
-												<option data-en-title="{{$district->name_en}}" value="{{$district->id}}" data-value="{{$district->name_en}}" data-chained="{{$district->name_en}}" class="{{$district->name_en}}">{{$district->name_en}}</option>
-											@endif
-									@endforeach
-								@endif
-						</select>
-						</div>
-					</div>
-					{{-- Commune --}}
-					<div class="form-group">
-						<label for="commune" class="col control-label">Sangkat/Commune <i class="red">*</i></label>
-						<div class="col col-3 form-input">
-							<select data-placeholder="Select a commune" id="commune" name="commune_id" class="form-control map_form" required disabled>
-								<option value="0" data-value="">Select a Sangkat/Commune</option>
-									@if (isset($property))
-										@foreach ($communes as $commune)
-												@if ($commune->id==$property->commune_id)
-													<option data-en-title="{{$commune->name_en}}" value="{{$commune->id}}" data-value="{{$commune->name_en}}" data-chained="{{$commune->name_en}}" class="{{$commune->name_en}}" selected>{{$commune->name_en}}</option>
-												@else
-													<option data-en-title="{{$commune->name_en}}" value="{{$commune->id}}" data-value="{{$commune->name_en}}" data-chained="{{$commune->name_en}}" class="{{$commune->name_en}}">{{$commune->name_en}}</option>
-												@endif
-										@endforeach
-									@endif
 							</select>
 						</div>
 					</div>

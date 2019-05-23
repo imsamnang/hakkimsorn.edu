@@ -8,18 +8,18 @@ class CategoryTableSeeder extends Seeder
   {
 	\DB::table('categories')->truncate();
 	// categories
-  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Phones & Tablets', 'icon'=>'default.png']);
-  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Computers & Accessories', 'icon'=>'default.png']);
-  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Electronics & Appliances', 'icon'=>'default.png']);
-  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Cars and Vehicles', 'icon'=>'default.png']);
-  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => ' House & Lands', 'icon'=>'default.png']);
-  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Jobs', 'icon'=>'default.png']);
-  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Services', 'icon'=>'default.png']);
-  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Fashion & Beauty', 'icon'=>'default.png']);
-  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Books, Sports & Hobbies', 'icon'=>'default.png']);
-  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Furniture & Decor', 'icon'=>'default.png']);
-  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Pets', 'icon'=>'default.png']);  	  	  	  	  	  	  	  	
-  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Foods', 'icon'=>'default.png']);
+  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Phones & Tablets', 'icon'=>'mobile-phones-tablets.png']);
+  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Computers & Accessories', 'icon'=>'computer-and-accessories.png']);
+  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Electronics & Appliances', 'icon'=>'electronics-appliances.png']);
+  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Cars and Vehicles', 'icon'=>'cars-and-vehicles.png']);
+  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => ' House & Lands', 'icon'=>'property-housing-rentals.png']);
+  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Jobs', 'icon'=>'jobs.png']);
+  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Services', 'icon'=>'services.png']);
+  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Fashion & Beauty', 'icon'=>'fashion-beauty.png']);
+  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Books, Sports & Hobbies', 'icon'=>'books-sports-hobbies.png']);
+  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Furniture & Decor', 'icon'=>'furniture-decor.png']);
+  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Pets', 'icon'=>'pets.png']);  	  	  	  	  	  	  	  	
+  	\DB::table('categories')->insert(['parent_id' => '0','category_name' => 'Foods', 'icon'=>'foods.png']);
 
 // parent_category
   // Phones, Tablets
@@ -133,7 +133,7 @@ class CategoryTableSeeder extends Seeder
   	\DB::table('categories')->insert(['parent_id' => '10','category_name' => 'Household Items','form_name'=>'furniture_decos.create']);
   	\DB::table('categories')->insert(['parent_id' => '10','category_name' => 'Office Furniture','form_name'=>'furniture_decos.create']);
   	\DB::table('categories')->insert(['parent_id' => '10','category_name' => 'Home Furniture','form_name'=>'furniture_decos.create']);
-  	\DB::table('categories')->insert(['parent_id' => '10','category_name' => 'Kitchenware','form_name'=>'furniture_decos.kitchenware.create']);
+  	\DB::table('categories')->insert(['parent_id' => '10','category_name' => 'Kitchenware','form_name'=>'furniture_decos.create']);
   	\DB::table('categories')->insert(['parent_id' => '10','category_name' => 'Handicrafts Paintings','form_name'=>'furniture_decos.create']);
   // Pets
   	\DB::table('categories')->insert(['parent_id' => '11','category_name' => 'Dogs','form_name'=>'pets.create']);

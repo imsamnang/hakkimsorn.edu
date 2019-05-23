@@ -70,7 +70,7 @@
 			<div class="post_form">
 				<form action="{{route('post.store')}}" class="form form-horizontal" method="post" accept-charset="utf-8" enctype="multipart/form-data" id="form_post">
 					{{csrf_field()}}		
-						@include('freeads.form')
+						@include('book_sport_hobbies.form')
 				</form>
 			</div>
 			{{-- Posting Rule --}}
