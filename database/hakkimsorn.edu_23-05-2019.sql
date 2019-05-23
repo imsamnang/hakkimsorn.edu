@@ -2,7 +2,7 @@
 -- Host:                         127.0.0.1
 -- Server version:               5.7.23 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
--- HeidiSQL Version:             10.1.0.5464
+-- HeidiSQL Version:             9.5.0.5196
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -175,7 +175,7 @@ INSERT INTO `categories` (`id`, `parent_id`, `category_name`, `category_name_kh`
 	(111, 10, 'Household Items', NULL, NULL, 'furniture_decos.create', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL),
 	(112, 10, 'Office Furniture', NULL, NULL, 'furniture_decos.create', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL),
 	(113, 10, 'Home Furniture', NULL, NULL, 'furniture_decos.create', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL),
-	(114, 10, 'Kitchenware', NULL, NULL, 'furniture_decos.kitchenware.create', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL),
+	(114, 10, 'Kitchenware', NULL, NULL, 'furniture_decos.create', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL),
 	(115, 10, 'Handicrafts Paintings', NULL, NULL, 'furniture_decos.create', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL),
 	(116, 11, 'Dogs', NULL, NULL, 'pets.create', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL),
 	(117, 11, 'Cats', NULL, NULL, 'pets.create', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL),
