@@ -108,6 +108,7 @@ class PostController extends Controller
     $property->category_id = $request->category_id;
     $property->parent_id = $request->parent_id;
     $property->title = $request->title;
+    $property->slug = $this->make_slug($request->title);
     $property->size = $request->size;
     $property->price = $request->price;
     $property->description = $request->description;
@@ -165,23 +166,23 @@ class PostController extends Controller
 
     if(in_array($operator1,  $cellcards)){
       $operator_name1 = 'Cellcard';
-    } else if(in_array($operator1,  $smarts)){
+    } else if(in_array($operator1,$smarts)){
       $operator_name1 = 'Smart';
-    } else if(in_array($operator1,  $metfones)){
+    } else if(in_array($operator1,$metfones)){
       $operator_name1 = 'Metfone';
-    } else if(in_array($operator1,  $qbs)){
+    } else if(in_array($operator1,$qbs)){
       $operator_name1 = 'Qb';
     } else {
       $operator_name1 = 'Other';
     }
 
-    if(in_array($operator2,  $cellcards)){
+    if(in_array($operator2,$cellcards)){
       $operator_name2 = 'Cellcard';
-    } else if(in_array($operator2,  $smarts)){
+    } else if(in_array($operator2,$smarts)){
       $operator_name2 = 'Smart';
-    } else if(in_array($operator2,  $metfones)){
+    } else if(in_array($operator2,$metfones)){
       $operator_name2 = 'Metfone';
-    } else if(in_array($operator2,  $qbs)){
+    } else if(in_array($operator2,$qbs)){
       $operator_name2 = 'Qb';
     } else {
       $operator_name2 = 'Other';
@@ -197,7 +198,8 @@ class PostController extends Controller
       $operator_name3 = 'Qb';
     } else {
       $operator_name3 = 'Other';
-    } 
+    }
+     
     $random_properties = Property::inRandomOrder()->take(15)->get();
     // return $random_properties;
     $images = PropertyGallery::where('property_id',$property->id)->get();

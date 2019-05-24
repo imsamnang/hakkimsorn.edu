@@ -2,7 +2,7 @@
 -- Host:                         127.0.0.1
 -- Server version:               5.7.23 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
--- HeidiSQL Version:             9.5.0.5196
+-- HeidiSQL Version:             10.1.0.5464
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -696,7 +696,7 @@ CREATE TABLE IF NOT EXISTS `properties` (
   `phone2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone3` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `province_id` int(11) NOT NULL,
+  `province_id` tinyint(4) NOT NULL,
   `district_id` int(11) NOT NULL,
   `commune_id` int(11) NOT NULL,
   `location` text COLLATE utf8mb4_unicode_ci,
@@ -710,8 +710,8 @@ CREATE TABLE IF NOT EXISTS `properties` (
 -- Dumping data for table hakkimsorn.edu.properties: 3 rows
 /*!40000 ALTER TABLE `properties` DISABLE KEYS */;
 INSERT INTO `properties` (`id`, `user_id`, `category_id`, `parent_id`, `title`, `slug`, `size`, `price`, `description`, `name`, `phone1`, `phone2`, `phone3`, `email`, `province_id`, `district_id`, `commune_id`, `location`, `deleted_at`, `status`, `created_at`, `updated_at`) VALUES
-	(1, 1, 5, 40, 'ដីសម្រាប់ជួលឡូទី១', 'ដីសម្រាប់ជួលឡូទី១', '1500', 450.00, 'ដីសម្រាប់ជួលឡូទី១', 'Samnang Im', '070343143', '077343143', '060343143', 'sonita@gmail.com', 4, 27, 177, 'ដីសម្រាប់ជួលឡូទី១', NULL, 1, '2019-05-23 04:40:54', '2019-05-23 04:40:54'),
-	(2, 1, 5, 40, 'ដីសម្រាប់ជួលឡូទី២', 'ដីសម្រាប់ជួលឡូទី២', '1050', 360.00, 'ដីសម្រាប់ជួលឡូទី២', 'sonita', '077579538', '093579538', NULL, 'sonita@gmail.com', 4, 29, 181, 'ដីសម្រាប់ជួលឡូទី២', NULL, 1, '2019-05-23 04:48:02', '2019-05-23 04:48:02'),
+	(1, 1, 5, 40, 'ដីឡូ សម្រាប់ជួល ឡូ ទី១', 'ដីឡូ-សម្រាប់ជួល-ឡូ-ទី១', '1500', 450.00, 'ដីសម្រាប់ជួលឡូទី១', 'Samnang Im', '070343143', '077343143', '060343143', 'sonita@gmail.com', 1, 27, 177, 'ដីសម្រាប់ជួលឡូទី១', NULL, 1, '2019-05-23 04:40:54', '2019-05-23 14:39:22'),
+	(2, 1, 5, 40, 'ដី សម្រាប់ជួល ឡូទី២', 'ដី-សម្រាប់ជួល-ឡូទី២', '1050', 360.00, 'ដីសម្រាប់ជួលឡូទី២', 'sonita', '077579538', '093579538', NULL, 'sonita@gmail.com', 2, 29, 181, 'ដីសម្រាប់ជួលឡូទី២', NULL, 1, '2019-05-23 04:48:02', '2019-05-23 14:39:49'),
 	(3, 1, 5, 40, 'ដីឡូ សម្រាប់ជួល ឡូទី៣', 'ដីឡូ-សម្រាប់ជួល-ឡូទី៣', '2500', 360.00, 'ដីឡូ សម្រាប់ជួល ឡូទី៣', 'House in Siemreap', '0885632541', NULL, NULL, 'user@gmail.com', 1, 4, 22, 'ដីឡូ សម្រាប់ជួល ឡូទី៣', NULL, 1, '2019-05-23 08:54:30', '2019-05-23 08:54:30');
 /*!40000 ALTER TABLE `properties` ENABLE KEYS */;
 
