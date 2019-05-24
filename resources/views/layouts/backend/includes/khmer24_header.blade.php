@@ -57,7 +57,7 @@
 			</nav>	
 		@else	
 			<nav class="navbar row">
-				<a href="#" class="navbar-brand"><img src="{{asset('assets/img/tinhtoday_navbar.png')}}" alt="Khmer24"></a>
+				<a href="{{route('home')}}" class="navbar-brand"><img src="{{asset('assets/img/tinhtoday_navbar.png')}}" alt="Khmer24"></a>
 				<ul class="nav mr-auto left-nav">
 					<li class="nav-item">
 						<a class="nav-link disabled btn-change-lang" href="{{route('post.index')}}"><span class="icon khmer-flage"></span></a>
@@ -83,7 +83,6 @@
 				</ul>
 			</nav>
 		@endif
-
 
 		<div id="header-search">
 			<form class="form-inline form-mini-search p-0 pb-2 mr-auto" action="#search" method="get">

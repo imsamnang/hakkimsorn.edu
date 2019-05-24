@@ -74,7 +74,7 @@
 										</li>
 										<li>
 											<span class="title">View :</span>
-											<span class="value">333</span>
+											<span class="value">{{ $property->view_count }}</span>
 										</li>
 									</ul>
 										<a rel="nofollow" href="#" class="btn-save-item save_ad">
@@ -115,79 +115,94 @@
 										<div class="num">{{str_limit($property->phone1, 5, 'xxx')}}</div>
 										<div class="btn_link">Click to show phone number</div>
 									</a>
-									<div class="list_numbers d-none">
-										<ul class="list-unstyled m-0">
-											@if ($property->phone1!='')
-												<li class="number">
-													<a href="tel:{{$phone1?$phone1:''}}" rel="nofollow" class="number-0 small" title="{{$operator_name1}}:{{$phone1}}">
-													<img class="icon-provider"
-														@if ($operator_name1=="Cellcard")
-															src="{{asset('assets/img/sim/cellcard.png')}}"												
-														@endif
-														@if ($operator_name1=="Smart")
-															src="{{asset('assets/img/sim/smart.png')}}"												
-														@endif
-														@if ($operator_name1=="Metfone")
-															src="{{asset('assets/img/sim/metfone.png')}}"												
-														@endif											
-													alt="{{$operator_name1}}">
-													<div class="num">{{$phone1?$phone1:''}}</div>
-													</a>
-												</li>
-											@endif
-											@if ($property->phone2!='')
-												<li class="number">
-													<a href="tel:{{$phone2?$phone2:''}}" rel="nofollow" class="number-1 small" title="{{$operator_name2}}:{{$phone2}}">
-													<img class="icon-provider" 
-														@if ($operator_name2=="Cellcard")
-															src="{{asset('assets/img/sim/cellcard.png')}}"												
-														@endif
-														@if ($operator_name2=="Smart")
-															src="{{asset('assets/img/sim/smart.png')}}"												
-														@endif
-														@if ($operator_name2=="Metfone")
-															src="{{asset('assets/img/sim/metfone.png')}}"												
-														@endif											
-													alt="{{$operator_name2}}">
-													<div class="num">{{$phone2?$phone2:''}}</div>
-													</a>
-												</li>
-											@endif
-											@if ($property->phone3!='')
-												<li class="number">
-													<a href="tel:{{$phone3?$phone3:''}}" rel="nofollow" class="number-2 small" title="{{$operator_name3}}:{{$phone3}}">
-													<img class="icon-provider" 
-														@if ($operator_name3=="Cellcard")
-															src="{{asset('assets/img/sim/cellcard.png')}}"												
-														@endif
-														@if ($operator_name3=="Smart")
-															src="{{asset('assets/img/sim/smart.png')}}"												
-														@endif
-														@if ($operator_name3=="Metfone")
-															src="{{asset('assets/img/sim/metfone.png')}}"												
-														@endif	
-													alt="{{$operator_name3}}">
-													<div class="num">{{$phone3?$phone3:''}}</div>
-													</a>
-												</li>
-											@endif
-									 </ul>
-									</div>
+										<div class="list_numbers d-none">
+											<ul class="list-unstyled m-0">
+												@if ($property->phone1!='')
+													<li class="number">
+														<a href="tel:{{$phone1?$phone1:''}}" rel="nofollow" class="number-0 small" title="{{$operator_name1}}:{{$phone1}}">
+														<img class="icon-provider"
+															@if ($operator_name1=="Cellcard")
+																src="{{asset('assets/img/sim/cellcard.png')}}"	
+															@endif
+															@if ($operator_name1=="Smart")
+																src="{{asset('assets/img/sim/smart.png')}}"												
+															@endif
+															@if ($operator_name1=="Metfone")
+																src="{{asset('assets/img/sim/metfone.png')}}"												
+															@endif
+															@if ($operator_name1=="Qb")
+																src="{{asset('assets/img/sim/qb.png')}}"												
+															@endif
+															@if ($operator_name1=="Other")
+																src="{{asset('assets/img/sim/other.png')}}"												
+															@endif
+															alt="{{$operator_name1}}">
+														<div class="num">{{$phone1?$phone1:''}}</div>
+														</a>
+													</li>
+												@endif
+												@if ($property->phone2!='')
+													<li class="number">
+														<a href="tel:{{$phone2?$phone2:''}}" rel="nofollow" class="number-1 small" title="{{$operator_name2}}:{{$phone2}}">
+														<img class="icon-provider" 
+															@if ($operator_name2=="Cellcard")
+																src="{{asset('assets/img/sim/cellcard.png')}}"												
+															@endif
+															@if ($operator_name2=="Smart")
+																src="{{asset('assets/img/sim/smart.png')}}"												
+															@endif
+															@if ($operator_name2=="Metfone")
+																src="{{asset('assets/img/sim/metfone.png')}}"												
+															@endif
+															@if ($operator_name2=="Qb")
+																src="{{asset('assets/img/sim/qb.png')}}"												
+															@endif
+															@if ($operator_name2=="Other")
+																src="{{asset('assets/img/sim/other.png')}}"												
+															@endif															
+														alt="{{$operator_name2}}">
+														<div class="num">{{$phone2?$phone2:''}}</div>
+														</a>
+													</li>
+												@endif
+												@if ($property->phone3!='')
+													<li class="number">
+														<a href="tel:{{$phone3?$phone3:''}}" rel="nofollow" class="number-2 small" title="{{$operator_name3}}:{{$phone3}}">
+														<img class="icon-provider" 
+															@if ($operator_name3=="Cellcard")
+																src="{{asset('assets/img/sim/cellcard.png')}}"											
+															@endif
+															@if ($operator_name3=="Smart")
+																src="{{asset('assets/img/sim/smart.png')}}"												
+															@endif
+															@if ($operator_name3=="Metfone")
+																src="{{asset('assets/img/sim/metfone.png')}}"												
+															@endif
+															@if ($operator_name3=="Qb")
+																src="{{asset('assets/img/sim/qb.png')}}"												
+															@endif
+															@if ($operator_name3=="Other")
+																src="{{asset('assets/img/sim/other.png')}}"												
+															@endif															
+														alt="{{$operator_name3}}">
+														<div class="num">{{$phone3?$phone3:''}}</div>
+														</a>
+													</li>
+												@endif
+										 	</ul>
+										</div>
 								</div>
 							</div>
-
 							<div class="item-footer border-top p-1">
 								<a class="btn btn-link text-primary btn-sm" rel="nofollow" onclick="javascript:void window.open('https://www.facebook.com/sharer/sharer.php?u={{ $property->title }}','1422871850498','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$property->title}}">
 									<span class="icon icon-share"></span> Share</a>
 								<a class="btn btn-link text-primary btn-sm float-right" data-toggle="modal" data-target="#report-modal"><span class="icon icon-warning"></span> Report</a>
 							</div>
 						</div>
-
 						<div class="disclaimer p-3 bg-white border mt-3">
 							<div class="title">ការមិនទទួលខុសត្រូវ / Disclaimer</div>
 							<div class="info">យើងខ្ញុំមិនគ្រប់គ្រងមាតិកា ដែលបានបង្ហោះឡើងដោយសមាជិកឡើយ។ ដូច្នេះយើងមិនទទួលខុសត្រូវលើការផ្សាយផលិតផលនេះទេ ហើយក៏មិនធានាចំពោះបញ្ហាដែលទាក់ទងដោយផ្ទាល់ ឬ ប្រយោលទៅនឹងសកម្មភាព ឬ អសកម្មណាមួយឡើយ។<br>We does not control the content posted by members and therefore assumes no responsibility and disclaims any liability for any consequence relating directly or indirectly to any action or inaction.</div>
 						</div>
-
 						<div class="relate-items mt-3">
 							<div class="item-content">
 								<ul class="list-unstyled items">
@@ -208,50 +223,117 @@
 							</div>
 						</div>
 					</div>
-
 					<aside class="col-4 right-side">
 						<div class="bg-white border rounded profile">
-						<a class="header" href="#BusinessChannel">
-						<div class="image">
-						<img class="img-cover" src="{{asset('assets/img/businesschann_a4.jpg')}}" />
-						</div>
-						<div class="detail">
-						<p class="name">Business Channel Cambodia</p>
-						<p class="last-active">Last Active Yesterday</p>
-						<p class="btn-link">Show all ad from this user</p>
-						</div>
-						</a>
-						<div class="content">
-							<div class="phone_box btn_show_phone">
-								<a href="#show_phone" rel="nofollow" class="btn_show_phone_box"><span class="icon_phone"></span>
-									<div class="num">{{str_limit($phone1, 5, 'xxx')}}</div>
-									<div class="btn_link">Click to show phone number</div>
-								</a>
-								<div class="list_numbers d-none">
-									<ul class="list-unstyled m-0">
-										@for ($i = 1; $i <=3 ; $i++)											
-											${{'phone'}}{{$i}}								
-										@endfor
-									</ul>
-								</div>
+							<a class="header" href="#BusinessChannel">
+							<div class="image">
+							<img class="img-cover" src="{{asset('assets/img/businesschann_a4.jpg')}}" />
 							</div>
-							<ul class="list-unstyled user-info m-0">
-								<li>
-									<a class="btn-link" href="https://www.khmer24.com/en/SBRealEstate"><span class="icon icon-store"></span> https://www.khmer24.com/en/SBRealEstate</a>
-								</li>
-								<li>
-								<span class="icon icon-location"></span> Phnom Penh , PP </li>
-							</ul>
-							<a class="map_box btn_showMap" target="_blank" href="https://maps.google.com/maps?q=11.57988530000000,104.85713680000000&amp;17" rel="nofollow">
-								<div class="text btn btn-block btn-default">
-									<span class="icon icon-google-map"></span> Show on Google Map
-								</div>
+							<div class="detail">
+							<p class="name">Business Channel Cambodia</p>
+							<p class="last-active">Last Active Yesterday</p>
+							<p class="btn-link">Show all ad from this user</p>
+							</div>
 							</a>
-						</div>
-
-						<div class="footer border-top">
-						<a class="btn btn-warning btn-block" href="/"><span class="icon icon-chat"></span> Chat</a>
-						</div>
+							<div class="content clearfix">
+								<div class="phone_box btn_show_phone">
+									<a href="#show_phone" rel="nofollow" class="btn_show_phone_box"><span class="icon_phone"></span>
+										<div class="num">{{str_limit($phone1, 5, 'xxx')}}</div>
+										<div class="btn_link">Click to show phone number</div>
+									</a>
+										<div class="list_numbers d-none">
+											<ul class="list-unstyled m-0">
+												@if ($property->phone1!='')
+													<li class="number">
+														<a href="tel:{{$phone1?$phone1:''}}" rel="nofollow" class="number-0 small" title="{{$operator_name1}}:{{$phone1}}">
+														<img class="icon-provider"
+															@if ($operator_name1=="Cellcard")
+																src="{{asset('assets/img/sim/cellcard.png')}}"	
+															@endif
+															@if ($operator_name1=="Smart")
+																src="{{asset('assets/img/sim/smart.png')}}"												
+															@endif
+															@if ($operator_name1=="Metfone")
+																src="{{asset('assets/img/sim/metfone.png')}}"												
+															@endif
+															@if ($operator_name1=="Qb")
+																src="{{asset('assets/img/sim/qb.png')}}"												
+															@endif
+															@if ($operator_name1=="Other")
+																src="{{asset('assets/img/sim/other.png')}}"												
+															@endif															
+														alt="{{$operator_name1}}">
+														<div class="num">{{$phone1?$phone1:''}}</div>
+														</a>
+													</li>
+												@endif
+												@if ($property->phone2!='')
+													<li class="number">
+														<a href="tel:{{$phone2?$phone2:''}}" rel="nofollow" class="number-1 small" title="{{$operator_name2}}:{{$phone2}}">
+														<img class="icon-provider" 
+															@if ($operator_name2=="Cellcard")
+																src="{{asset('assets/img/sim/cellcard.png')}}"												
+															@endif
+															@if ($operator_name2=="Smart")
+																src="{{asset('assets/img/sim/smart.png')}}"												
+															@endif
+															@if ($operator_name2=="Metfone")
+																src="{{asset('assets/img/sim/metfone.png')}}"												
+															@endif
+															@if ($operator_name2=="Qb")
+																src="{{asset('assets/img/sim/qb.png')}}"												
+															@endif
+															@if ($operator_name2=="Other")
+																src="{{asset('assets/img/sim/other.png')}}"												
+															@endif																	
+														alt="{{$operator_name2}}">
+														<div class="num">{{$phone2?$phone2:''}}</div>
+														</a>
+													</li>
+												@endif
+												@if ($property->phone3!='')
+													<li class="number">
+														<a href="tel:{{$phone3?$phone3:''}}" rel="nofollow" class="number-2 small" title="{{$operator_name3}}:{{$phone3}}">
+														<img class="icon-provider" 
+															@if ($operator_name3=="Cellcard")
+																src="{{asset('assets/img/sim/cellcard.png')}}"											
+															@endif
+															@if ($operator_name3=="Smart")
+																src="{{asset('assets/img/sim/smart.png')}}"												
+															@endif
+															@if ($operator_name3=="Metfone")
+																src="{{asset('assets/img/sim/metfone.png')}}"												
+															@endif
+															@if ($operator_name3=="Qb")
+																src="{{asset('assets/img/sim/qb.png')}}"												
+															@endif
+															@if ($operator_name3=="Other")
+																src="{{asset('assets/img/sim/other.png')}}"												
+															@endif															
+														alt="{{$operator_name3}}">
+														<div class="num">{{$phone3?$phone3:''}}</div>
+														</a>
+													</li>
+												@endif
+										 </ul>
+										</div>
+								</div>
+								<ul class="list-unstyled user-info m-0">
+									<li>
+										<a class="btn-link" href="https://www.khmer24.com/en/SBRealEstate"><span class="icon icon-store"></span> https://www.khmer24.com/en/SBRealEstate</a>
+									</li>
+									<li>
+									<span class="icon icon-location"></span> Phnom Penh , PP </li>
+								</ul>
+								<a class="map_box btn_showMap" target="_blank" href="https://maps.google.com/maps?q=11.57988530000000,104.85713680000000&amp;17" rel="nofollow">
+									<div class="text btn btn-block btn-default">
+										<span class="icon icon-google-map"></span> Show on Google Map
+									</div>
+								</a>
+							</div>
+							<div class="footer border-top">
+								<a class="btn btn-warning btn-block" href="/"><span class="icon icon-chat"></span> Chat</a>
+							</div>
 						</div>
 					</aside>
 

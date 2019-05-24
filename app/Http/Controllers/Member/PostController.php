@@ -13,6 +13,7 @@ use App\Model\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -40,7 +41,7 @@ class PostController extends Controller
 
   public function index()
   {
-  	$categories = Category::where(['parent_id'=>0])->get();
+  	$categories = Category::where(['parent_id'=>0])->published()->get();
   	return view('freeads.index',compact('categories'));
   }
 
@@ -166,18 +167,10 @@ class PostController extends Controller
     $operator1 = substr($property->phone1, 0,3);
     $operator2 = substr($property->phone2, 0,3);
     $operator3 = substr($property->phone3, 0,3);
-
-    if(in_array($operator1,  $cellcards)){
-      $operator_name1 = 'Cellcard';
-    } else if(in_array($operator1,$smarts)){
-      $operator_name1 = 'Smart';
-    } else if(in_array($operator1,$metfones)){
-      $operator_name1 = 'Metfone';
-    } else if(in_array($operator1,$qbs)){
-      $operator_name1 = 'Qb';
     $phone1 = $property->phone1;
     $phone2 = $property->phone2;
     $phone3 = $property->phone3;
+
     if ($property->phone1!='') {      
       $operator1 = substr($property->phone1, 0,3);
     } else {
@@ -194,14 +187,6 @@ class PostController extends Controller
       $operator3='';
     }
 
-    if(in_array($operator2,$cellcards)){
-      $operator_name2 = 'Cellcard';
-    } else if(in_array($operator2,$smarts)){
-      $operator_name2 = 'Smart';
-    } else if(in_array($operator2,$metfones)){
-      $operator_name2 = 'Metfone';
-    } else if(in_array($operator2,$qbs)){
-      $operator_name2 = 'Qb';
     if($operator1){
       if(in_array($operator1,  $cellcards)){
         $operator_name1 = 'Cellcard';
@@ -231,9 +216,6 @@ class PostController extends Controller
         $operator_name2 = 'Other';
       }
     } else {
-      $operator_name3 = 'Other';
-    }
-     
       $operator_name2 = '';
     }
 
@@ -252,8 +234,13 @@ class PostController extends Controller
     } else {
       $operator_name3 = '';
     }
+    $blogKey = 'blog_' .$property->id;
+    if(!Session::has($blogKey)){
+        $property->increment('view_count');
+        Session::put($blogKey,1);
+    }
     $random_properties = Property::inRandomOrder()->take(15)->get();
-    // return $random_properties;
+    // return $operator_name3;
     $images = PropertyGallery::where('property_id',$property->id)->get();
     return view('freeads.show',compact('property','images','categories','operator_name1','operator_name2','operator_name3','random_properties','phone1','phone2','phone3'));
   }

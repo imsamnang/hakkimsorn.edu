@@ -10,14 +10,14 @@
 @section('content')
 
 	<div class="container">
-		{{-- 		@include('properties') --}}
+		{{-- @include('properties') --}}
 		<div class="home-page">
 			<!-- top menu -->
 			<section class="bg-white border-bottom nav-header-bar menu-items">
 					<div class="my-container">
 					<ul class="nav">
 						<li class="nav-item">
-							<a class="nav-link active" href="https://www.khmer24.com/en/property.html"><span class="icon icon-home"></span></a>
+							<a class="nav-link active" href="{{ route('home') }}"><span class="icon icon-home"></span></a>
 						</li>
 						<li class="nav-item">
 							<div class="dropdown">
@@ -64,7 +64,7 @@
 					<div class="pb-3 pt-2">
 						<div class="row justify-content-center">
 							<div class="col-9">
-								<form class="form" action="https://www.khmer24.com/en/property/search" method="get">
+								<form class="form" action="#" method="get">
 									<div class="input-group form-row">
 										<input type="text" class="form-control" name="q" placeholder="Search House & Lands...">
 										<select class="form-control col-3" name="category" required>

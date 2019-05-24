@@ -5,7 +5,7 @@
 	<div class="row filter pb-3">
 		<div class="col col-3">
 			<div class="btn-group manage_ads_tab" role="group" aria-label="Basic example">
-				<a class="disabled active_ads btn btn-default" href="#manage-ads.html">Active Ads <span class="counter badge badge-primary ml-1">1</span></a>
+				<a class="disabled active_ads btn btn-default" href="#manage-ads.html">Active Ads <span class="counter badge badge-primary ml-1">{{ $properties->count() }}</span></a>
 				<a class=" expired_ads btn btn-default" href="#expired-ads.html">Expired Ads </a>
 			</div>
 		</div>
@@ -68,7 +68,7 @@
 									</a>
 									<div class="post_detail">
 										<a class="title" href="{{ route('post.show',$property->slug) }}" title="{{ $property->title }}">{{ $property->title }}</a>
-										<div class="ad_price">{{ $property->price }}</div>
+										<div class="ad_price">${{ $property->price }}</div>
 										<div class="save_ads_sumery">
 											<dl>
 												<dt>Ad ID:</dt>
@@ -84,7 +84,7 @@
 											</dl>
 											<dl>
 												<dt>View:</dt>
-													<dd>0</dd>
+													<dd>{{ $property->view_count }}</dd>
 											</dl>
 										</div>
 										<p class="save_post_detail">

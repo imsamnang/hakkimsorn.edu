@@ -28,38 +28,43 @@ class Property extends Eloquent
 
 	public function user()
 	{
-			return $this->belongsTo(User::class,'user_id','id');
+		return $this->belongsTo(User::class,'user_id','id');
 	}
 
 	public function province()
 	{
-			return $this->belongsTo(Province::class,'province_id','id');
+		return $this->belongsTo(Province::class,'province_id','id');
 	}
 
 	public function district()
 	{
-			return $this->belongsTo(District::class,'district_id','id');
+		return $this->belongsTo(District::class,'district_id','id');
 	}
 
 	public function commune()
 	{
-			return $this->belongsTo(Commune::class,'commune_id','id');
+		return $this->belongsTo(Commune::class,'commune_id','id');
 	}	
 
 	public function category()
 	{
-			return $this->belongsTo(Category::class,'category_id','id');
+		return $this->belongsTo(Category::class,'category_id','id');
 	}
 
 	public function parent()
 	{
-			return $this->belongsTo(Category::class,'parent_id','id');
+		return $this->belongsTo(Category::class,'parent_id','id');
 	}
 
   public function galleries()
   {
 		return $this->hasMany(PropertyGallery::class,'property_id','id');
   }	
+
+  public function scopePublished($query)
+  {
+    return $query->where('is_active',1);
+  }
 
   
 }

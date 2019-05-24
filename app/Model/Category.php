@@ -23,6 +23,11 @@ class Category extends upload
 
 	public function childs()
 	{
-		return $this->hasMany(Category::class,'parent_id','id');
+		return $this->hasMany(Category::class,'parent_id','id')->published();
 	}
+
+  public function scopePublished($query)
+  {
+      return $query->where('is_active',1);
+  }	
 }
