@@ -20,6 +20,9 @@ class PostController extends Controller
   protected $operator_name1 = '';
   protected $operator_name2 = '';
   protected $operator_name3 = '';
+  protected $operator1 = '';
+  protected $operator2 = '';
+  protected $operator3 = '';
 
   public function getDistrictList(Request $request)
   {
@@ -172,8 +175,23 @@ class PostController extends Controller
       $operator_name1 = 'Metfone';
     } else if(in_array($operator1,$qbs)){
       $operator_name1 = 'Qb';
+    $phone1 = $property->phone1;
+    $phone2 = $property->phone2;
+    $phone3 = $property->phone3;
+    if ($property->phone1!='') {      
+      $operator1 = substr($property->phone1, 0,3);
     } else {
-      $operator_name1 = 'Other';
+      $operator1='';
+    }
+    if ($property->phone2!='') {      
+      $operator2 = substr($property->phone2, 0,3);
+    } else {
+      $operator2='';
+    }
+    if ($property->phone3!='') {      
+      $operator3 = substr($property->phone3, 0,3);
+    } else {
+      $operator3='';
     }
 
     if(in_array($operator2,$cellcards)){
@@ -184,26 +202,60 @@ class PostController extends Controller
       $operator_name2 = 'Metfone';
     } else if(in_array($operator2,$qbs)){
       $operator_name2 = 'Qb';
+    if($operator1){
+      if(in_array($operator1,  $cellcards)){
+        $operator_name1 = 'Cellcard';
+      } else if(in_array($operator1,  $smarts)){
+        $operator_name1 = 'Smart';
+      } else if(in_array($operator1,  $metfones)){
+        $operator_name1 = 'Metfone';
+      } else if(in_array($operator1,  $qbs)){
+        $operator_name1 = 'Qb';
+      } else {
+        $operator_name1 = 'Other';
+      }
     } else {
-      $operator_name2 = 'Other';
+      $operator_name1 = '';
     }
 
-    if(in_array($operator3,  $cellcards)){
-      $operator_name3 = 'Cellcard';
-    } else if(in_array($operator3,  $smarts)){
-      $operator_name3 = 'Smart';
-    } else if(in_array($operator3,  $metfones)){
-      $operator_name3 = 'Metfone';
-    } else if(in_array($operator3,  $qbs)){
-      $operator_name3 = 'Qb';
+    if($operator2){
+      if(in_array($operator2,  $cellcards)){
+        $operator_name2 = 'Cellcard';
+      } else if(in_array($operator2,  $smarts)){
+        $operator_name2 = 'Smart';
+      } else if(in_array($operator2,  $metfones)){
+        $operator_name2 = 'Metfone';
+      } else if(in_array($operator2,  $qbs)){
+        $operator_name2 = 'Qb';
+      } else {
+        $operator_name2 = 'Other';
+      }
     } else {
       $operator_name3 = 'Other';
     }
      
+      $operator_name2 = '';
+    }
+
+    if($operator3){
+      if(in_array($operator3,  $cellcards)){
+        $operator_name3 = 'Cellcard';
+      } else if(in_array($operator3,  $smarts)){
+        $operator_name3 = 'Smart';
+      } else if(in_array($operator3,  $metfones)){
+        $operator_name3 = 'Metfone';
+      } else if(in_array($operator3,  $qbs)){
+        $operator_name3 = 'Qb';
+      } else {
+        $operator_name3 = 'Other';
+      }
+    } else {
+      $operator_name3 = '';
+    }
     $random_properties = Property::inRandomOrder()->take(15)->get();
     // return $random_properties;
     $images = PropertyGallery::where('property_id',$property->id)->get();
-    return view('freeads.show',compact('property','images','categories','cellcards','smarts','metfones','qbs','operator_name1','operator_name2','operator_name3','random_properties'));
+    return view('freeads.show',compact('property','images','categories','operator_name1','operator_name2','operator_name3','random_properties','phone1','phone2','phone3'));
   }
 
   public function listProperties()
@@ -219,9 +271,9 @@ class PostController extends Controller
     return view('freeads.all_properties');
   }
 
-function make_slug($string) {
+  function make_slug($string) {
     return preg_replace('/\s+/u', '-', trim($string));
-}
+  }
 
 
 }
