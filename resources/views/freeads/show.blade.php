@@ -30,7 +30,6 @@
 				<div class="row">
 					<div class="col col-8">
 						<div class="bg-white border rounded">
-
 							<div class="item-header border-bottom">
 								{{-- slider --}}
 								<div id="slide-box">
@@ -86,7 +85,6 @@
 										</a>
 								</div>
 							</div>
-
 							<div class="item-detail p-3">
 								<h2>Description</h2>
 								<ul class="list-unstyled item-fields">
@@ -106,7 +104,6 @@
 									{!!$property->description!!}
 								</p>
 							</div>
-
 							<div class="p-3 item-contact">
 								<div class="item-mention">
 									<div>សូមចុចលើលេខទូរស័ព្ទ ដើម្បីបង្ហាញ ហើយកំុភ្លេចនិយាយថាអ្នកបានឃើញការផ្សព្វផ្សាយនេះនៅលើ tinhtoday.com។</div>
@@ -120,9 +117,9 @@
 									</a>
 									<div class="list_numbers d-none">
 										<ul class="list-unstyled m-0">
-											@if (isset($property->phone1))
+											@if ($property->phone1!='')
 												<li class="number">
-													<a href="tel:{{$property->phone1}}" rel="nofollow" class="number-0 small" title="{{$operator_name1}}:{{$property->phone1}}">
+													<a href="tel:{{$phone1?$phone1:''}}" rel="nofollow" class="number-0 small" title="{{$operator_name1}}:{{$phone1}}">
 													<img class="icon-provider"
 														@if ($operator_name1=="Cellcard")
 															src="{{asset('assets/img/sim/cellcard.png')}}"												
@@ -134,13 +131,13 @@
 															src="{{asset('assets/img/sim/metfone.png')}}"												
 														@endif											
 													alt="{{$operator_name1}}">
-													<div class="num">{{$property->phone1}}</div>
+													<div class="num">{{$phone1?$phone1:''}}</div>
 													</a>
 												</li>
 											@endif
-											@if (isset($property->phone2))
+											@if ($property->phone2!='')
 												<li class="number">
-													<a href="tel:{{$property->phone2}}" rel="nofollow" class="number-1 small" title="{{$operator_name2}}:{{$property->phone2}}">
+													<a href="tel:{{$phone2?$phone2:''}}" rel="nofollow" class="number-1 small" title="{{$operator_name2}}:{{$phone2}}">
 													<img class="icon-provider" 
 														@if ($operator_name2=="Cellcard")
 															src="{{asset('assets/img/sim/cellcard.png')}}"												
@@ -152,13 +149,13 @@
 															src="{{asset('assets/img/sim/metfone.png')}}"												
 														@endif											
 													alt="{{$operator_name2}}">
-													<div class="num">{{$property->phone2}}</div>
+													<div class="num">{{$phone2?$phone2:''}}</div>
 													</a>
 												</li>
 											@endif
-											@if (isset($property->phone3))
+											@if ($property->phone3!='')
 												<li class="number">
-													<a href="tel:{{$property->phone3}}" rel="nofollow" class="number-2 small" title="{{$operator_name3}}:{{$property->phone3}}">
+													<a href="tel:{{$phone3?$phone3:''}}" rel="nofollow" class="number-2 small" title="{{$operator_name3}}:{{$phone3}}">
 													<img class="icon-provider" 
 														@if ($operator_name3=="Cellcard")
 															src="{{asset('assets/img/sim/cellcard.png')}}"												
@@ -170,10 +167,10 @@
 															src="{{asset('assets/img/sim/metfone.png')}}"												
 														@endif	
 													alt="{{$operator_name3}}">
-													<div class="num">{{$property->phone3}}</div>
+													<div class="num">{{$phone3?$phone3:''}}</div>
 													</a>
 												</li>
-											@endif											
+											@endif
 									 </ul>
 									</div>
 								</div>
@@ -226,81 +223,32 @@
 						</a>
 						<div class="content">
 							<div class="phone_box btn_show_phone">
-								<a href="#show_phone" rel="nofollow" class="btn_show_phone_box">
-									<span class="icon_phone"></span>
-									<div class="num">{{str_limit($property->phone1, 5, 'xxx')}}</div>
+								<a href="#show_phone" rel="nofollow" class="btn_show_phone_box"><span class="icon_phone"></span>
+									<div class="num">{{str_limit($phone1, 5, 'xxx')}}</div>
 									<div class="btn_link">Click to show phone number</div>
 								</a>
-									<div class="list_numbers d-none">
-										<ul class="list-unstyled m-0">
-											@if (isset($property->phone1))
-												<li class="number">
-													<a href="tel:{{$property->phone1}}" rel="nofollow" class="number-0 small" title="{{$operator_name1}}:{{$property->phone1}}">
-													<img class="icon-provider"
-														@if ($operator_name1=="Cellcard")
-															src="{{asset('assets/img/sim/cellcard.png')}}"												
-														@endif
-														@if ($operator_name1=="Smart")
-															src="{{asset('assets/img/sim/smart.png')}}"												
-														@endif
-														@if ($operator_name1=="Metfone")
-															src="{{asset('assets/img/sim/metfone.png')}}"												
-														@endif											
-													alt="{{$operator_name1}}">
-													<div class="num">{{$property->phone1}}</div>
-													</a>
-												</li>
-											@endif
-											@if (isset($property->phone2))
-												<li class="number">
-													<a href="tel:{{$property->phone2}}" rel="nofollow" class="number-1 small" title="{{$operator_name2}}:{{$property->phone2}}">
-													<img class="icon-provider" 
-														@if ($operator_name2=="Cellcard")
-															src="{{asset('assets/img/sim/cellcard.png')}}"												
-														@endif
-														@if ($operator_name2=="Smart")
-															src="{{asset('assets/img/sim/smart.png')}}"												
-														@endif
-														@if ($operator_name2=="Metfone")
-															src="{{asset('assets/img/sim/metfone.png')}}"												
-														@endif											
-													alt="{{$operator_name2}}">
-													<div class="num">{{$property->phone2}}</div>
-													</a>
-												</li>
-											@endif
-											@if (isset($property->phone3))
-												<li class="number">
-													<a href="tel:{{$property->phone3}}" rel="nofollow" class="number-2 small" title="{{$operator_name3}}:{{$property->phone3}}">
-													<img class="icon-provider" 
-														@if ($operator_name3=="Cellcard")
-															src="{{asset('assets/img/sim/cellcard.png')}}"												
-														@endif
-														@if ($operator_name3=="Smart")
-															src="{{asset('assets/img/sim/smart.png')}}"												
-														@endif
-														@if ($operator_name3=="Metfone")
-															src="{{asset('assets/img/sim/metfone.png')}}"												
-														@endif	
-													alt="{{$operator_name3}}">
-													<div class="num">{{$property->phone3}}</div>
-													</a>
-												</li>
-											@endif											
-									 </ul>
-									</div>
+								<div class="list_numbers d-none">
+									<ul class="list-unstyled m-0">
+										@for ($i = 1; $i <=3 ; $i++)											
+											${{'phone'}}{{$i}}								
+										@endfor
+									</ul>
+								</div>
 							</div>
-						<ul class="list-unstyled user-info m-0">
-						<li>
-						<a class="btn-link" href="#BusinessChannel"><span class="icon icon-store"></span> https://www.tinhtoday.com/BusinessChannel</a>
-						</li>
-						<li>
-						<span class="icon icon-location"></span> Kandal , Samdech decho Hun Sen (60M) and National road #2 (15minute drive from kbalthnal). </li>
-						</ul>
-						<a class="map_box btn_showMap" target="_blank" href="https://maps.google.com/maps?q=12.50062847042421,104.97525008197022&amp;17" rel="nofollow">
-						<div class="text btn btn-block btn-default"><span class="icon icon-google-map"></span> Show on Google Map</div>
-						</a>
+							<ul class="list-unstyled user-info m-0">
+								<li>
+									<a class="btn-link" href="https://www.khmer24.com/en/SBRealEstate"><span class="icon icon-store"></span> https://www.khmer24.com/en/SBRealEstate</a>
+								</li>
+								<li>
+								<span class="icon icon-location"></span> Phnom Penh , PP </li>
+							</ul>
+							<a class="map_box btn_showMap" target="_blank" href="https://maps.google.com/maps?q=11.57988530000000,104.85713680000000&amp;17" rel="nofollow">
+								<div class="text btn btn-block btn-default">
+									<span class="icon icon-google-map"></span> Show on Google Map
+								</div>
+							</a>
 						</div>
+
 						<div class="footer border-top">
 						<a class="btn btn-warning btn-block" href="/"><span class="icon icon-chat"></span> Chat</a>
 						</div>
