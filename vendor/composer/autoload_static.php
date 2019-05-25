@@ -493,7 +493,6 @@ class ComposerStaticInit748c20c00be957776efff8a1d7e305f4
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
         'CategoryTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoryTableSeeder.php',
         'CommunesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CommunesTableSeeder.php',
-        'CreateLanguages' => __DIR__ . '/../..' . '/database/seeds/CreateLanguages.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',

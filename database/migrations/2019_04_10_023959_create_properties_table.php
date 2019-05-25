@@ -13,6 +13,7 @@ class CreatePropertiesTable extends Migration
       $table->integer('user_id')->unsigned();
       $table->integer('category_id')->unsigned();
       $table->integer('parent_id')->unsigned();
+      $table->integer('property_type_id')->unsigned()->default(1);
       $table->string('title',250);
       $table->string('slug',250);
       $table->string('size');
@@ -24,10 +25,11 @@ class CreatePropertiesTable extends Migration
       $table->string('phone3')->nullable();
       $table->string('email')->nullable();
       $table->tinyInteger('province_id');
-      $table->tinyInteger('district_id');
-      $table->tinyInteger('commune_id');
+      $table->Integer('district_id');
+      $table->Integer('commune_id');
       $table->text('location')->nullable();
-      $table->tinyInteger('status')->default(1);
+      $table->Integer('view_count')->default(0);
+      $table->tinyInteger('is_active')->default(1);
       $table->softDeletes();
       $table->timestamps();
     });

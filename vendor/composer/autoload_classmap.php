@@ -61,7 +61,6 @@ return array(
     'Carbon\\Translator' => $vendorDir . '/nesbot/carbon/src/Carbon/Translator.php',
     'CategoryTableSeeder' => $baseDir . '/database/seeds/CategoryTableSeeder.php',
     'CommunesTableSeeder' => $baseDir . '/database/seeds/CommunesTableSeeder.php',
-    'CreateLanguages' => $baseDir . '/database/seeds/CreateLanguages.php',
     'Cron\\AbstractField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
     'Cron\\DayOfMonthField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
