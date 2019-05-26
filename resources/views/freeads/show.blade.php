@@ -9,7 +9,6 @@
 @endpush
 
 @section('content')
-
 	<div class="detail-page">
 		<div class="my-breadcrumb">
 			<div class="my-container">
@@ -80,7 +79,7 @@
 										<a rel="nofollow" href="#" class="btn-save-item save_ad">
 											<i class="icon icon-like text_gray"></i>
 										</a>
-										<a rel="nofollow" onclick="javascript:void window.open('https://www.facebook.com/sharer/sharer.php?u=','1422871850498','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=" class="btn-share-item share_ad">
+										<a rel="nofollow" onclick="javascript:void window.open('https://www.facebook.com/sharer/sharer.php?u=','samnangim','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/samnangim" class="btn-share-item share_ad">
 											<i class="icon icon-share text_gray"></i>
 										</a>
 								</div>
@@ -95,7 +94,7 @@
 									</li>
 									<li>
 										<div>
-											<span class="title">Price:</span><span class="value">{{$property->price}}</span>
+											<span class="title">Price:</span><span class="value">${{$property->price}}</span>
 										</div>
 									</li>
 								</ul>
@@ -320,7 +319,7 @@
 								</div>
 								<ul class="list-unstyled user-info m-0">
 									<li>
-										<a class="btn-link" href="https://www.khmer24.com/en/SBRealEstate"><span class="icon icon-store"></span> https://www.khmer24.com/en/SBRealEstate</a>
+										<a class="btn-link" href="http://tinhtoday.com"><span class="icon icon-store"></span> http://tinhtoday.com</a>
 									</li>
 									<li>
 									<span class="icon icon-location"></span> Phnom Penh , PP </li>
@@ -336,11 +335,9 @@
 							</div>
 						</div>
 					</aside>
-
 				</div>
 			</div>
 		</section>
-
 		<div class="modal" tabindex="-1" role="dialog" id="report-modal">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -384,7 +381,6 @@
 				</div>
 			</div>
 		</div>
-
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$.fancybox.defaults.hash = false;			        
@@ -474,7 +470,6 @@
 			});
 		</script>
 	</div>
-
 @endsection
 
 @push('js')
