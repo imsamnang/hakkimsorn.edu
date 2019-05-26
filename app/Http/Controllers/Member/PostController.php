@@ -45,10 +45,16 @@ class PostController extends Controller
   	return view('freeads.index',compact('categories'));
   }
 
-  public function create($id)
+  public function indexEdit($id)
+  {
+    $categories = Category::where(['parent_id'=>0])->published()->get();
+    return view('freeads.index',compact('categories'));
+  }
+
+  public function create($cate_id)
   {
     $provinces = Province::pluck('name_en','id');
-    $subcategory = Category::where(['id'=>$id])->first();
+    $subcategory = Category::where(['id'=>$cate_id])->first();
     $view_name = $subcategory->form_name;
 		$category = Category::where('id',$subcategory->parent_id)->first();
     $categories = Category::where(['parent_id'=>0])->get();
@@ -86,7 +92,7 @@ class PostController extends Controller
     }
   }
   
-  public function editProperties($id)
+  public function editProperties($id,$cat_id)
   {
     $categories = Category::where(['parent_id'=>0])->get();
     $property = Property::findOrFail($id);
@@ -95,7 +101,7 @@ class PostController extends Controller
     $districts = District::where('province_id',$property->province_id)->get();
     $communes = Commune::where('district_id',$property->commune->district_id)->get();
 
-    $subcategory = Category::where(['id'=>$property->parent_id])->first();
+    $subcategory = Category::where(['id'=>$cat_id])->first();
     $category = Category::where('id',$property->category_id)->first();
 
     return view('freeads.edit',compact('property','subcategory','category','provinces','districts','communes','images','categories'));

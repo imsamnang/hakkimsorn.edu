@@ -2,10 +2,14 @@
 	<ul class="list-unstyled items-sub-categories">
 		@foreach($childs as $child)
 			<li>
-       	<a href="{{route('post.create',$child->id)}}">&raquo; {{$child->category_name}}</a>
+				@if (Request::route()->getName() == "post.index")
+	        <a href="{{route('post.create',$child->id)}}">&raquo; {{$child->category_name}}</a>
+	      @else
+					<a href="{{route('post.edit',[Request::segment(2),$child->id])}}">&raquo; {{$child->category_name}}</a>
+				@endif
 				@if(count($child->childs))
 					@include('freeads.loadsubmenu',['childs' => $child->childs])
-				@endif
+				@endif			
 			</li>
 		@endforeach
 	</ul>

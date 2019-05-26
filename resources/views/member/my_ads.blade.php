@@ -19,7 +19,7 @@
 					<label>Filter: </label>
 					<select class="form-control" name="category" style="width: 160px;">
 						<option value="">All Categories</option>
-				{{-- <option value="property-housing-rentals" class="main_cate">{{ isset($properties)?$properties[0]->category->category_name : '' }}</option>
+						{{-- <option value="property-housing-rentals" class="main_cate">{{ isset($properties)?$properties[0]->category->category_name : '' }}</option>
 						<option value="landed-properties-for-sale">- {{ isset($properties)?$properties[0]->parent->category_name:'' }}</option> --}}
 					</select>
 				</span>
@@ -37,7 +37,6 @@
 			</form>
 		</div>
 	</div>
-
 	<div id="my_content" class="">
 		<div class="post_shortcut text-center bg-white border rounded mb-3">
 			<div class="text">
@@ -103,7 +102,7 @@
 											</a>
 										</div>
 										<div class="col">
-											<a class="btn btn_edit " title="Edit" data-id="{{ $property->id }}" href="{{ route('post.edit',$property->id) }}"><span class="icon icon-edit"></span> <span class="text">Edit</span>
+											<a class="btn btn_edit " title="Edit" data-id="{{ $property->id }}" href="{{ route('post.edit',[$property->id,$property->parent_id]) }}"><span class="icon icon-edit"></span> <span class="text">Edit</span>
 											</a>
 										</div>
 										<div class="col">

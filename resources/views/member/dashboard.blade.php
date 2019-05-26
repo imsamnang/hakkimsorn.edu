@@ -2,7 +2,6 @@
 
 @push('css')
   <link rel="stylesheet" href="{{asset('assets/css/members.css')}}">
-  {{-- <script src="{{asset('assets/sweetalert2/sweetalert2.min.js')}}"></script> --}}
   <link rel="stylesheet" href="{{asset('assets/sweetalert2/sweetalert2.min.css')}}">
 @endpush
 
@@ -208,7 +207,7 @@
     <input type="hidden" value="" id="base_url">
     <input type="hidden" value="" id="template_path">
 
-{{--     <script type="text/javascript">
+  {{--<script type="text/javascript">
         $('document').ready(function(){
           var xhr_topics = null;
           var base_url = "";

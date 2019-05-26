@@ -16,9 +16,10 @@ Auth::routes();
 // free post ads route
 	Route::prefix('post')->group(function(){	
 		Route::get('/','Member\PostController@index')->name('post.index');
-		Route::get('/{post_id}/create','Member\PostController@create')->name('post.create');
+		Route::get('{id}/category={cat_id}','Member\PostController@indexEdit')->name('post.indexEdit');
+		Route::get('category={cate_id}','Member\PostController@create')->name('post.create');
 		Route::post('/','Member\PostController@saveProperties')->name('post.store');
-		Route::get('/{id}/edit','Member\PostController@editProperties')->name('post.edit');
+		Route::get('property={id}category={cat_id}','Member\PostController@editProperties')->name('post.edit');
 		Route::put('/{id}/update','Member\PostController@updateProperties')->name('post.update');
 		Route::post('/destroy','Member\PostController@deleteProperties')->name('post.destroy');
 		Route::get('/{slug}','Member\PostController@showProperties')->name('post.show');
