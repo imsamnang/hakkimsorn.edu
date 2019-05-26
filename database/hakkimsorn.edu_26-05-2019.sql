@@ -2,7 +2,7 @@
 -- Host:                         127.0.0.1
 -- Server version:               5.7.23 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
--- HeidiSQL Version:             9.5.0.5196
+-- HeidiSQL Version:             10.1.0.5464
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -13,9 +13,9 @@
 
 
 -- Dumping database structure for hakkimsorn.edu
-DROP DATABASE IF EXISTS `hakkimsorn.edu`;
-CREATE DATABASE IF NOT EXISTS `hakkimsorn.edu` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `hakkimsorn.edu`;
+-- DROP DATABASE IF EXISTS `hakkimsorn.edu`;
+-- CREATE DATABASE IF NOT EXISTS `hakkimsorn.edu` /*!40100 DEFAULT CHARACTER SET utf8 */;
+-- USE `hakkimsorn.edu`;
 
 -- Dumping structure for table hakkimsorn.edu.admins
 DROP TABLE IF EXISTS `admins`;
@@ -696,7 +696,7 @@ CREATE TABLE IF NOT EXISTS `properties` (
   `phone2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone3` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `province_id` int(11) NOT NULL,
+  `province_id` tinyint(4) NOT NULL,
   `district_id` int(11) NOT NULL,
   `commune_id` int(11) NOT NULL,
   `location` text COLLATE utf8mb4_unicode_ci,
@@ -706,14 +706,16 @@ CREATE TABLE IF NOT EXISTS `properties` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table hakkimsorn.edu.properties: 3 rows
+-- Dumping data for table hakkimsorn.edu.properties: 5 rows
 /*!40000 ALTER TABLE `properties` DISABLE KEYS */;
 INSERT INTO `properties` (`id`, `user_id`, `category_id`, `parent_id`, `title`, `slug`, `size`, `price`, `description`, `name`, `phone1`, `phone2`, `phone3`, `email`, `province_id`, `district_id`, `commune_id`, `location`, `deleted_at`, `is_active`, `view_count`, `created_at`, `updated_at`) VALUES
-	(1, 1, 5, 40, 'ដីសម្រាប់ជួលឡូទី១', 'ដីសម្រាប់ជួលឡូទី១', '1500', 450.00, 'ដីសម្រាប់ជួលឡូទី១', 'Samnang Im', '070343143', '077343143', '060343143', 'sonita@gmail.com', 4, 27, 177, 'ដីសម្រាប់ជួលឡូទី១', NULL, 1, 1, '2019-05-23 04:40:54', '2019-05-25 00:59:11'),
-	(2, 1, 5, 40, 'ដីសម្រាប់ជួលឡូទី២', 'ដីសម្រាប់ជួលឡូទី២', '1050', 360.00, 'ដីសម្រាប់ជួលឡូទី២', 'sonita', '077579538', '093579538', NULL, 'sonita@gmail.com', 4, 29, 181, 'ដីសម្រាប់ជួលឡូទី២', NULL, 1, 1, '2019-05-23 04:48:02', '2019-05-25 00:58:39'),
-	(3, 1, 5, 40, 'ដីឡូ សម្រាប់ជួល ឡូទី៣', 'ដីឡូ-សម្រាប់ជួល-ឡូទី៣', '2500', 360.00, 'ដីឡូ សម្រាប់ជួល ឡូទី៣', 'House in Siemreap', '0885632541', NULL, NULL, 'user@gmail.com', 1, 4, 22, 'ដីឡូ សម្រាប់ជួល ឡូទី៣', NULL, 1, 1, '2019-05-23 08:54:30', '2019-05-25 03:28:26');
+	(1, 1, 5, 39, 'ដីឡូ សម្រាប់ជួល ឡូ ទី១', 'ដីឡូ-សម្រាប់ជួល-ឡូ-ទី១', '1500', 450.00, 'ដីសម្រាប់ជួលឡូទី១', 'Samnang Im', '070343143', '077343143', '060343143', 'sonita@gmail.com', 1, 0, 177, 'ដីសម្រាប់ជួលឡូទី១', NULL, 1, 7, '2019-05-23 04:40:54', '2019-05-26 15:13:31'),
+	(2, 1, 5, 40, 'ដី សម្រាប់ជួល ឡូទី២', 'ដី-សម្រាប់ជួល-ឡូទី២', '1050', 360.00, 'ដីសម្រាប់ជួលឡូទី២', 'sonita', '077579538', '093579538', NULL, 'sonita@gmail.com', 2, 29, 181, 'ដីសម្រាប់ជួលឡូទី២', NULL, 1, 4, '2019-05-23 04:48:02', '2019-05-26 09:36:43'),
+	(3, 1, 5, 39, 'ដីឡូ សម្រាប់ជួល ឡូទី៣', 'ដីឡូ-សម្រាប់ជួល-ឡូទី៣', '2500', 520.00, 'ដីឡូ សម្រាប់ជួល ឡូទី៣', 'House in Siemreap', '0885632541', NULL, NULL, 'user@gmail.com', 3, 0, 22, 'ដីឡូ សម្រាប់ជួល ឡូទី៣', NULL, 1, 4, '2019-05-23 08:54:30', '2019-05-26 15:28:04'),
+	(4, 1, 5, 40, 'ដី សម្រាប់ជួល ឡូទី៤', 'ដី-សម្រាប់ជួល-ឡូទី៤', '5000', 250.00, 'ដី សម្រាប់ជួល ឡូទី៤', 'sonita', '012658225', '060666456', '023568321', 'sonita@gmail.com', 4, 30, 183, 'ដី សម្រាប់ជួល ឡូទី៤', NULL, 1, 4, '2019-05-23 16:44:16', '2019-05-26 03:08:41'),
+	(5, 1, 5, 39, 'ដីឡូ សម្រាប់លក់ ឡូ ទី៥', 'ដីឡូ-សម្រាប់លក់-ឡូ-ទី៥', '500', 250.00, 'ដីឡូ សម្រាប់លក់ ឡូ ទី៥', 'សុរិយា', '010965321', '023563254', '017652452', 'soriya@gmail.com', 5, 1, 4, 'ដីឡូ សម្រាប់លក់ ឡូ ទី៥', NULL, 1, 1, '2019-05-26 15:34:50', '2019-05-26 15:35:40');
 /*!40000 ALTER TABLE `properties` ENABLE KEYS */;
 
 -- Dumping structure for table hakkimsorn.edu.property_galleries
@@ -725,9 +727,9 @@ CREATE TABLE IF NOT EXISTS `property_galleries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table hakkimsorn.edu.property_galleries: 18 rows
+-- Dumping data for table hakkimsorn.edu.property_galleries: 30 rows
 /*!40000 ALTER TABLE `property_galleries` DISABLE KEYS */;
 INSERT INTO `property_galleries` (`id`, `property_id`, `gallery_image`, `created_at`, `updated_at`) VALUES
 	(1, 1, '1361179976.jpeg', '2019-05-23 04:40:54', '2019-05-23 04:40:54'),
@@ -747,7 +749,19 @@ INSERT INTO `property_galleries` (`id`, `property_id`, `gallery_image`, `created
 	(15, 3, '1207807222.jpg', '2019-05-23 08:54:30', '2019-05-23 08:54:30'),
 	(16, 3, '1061182181.jpg', '2019-05-23 08:54:30', '2019-05-23 08:54:30'),
 	(17, 3, '1349304986.jpg', '2019-05-23 08:54:30', '2019-05-23 08:54:30'),
-	(18, 3, '717945483.jpg', '2019-05-23 08:54:30', '2019-05-23 08:54:30');
+	(18, 3, '717945483.jpg', '2019-05-23 08:54:30', '2019-05-23 08:54:30'),
+	(19, 4, '1070388401.jpg', '2019-05-23 16:44:16', '2019-05-23 16:44:16'),
+	(20, 4, '109580954.jpg', '2019-05-23 16:44:16', '2019-05-23 16:44:16'),
+	(21, 4, '1817655928.jpg', '2019-05-23 16:44:16', '2019-05-23 16:44:16'),
+	(22, 4, '1563039710.jpg', '2019-05-23 16:44:16', '2019-05-23 16:44:16'),
+	(23, 4, '1046727759.jpg', '2019-05-23 16:44:16', '2019-05-23 16:44:16'),
+	(24, 5, '144787926.jpg', '2019-05-26 15:35:33', '2019-05-26 15:35:33'),
+	(25, 5, '113306789.jpg', '2019-05-26 15:35:33', '2019-05-26 15:35:33'),
+	(26, 5, '175843773.jpg', '2019-05-26 15:35:33', '2019-05-26 15:35:33'),
+	(27, 5, '573958477.jpg', '2019-05-26 15:35:33', '2019-05-26 15:35:33'),
+	(28, 5, '2046898852.jpg', '2019-05-26 15:35:33', '2019-05-26 15:35:33'),
+	(29, 5, '2010211427.jpg', '2019-05-26 15:35:33', '2019-05-26 15:35:33'),
+	(30, 5, '920943339.jpg', '2019-05-26 15:35:33', '2019-05-26 15:35:33');
 /*!40000 ALTER TABLE `property_galleries` ENABLE KEYS */;
 
 -- Dumping structure for table hakkimsorn.edu.provinces
@@ -816,7 +830,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table hakkimsorn.edu.users: 1 rows
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `phone`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Samnang', 'Im', 'user', '07343143', 'user@gmail.com', NULL, '$2y$10$OW9fQs1Z2PqQxaW/3RBequAQVpxx7ONCiNNr2I2WRPD7dnoYcGisG', 'VsOxNxw0q69GX5SZ6IPdxktCUBNvdejLYj6yIlLdqIAoucRp0DwBb6qdDoeh', '2019-05-10 12:29:05', '2019-05-10 12:29:05');
+	(1, 'Samnang', 'Im', 'user', '07343143', 'user@gmail.com', NULL, '$2y$10$OW9fQs1Z2PqQxaW/3RBequAQVpxx7ONCiNNr2I2WRPD7dnoYcGisG', 'I5AmgWgNOvBvuvVdudqt9dJYiO4SeIDRmcpwLUFnDkigF3wPEpFTVxBhngxz', '2019-05-10 12:29:05', '2019-05-10 12:29:05');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
