@@ -3,6 +3,7 @@
 Route::view('/by_pro','front.property_by_province');
 
 Route::get('/','HomeController@index')->name('home');
+Route::get('/test','HomeController@test')->name('test');
 
 Route::prefix('property')->group(function(){	
 	Route::get('/{slug}','HomeController@property_by_province')->name('propery.by.province');

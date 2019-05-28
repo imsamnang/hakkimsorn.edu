@@ -64,19 +64,19 @@
 					<div class="pb-3 pt-2">
 						<div class="row justify-content-center">
 							<div class="col-9">
-								<form class="form" action="#" method="get">
+								<form class="form" action="{{route('home')}}" method="get">
 									<div class="input-group form-row">
-										<input type="text" class="form-control" name="q" placeholder="Search House & Lands...">
-										<select class="form-control col-3" name="category" required>
-											<option value="">Category</option>
+										<input type="text" class="form-control" name="q" value="{{isset($search) ? $search : ''}}" placeholder="Search House & Lands...">
+										<select class="form-control col-3" name="category">
+											<option value="0">Category</option>
 											@foreach ($category_by_properties as $category)
-												<option value="{{$category->category_name}}">{{$category->category_name}}</option>
+												<option value="{{$category->id}}">{{$category->category_name}}</option>
 											@endforeach
 											</select>
 										<select class="form-control col-3" name="location">
-											<option value="">Locations</option>
+											<option value="0">Locations</option>
 											@foreach ($provinces as $province)
-												<option value="{{$province->name_en}}">{{$province->name_en}}</option>
+												<option value="{{$province->id}}">{{$province->name_en}}</option>
 											@endforeach
 										</select>
 										<input type="submit" value="Search" name="" class="form-control btn btn-primary col-2">

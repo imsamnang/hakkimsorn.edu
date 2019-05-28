@@ -66,5 +66,11 @@ class Property extends Eloquent
     return $query->where('is_active',1);
   }
 
+  public function scopeSearch($query, $parent_id, $location, $search)
+  {
+  	return $query->where('parent_id','=',$parent_id)
+  							->where('province_id','=', $location)
+  							->where('title','like','%' .$search. '%');
+  }
   
 }

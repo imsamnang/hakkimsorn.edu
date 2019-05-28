@@ -94,7 +94,7 @@ class PostController extends Controller
   
   public function editProperties($id,$cat_id)
   {
-    $categories = Category::where(['parent_id'=>0])->get();
+    $categories = Category::where(['parent_id'=>0])->published()->get();
     $property = Property::findOrFail($id);
     $images = PropertyGallery::where('property_id',$property->id)->get();
     $provinces = Province::pluck('name_en','id');
@@ -164,7 +164,7 @@ class PostController extends Controller
   public function showProperties($slug)
   {
     // $property = Property::findOrFail($id);
-    $categories = Category::where(['parent_id'=>0])->get();
+    $categories = Category::where(['parent_id'=>0])->published()->get();
     $property = Property::where('slug',$slug)->first();
     $cellcards = Operator::pluck('cellcard')->toArray();
     $smarts = Operator::pluck('smart')->toArray();
