@@ -1,18 +1,19 @@
 <?php
 
-Route::view('/by_pro','front.property_by_province');
 
 Route::get('/','HomeController@index')->name('home');
 Route::get('/test','HomeController@test')->name('test');
 
 Route::prefix('property')->group(function(){	
-	Route::get('/{slug}','HomeController@property_by_province')->name('propery.by.province');
+	Route::get('/all-properties-in-{slug}','HomeController@property_by_province')->name('propery.by.province');
+	Route::get('/list_by_category','HomeController@listProperties')->name('property.by_category');
+	Route::get('/allproperties','HomeController@allProperties')->name('property.allProperties');
 });
 
 Auth::routes();
 
-	Route::get('get-district-list','Member\PostController@getDistrictList');
-	Route::get('get-commune-list','Member\PostController@getCommuneList');
+Route::get('get-district-list','Member\PostController@getDistrictList');
+Route::get('get-commune-list','Member\PostController@getCommuneList');
 
 // free post ads route
 	Route::prefix('post')->group(function(){	
@@ -24,10 +25,8 @@ Auth::routes();
 		Route::put('/{id}/update','Member\PostController@updateProperties')->name('post.update');
 		Route::post('/destroy','Member\PostController@deleteProperties')->name('post.destroy');
 		Route::get('/{slug}','Member\PostController@showProperties')->name('post.show');
-		Route::get('/list_by_category','Member\PostController@listProperties')->name('post.by_category');
-		Route::get('/allproperties','Member\PostController@allProperties')->name('post.allProperties');
 	});
-	
+
 	Route::get('/manage_ads', 'Member\DashboardController@index')->name('member.home');
 	Route::get('/likes', 'Member\DashboardController@index')->name('likes');
 	Route::get('/notifications', 'Member\DashboardController@index')->name('notifications');

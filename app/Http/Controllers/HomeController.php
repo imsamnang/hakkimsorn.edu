@@ -44,8 +44,6 @@ class HomeController extends Controller
     } else {
       $properties = Property::OrderBy('created_at','desc')->get();
     }
-
-
     $provinces = Province::get();
     $category_by_properties = Category::where(['parent_id'=>5])->get();
     return view('front.property',compact('properties','provinces','categories','category_by_properties','search','parent_id','location'));
@@ -58,16 +56,21 @@ class HomeController extends Controller
     return view('front.property_by_province',compact('property_by_province','categories'));
   }
 
-  public function test()
+  public function listProperties()
   {
-    $a=0;
-    $b=2;
-    $c='';
-    if ($a!==0 and $b!=0 and $c =='') {
-      return "True";
-    } else {
-      return "false";
-    }
+    $properties = Property::where('user_id',auth()->user()->id)
+                           ->orderBy('created_at','desc')
+                           ->get();
+    return view('freeads.showAllProperties',compact('properties'));
   }
 
+  public function allProperties()
+  {
+    $category_by_properties = Category::where(['parent_id'=>5])->Published()->get();
+    $categories = Category::where(['parent_id'=>0])->published()->get();
+    $provinces = Province::all();
+    $allProperties = Property::published()->orderBy('created_at','desc')
+                           ->get();
+    return view('freeads.all_properties',compact('categories','category_by_properties','provinces','allProperties'));
+  }
 }

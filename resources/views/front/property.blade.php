@@ -34,7 +34,7 @@
 							<div class="dropdown">
 							<button class="nav-link btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">	Rent</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#house-for-rent.html" House for Rent< a>
+								<a class="dropdown-item" href="#house-for-rent.html" House for Rent></a>
 								<a class="dropdown-item" href="#apartment-for-rent.html">Apartment for Rent</a>
 								<a class="dropdown-item" href="#landed-properties-for-rent.html">Landed for Rent</a>
 								<a class="dropdown-item" href="#commercial-properties-for-rent.html">Commercial for Rent</a>
@@ -87,13 +87,13 @@
 					</div>
 				</div>
 			</section>
-			<!-- >Find House & Lands by Category -->
+			<!-- Find House & Lands by Category -->
 			<section class="list-categories">
 				<div class="my-container">
 					<div class="categories-items">
 						<div class="header">
 							<h2 class="title">Find House & Lands by Category</h2>
-							<a class="btn btn-outline-primary btn-sm" href="#all-property.html">View All</a>
+							<a class="btn btn-outline-primary btn-sm" href="{{route('property.allProperties')}}">View All</a>
 						</div>
 						<div class="content">
 							<ul class="list-unstyled items-has-image sale-categories">
@@ -177,7 +177,7 @@
 					<div class="top-item-box">
 						<div class="header">
 							<h1 class="title">Top House & Lands</h1>
-							<a href="#all-property.html" class="btn btn-sm btn-link">View All</a>
+							<a href="{{route('property.allProperties')}}" class="btn btn-sm btn-link">View All</a>
 						</div>
 							<div class="content">
 								<div class="list-top-items owl-carousel owl-carousel-top-items">
@@ -248,7 +248,7 @@
 							</ul>
 							<div class="row justify-content-md-center pt-3">
 								<div class="col-8">
-									<a href="#all-property.html" class="btn btn-primary btn-block">View All</a>
+									<a href="{{route('property.allProperties')}}" class="btn btn-primary btn-block">View All</a>
 								</div>
 							</div>
 						</div>

@@ -15,7 +15,7 @@
 
 				<li class="nav-item nav-item-login nav-user-photo">
 					<div class="dropdown">
-						<a class="nav-link" href="{{route('post.allProperties')}}" id="dropdownUserMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<a class="nav-link" href="{{route('property.allProperties')}}" id="dropdownUserMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<span class="icon icon-user-photo">
 								<img class="img-cover" src="{{asset('assets/img/user.png')}}">
 							</span>

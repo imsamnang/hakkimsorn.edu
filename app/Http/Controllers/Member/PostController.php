@@ -251,19 +251,6 @@ class PostController extends Controller
     return view('freeads.show',compact('property','images','categories','operator_name1','operator_name2','operator_name3','random_properties','phone1','phone2','phone3'));
   }
 
-  public function listProperties()
-  {
-    $properties = Property::where('user_id',auth()->user()->id)
-                           ->orderBy('created_at','desc')
-                           ->get();
-    return view('freeads.showAllProperties',compact('properties'));
-  }
-
-  public function allProperties()
-  {
-    return view('freeads.all_properties');
-  }
-
   function make_slug($string) {
     return preg_replace('/\s+/u', '-', trim($string));
   }
