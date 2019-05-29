@@ -1,7 +1,9 @@
 @extends('layouts.backend.khmer24_layout')
 
 @push('css')
+<link  href="{{asset('assets/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 	<link  href="{{asset('assets/css/property.css')}}" rel="stylesheet" type="text/css">
+	<link  href="{{asset('assets/css/theme.css')}}" rel="stylesheet" type="text/css">
 @endpush
 
 @section('content')
@@ -40,7 +42,7 @@
 		<section class="pb-3">
 			<div class="my-container">
 				<div class="row">
-			<!-- ads left	-->
+				<!-- ads left	-->
 					<div class="col-3 left-side">
 						<div class="p-3 bg-white border rounded filter-box">
 							<div class="filter_title">Refine your Results</div>
@@ -63,19 +65,19 @@
 						<div class="sponsors text-center pt-3">				
 						</div>
 					</div>
-			<!-- content right			 -->
+				<!-- content right			 -->
 					<div class="col col-9 right-side">
 						<div class="bar">
 							<div class="left">
-							<h2 class="title">30775 Result On 13 Apr, 2019 </h2>
+								<h2 class="title">30775 Result On 13 Apr, 2019 </h2>
 							</div>
 							<div class="right text-right">
 								<ul class="nav justify-content-end">
 									<li class="nav-item">
 										<label>View</label>
 										<span class="btn-group mr-1" role="group" aria-label="Basic example">
-										<button type="button" class="btn btn-default icon icon-list btn-change-view" disabled></button>
-										<button type="button" class="btn btn-default icon-gallery btn-change-view"></button>
+										<button type="button" class="btn btn-default icon icon-list btn-change-view" data-view="list"></button>
+										<button type="button" class="btn btn-default icon-gallery btn-change-view" data-view="grid"></button>
 										</span>
 									</li>
 									<li class="nav-item dropdown">
@@ -116,14 +118,14 @@
 								@endforeach
 							</ul>
 						</div>
-			<!-- pagination -->
-					<div class="p-3">
-						<div class="Page navigation my-pagination">
-							<ul class="pagination justify-content-center m-0">
-								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							</ul>
+						<!-- pagination -->
+						<div class="p-3">
+							<div class="Page navigation my-pagination">
+								<ul class="pagination justify-content-center m-0">
+									<li class="page-item active"><a class="page-link" href="#">1</a></li>
+								</ul>
+							</div>
 						</div>
-					</div>
 					</div>
 				</div>
 			</div>
@@ -133,18 +135,17 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){	
-			$('.btn-change-view').click(function(e){
-				e.preventDefault();
-				var type = $(this).attr('data-type');
-				$.get('#change-ad-view.html',function(respone){
-					location.reload();
-				});
-			});
+			// $('.btn-change-view').click(function(e){
+			// 	e.preventDefault();
+			// 	var type = $(this).attr('data-type');
+			// 	$.get('#change-ad-view.html',function(respone){
+			// 		location.reload();
+			// 	});
+			// });
 
 			$('#ftr_left select, input[type="radio"]').change(function(){
 				$('#ftr_left').submit();
 			});
-
 
 			$('.btn-sortby a').click(function(e){
 				e.preventDefault();
@@ -159,8 +160,6 @@
 				parent.find('select').val('');
 				$('#ftr_left').submit();
 			});
-			
-
 		});
 	</script>
 
@@ -168,6 +167,52 @@
 
 
 @push('js')
-
+	<script src="{{ asset('assets/js/jquery_cookie.js') }}"></script>
+	<script type="text/javascript">
+		function display(view) {
+			$('.products-list').removeClass('list grid').addClass(view);
+			$('.list-view .btn').removeClass('active');
+			if(view == 'list') {
+				$('.products-list .product-layout').addClass('col-lg-12');
+				$('.products-list .product-layout .left-block').addClass('col-md-4');
+				$('.products-list .product-layout .right-block').addClass('col-md-8');
+				$('.products-list .product-layout .item-desc').removeClass('hidden')
+				$('.list-view .' + view).addClass('active');
+				$.cookie('display', 'list'); 
+			}else{
+				$('.products-list .product-layout').removeClass('col-lg-12');
+				$('.products-list .product-layout .left-block').removeClass('col-md-4');
+				$('.products-list .product-layout .right-block').removeClass('col-md-8');
+				$('.products-list .product-layout .item-desc').addClass('hidden');
+				$('.list-view .' + view).addClass('active');
+				$.cookie('display', 'grid');
+			}
+		}	
+		$(document).ready(function () {
+			
+			// Click Button
+			$('.list-view .btn').each(function() {
+				var ua = navigator.userAgent,
+				event = (ua.match(/iPad/i)) ? 'touchstart' : 'click';
+				$(this).bind(event, function() {
+					$(this).addClass(function() {
+						if($(this).hasClass('active')) return ''; 
+						return 'active';
+					});
+					$(this).siblings('.btn').removeClass('active');
+					$catalog_mode = $(this).data('view');
+					display($catalog_mode);
+				});
+				
+			});
+		});		
+	// Check if Cookie exists
+		if($.cookie('display')){
+			view = $.cookie('display');
+		}else{
+			view = 'grid';
+		}
+		if(view) display(view);
+	</script> 
 @endpush
 
