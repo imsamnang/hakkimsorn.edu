@@ -14,20 +14,6 @@ class HomeController extends Controller
 {
   protected $limit = 10;
 
-  public function getDistrictList(Request $request)
-  {
-    $districts = District::where("province_id",$request->province_id)
-    ->pluck("name_en","id");
-    return response()->json($districts);
-  }
-
-  public function getCommuneList(Request $request)
-  {
-    $communes = Commune::where("district_id",$request->district_id)
-    ->pluck("name_en","id");
-    return response()->json($communes);
-  }  
-
   public function index(Request $request)
   {
     $search = $request->input('q');
@@ -82,36 +68,89 @@ class HomeController extends Controller
 
   public function allProperties(Request $request)
   {
-    $location = $request->input('location');
+    $province_id = $request->input('province');
     $category_by_properties = Category::where(['parent_id'=>5])->Published()->get();
     $categories = Category::where(['parent_id'=>0])->published()->get();
-    $provinces = Province::all();
-    if ($location!=0) {
-      $district = $request->input('district');
-      $districts = District::where("province_id",$location)
-                            ->pluck("name_en","id");
+    $provinces = Province::pluck('name_en','id');
+    if ($province_id!=0) {
       $allProperties = Property::published()
-                              ->where('province_id',$location)
+                              ->where('province_id',$province_id)
                               ->orderBy('created_at','desc')
-                              ->get();
+                              ->get();      
+      $district_id = $request->input('district');
+      // return $district_id;
+      $districts = District::where("province_id",$province_id)
+                            ->pluck("name_en","id");
+      if($district_id){
+        $commune_id = $request->input('commune');
+        $communes = Commune::where("district_id",$district_id)
+                                ->pluck("name_en","id");
+        $allProperties = Property::published()
+                                ->where("province_id",$province_id)
+                                ->where('district_id',$district_id)
+                                ->orderBy('created_at','desc')
+                                ->get();                                
+        // return $allProperties;
+        if($commune_id){
+          $allProperties = Property::published()
+                                          ->where("province_id",$province_id)
+                                          ->where('district_id',$district_id)
+                                          ->where('commune_id',$commune_id)
+                                          ->orderBy('created_at','desc')
+                                          ->get();
+          // return $allProperties;                                                        
+        }                                
+      }
+
     } else {
       $allProperties = Property::published()
                                 ->orderBy('created_at','desc')
                                 ->get();      
     }
-    $communes = Commune::where("district_id",$district)
-                            ->pluck("name_en","id");
-    return $communes;
-    return view('front.all_properties',compact('categories','category_by_properties','provinces','allProperties','location','districts'));
+    return view('front.all_properties',compact('categories','category_by_properties','provinces','allProperties','province_id','districts','district_id','communes','commune_id'));
   }
 
   public function allPropertiesGrid(Request $request)
   {
+    $province_id = $request->input('province');
     $category_by_properties = Category::where(['parent_id'=>5])->Published()->get();
     $categories = Category::where(['parent_id'=>0])->published()->get();
-    $provinces = Province::all();
-    $allProperties = Property::published()->orderBy('created_at','desc')
-                           ->get();
-    return view('front.all_properties-grid',compact('categories','category_by_properties','provinces','allProperties'));
+    $provinces = Province::pluck('name_en','id');
+    if ($province_id!=0) {
+      $allProperties = Property::published()
+                              ->where('province_id',$province_id)
+                              ->orderBy('created_at','desc')
+                              ->get();      
+      $district_id = $request->input('district');
+      // return $district_id;
+      $districts = District::where("province_id",$province_id)
+                            ->pluck("name_en","id");
+      if($district_id){
+        $commune_id = $request->input('commune');
+        $communes = Commune::where("district_id",$district_id)
+                                ->pluck("name_en","id");
+        $allProperties = Property::published()
+                                ->where("province_id",$province_id)
+                                ->where('district_id',$district_id)
+                                ->orderBy('created_at','desc')
+                                ->get();                                
+        // return $allProperties;
+        if($commune_id){
+          $allProperties = Property::published()
+                                          ->where("province_id",$province_id)
+                                          ->where('district_id',$district_id)
+                                          ->where('commune_id',$commune_id)
+                                          ->orderBy('created_at','desc')
+                                          ->get();
+          // return $allProperties;                                                        
+        }                                
+      }
+
+    } else {
+      $allProperties = Property::published()
+                                ->orderBy('created_at','desc')
+                                ->get();      
+    }
+    return view('front.all_properties-grid',compact('categories','category_by_properties','provinces','allProperties','province_id','districts','district_id','communes','commune_id'));
   }  
 }

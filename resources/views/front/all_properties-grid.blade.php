@@ -50,19 +50,50 @@
 						<div class="p-3 bg-white border rounded filter-box">
 							<div class="filter_title">Refine your Results</div>
 								<form class="form" id="ftr_left" method="get" action="#property/all-property.html?">
-									<div class="form-group filter-group ">
+									{{-- Provinces --}}
+										<div class="form-group filter-group ">
 											<label class="filter-title">City/Province</label>
 											<div class="filter-data">
-												<select class="form-control fter_d  form-control-" name="location">
+												<select class="form-control fter_d form-control-" name="province" id="province">
 													<option value="0">All</option>
-													@foreach ($provinces as $province)
-														<option value="{{$province->id}}">{{$province->name_en}}</option>
+													@foreach ($provinces as $key => $province)
+														<option value="{{$key}}"{{$key==$province_id?'selected':''}}>{{$province}}</option>
 													@endforeach
 												</select>
 											</div>
-									</div>
-									<input type="hidden" name="category" value="48" />
-									<input type="hidden" name="sortby" value="" />
+										</div>
+									{{-- District --}}
+									@if ($province_id !=0)
+										<div class="form-group filter-group ">
+											<label class="filter-title">Khan/District</label>
+											<div class="filter-data scrollbar-light">
+												<select class="form-control list_filter list-unstyled fter_d  form-control-" name="district" id="district">
+													<option value="0">All</option>
+														@if (isset($districts))
+															@foreach ($districts as $key => $district)
+																<option value="{{$key}}"{{$key==$district_id?'selected':'' }}>{{$district}}</option>
+															@endforeach
+														@endif
+												</select>
+											</div>
+										</div>
+									@endif
+									{{-- Commune --}}
+									@if (isset($district_id))
+										<div class="form-group filter-group ">
+											<label class="filter-title">Sangkat/Commune</label>
+											<div class="filter-data scrollbar-light">
+												<select class="form-control list_filter list-unstyled fter_d form-control-" name="commune" id="commune">
+													<option value="0">All</option>
+														@if (isset($communes))
+															@foreach ($communes as $key => $commune)
+																<option value="{{$key}}"{{$key==$commune_id?'selected':''}}>{{$commune}}</option>
+															@endforeach
+													@endif
+												</select>
+											</div>
+										</div>
+									@endif
 								</form>
 						</div>
 						<div class="sponsors text-center pt-3">				
@@ -72,7 +103,7 @@
 					<div class="col col-9 right-side">
 						<div class="bar">
 							<div class="left">
-							<h2 class="title">30775 Result On 13 Apr, 2019 </h2>
+							<h2 class="title">{{ $allProperties->count() }} Result on {{ now() }} </h2>
 							</div>
 							<div class="right text-right">
 								<ul class="nav justify-content-end">
@@ -110,7 +141,7 @@
 									<div class="item-detail">
 									<h2 class="item-title truncate truncate-2 ">{{$property->title}}</h2>
 									<ul class="list-unstyled summary">
-										<li>Phnom Penh</li>
+										<li>{{ $property->province->name_en }}</li>
 										<li>
 											<time datetime="{{$property->created_at}}">{{$property->updated_at->diffForHumans()}}</time>
 										</li>

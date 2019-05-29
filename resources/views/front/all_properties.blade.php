@@ -32,12 +32,12 @@
 
 		<section class="categories-items">
 			<div class="my-container">
-			<div class="lists-categories">
-				<ul class="list-unstyled sub_categories">
-					@foreach ($category_by_properties as $category)
-						<li><a href="#">{{$category->category_name}}</a></li>	
-					@endforeach
-				</ul>
+				<div class="lists-categories">
+					<ul class="list-unstyled sub_categories">
+						@foreach ($category_by_properties as $category)
+							<li><a href="#">{{$category->category_name}}</a></li>	
+						@endforeach
+					</ul>
 				</div>
 			</div>
 		</section>
@@ -50,56 +50,50 @@
 						<div class="p-3 bg-white border rounded filter-box">
 							<div class="filter_title">Refine your Results</div>
 								<form class="form" id="ftr_left" method="get" action="{{route('property.allProperties')}}">
-								{{-- Provinces --}}
-									<div class="form-group filter-group ">
-										<label class="filter-title">City/Province</label>
-										<div class="filter-data">
-											<select class="form-control fter_d form-control-" name="location" id="location">
-												<option value="0">All</option>
-												@foreach ($provinces as $province)
-													<option value="{{$province->id}}"{{$province->id==$location?'selected':''}}>{{$province->name_en}}</option>
-												@endforeach
-											</select>
-										</div>
-									</div>
-								{{-- District --}}
-								@if ($location !=0)
-									<div class="form-group filter-group ">
-										<label class="filter-title">Khan/District</label>
-										<div class="filter-data scrollbar-light">
-											<select class="form-control list_filter list-unstyled fter_d  form-control-" name="district" id="district">
-												<option value="0">All</option>
-													@if (isset($districts))
-														@foreach ($districts as $key => $district)
-															<option value="{{$key}}">{{$district}}</option>
-														@endforeach
-													@endif
-											</select>
-										</div>
-									</div>
-								@endif
-								{{-- Commune --}}
-								@if ($location !=0)
-									<div class="form-group filter-group ">
-										<label class="filter-title">Sangkat/Commune</label>
-										<div class="filter-data scrollbar-light">
-											<select class="form-control list_filter list-unstyled fter_d form-control-" name="commune">
-												<option value="0">All</option>
-													@if (isset($property))
-													@foreach ($communes as $commune)
-														@if ($commune->id==$property->commune_id)
-															<option value="{{$commune->id}}" class="{{$commune->name_en}}" selected>{{$commune->name_en}}</option>
-														@else
-															<option value="{{$commune->id}}" class="{{$commune->name_en}}">{{$commune->name_en}}</option>
-														@endif
+									{{-- Provinces --}}
+										<div class="form-group filter-group ">
+											<label class="filter-title">City/Province</label>
+											<div class="filter-data">
+												<select class="form-control fter_d form-control-" name="province" id="province">
+													<option value="0">All</option>
+													@foreach ($provinces as $key => $province)
+														<option value="{{$key}}"{{$key==$province_id?'selected':''}}>{{$province}}</option>
 													@endforeach
-												@endif
-											</select>
+												</select>
+											</div>
 										</div>
-									</div>
-								@endif									
-									<input type="hidden" name="category" value="48" />
-									<input type="hidden" name="sortby" value="" />
+									{{-- District --}}
+									@if ($province_id !=0)
+										<div class="form-group filter-group ">
+											<label class="filter-title">Khan/District</label>
+											<div class="filter-data scrollbar-light">
+												<select class="form-control list_filter list-unstyled fter_d  form-control-" name="district" id="district">
+													<option value="0">All</option>
+														@if (isset($districts))
+															@foreach ($districts as $key => $district)
+																<option value="{{$key}}"{{$key==$district_id?'selected':'' }}>{{$district}}</option>
+															@endforeach
+														@endif
+												</select>
+											</div>
+										</div>
+									@endif
+									{{-- Commune --}}
+									@if (isset($district_id))
+										<div class="form-group filter-group ">
+											<label class="filter-title">Sangkat/Commune</label>
+											<div class="filter-data scrollbar-light">
+												<select class="form-control list_filter list-unstyled fter_d form-control-" name="commune" id="commune">
+													<option value="0">All</option>
+														@if (isset($communes))
+															@foreach ($communes as $key => $commune)
+																<option value="{{$key}}"{{$key==$commune_id?'selected':''}}>{{$commune}}</option>
+															@endforeach
+													@endif
+												</select>
+											</div>
+										</div>
+									@endif									
 								</form>
 						</div>
 						<div class="sponsors text-center pt-3">				
@@ -109,7 +103,7 @@
 					<div class="col col-9 right-side">
 						<div class="bar">
 							<div class="left">
-							<h2 class="title">30775 Result On 13 Apr, 2019 </h2>
+							<h2 class="title">{{ $allProperties->count() }} Result on {{ now() }} </h2>
 							</div>
 							<div class="right text-right">
 								<ul class="nav justify-content-end">
@@ -152,7 +146,7 @@
 									<i>tel: 010245643,011735635</i>
 									</p> 
 									<ul class="list-unstyled summary">
-									<li>Phnom Penh</li>
+									<li>{{ $property->province->name_en }}</li>
 										<li>
 											<time datetime="{{$property->created_at}}">{{$property->updated_at->diffForHumans()}}</time>
 										</li>
@@ -257,8 +251,8 @@
 		  });
 
 			$('#ftr_left select, input[type="radio"]').change(function(){				
-				var selectedCountry = $(this).children("option:selected").val();
-				alert(selectedCountry);
+				// var selectedCountry = $(this).children("option:selected").val();
+				// alert(selectedCountry);
 				$('#ftr_left').submit();
 			});
 
