@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Model\Category;
+use App\Model\Commune;
+use App\Model\District;
 use App\Model\Property;
 use App\Model\Province;
 use App\Model\User;
@@ -11,6 +13,20 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
   protected $limit = 10;
+
+  public function getDistrictList(Request $request)
+  {
+    $districts = District::where("province_id",$request->province_id)
+    ->pluck("name_en","id");
+    return response()->json($districts);
+  }
+
+  public function getCommuneList(Request $request)
+  {
+    $communes = Commune::where("district_id",$request->district_id)
+    ->pluck("name_en","id");
+    return response()->json($communes);
+  }  
 
   public function index(Request $request)
   {
@@ -64,13 +80,38 @@ class HomeController extends Controller
     return view('freeads.showAllProperties',compact('properties'));
   }
 
-  public function allProperties()
+  public function allProperties(Request $request)
+  {
+    $location = $request->input('location');
+    $category_by_properties = Category::where(['parent_id'=>5])->Published()->get();
+    $categories = Category::where(['parent_id'=>0])->published()->get();
+    $provinces = Province::all();
+    if ($location!=0) {
+      $district = $request->input('district');
+      $districts = District::where("province_id",$location)
+                            ->pluck("name_en","id");
+      $allProperties = Property::published()
+                              ->where('province_id',$location)
+                              ->orderBy('created_at','desc')
+                              ->get();
+    } else {
+      $allProperties = Property::published()
+                                ->orderBy('created_at','desc')
+                                ->get();      
+    }
+    $communes = Commune::where("district_id",$district)
+                            ->pluck("name_en","id");
+    return $communes;
+    return view('front.all_properties',compact('categories','category_by_properties','provinces','allProperties','location','districts'));
+  }
+
+  public function allPropertiesGrid(Request $request)
   {
     $category_by_properties = Category::where(['parent_id'=>5])->Published()->get();
     $categories = Category::where(['parent_id'=>0])->published()->get();
     $provinces = Province::all();
     $allProperties = Property::published()->orderBy('created_at','desc')
                            ->get();
-    return view('freeads.all_properties',compact('categories','category_by_properties','provinces','allProperties'));
-  }
+    return view('front.all_properties-grid',compact('categories','category_by_properties','provinces','allProperties'));
+  }  
 }

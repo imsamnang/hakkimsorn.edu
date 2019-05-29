@@ -8,6 +8,7 @@ Route::prefix('property')->group(function(){
 	Route::get('/all-properties-in-{slug}','HomeController@property_by_province')->name('propery.by.province');
 	Route::get('/list_by_category','HomeController@listProperties')->name('property.by_category');
 	Route::get('/allproperties','HomeController@allProperties')->name('property.allProperties');
+	Route::get('/allproperties-grid','HomeController@allPropertiesGrid')->name('property.allProperties.grid');
 });
 
 Auth::routes();

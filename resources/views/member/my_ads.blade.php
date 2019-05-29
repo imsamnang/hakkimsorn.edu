@@ -53,7 +53,7 @@
 				<li id="item-{{ $property->id }}">
 					<div class="item_box">
 						<div class="ad_info">
-							@if ($property->status)
+							@if ($property->is_active)
 								<span class="icon-point green"></span>
 								<span class="status">Ad Active</span>
 							@else
