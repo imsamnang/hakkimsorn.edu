@@ -189,12 +189,13 @@
 							</ul>
 						</div>
 				<!-- pagination -->
-					<div class="p-3">
-						<div class="Page navigation my-pagination">
-							<ul class="pagination justify-content-center m-0">
+					<div class="p-3">					
+							{{$allProperties->links()}}
+						{{-- <div class="Page navigation my-pagination"> --}}
+						{{-- <ul class="pagination justify-content-center m-0">
 								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							</ul>
-						</div>
+							</ul> --}}
+						{{-- </div> --}}
 					</div>
 					</div>
 				</div>

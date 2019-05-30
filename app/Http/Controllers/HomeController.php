@@ -76,7 +76,8 @@ class HomeController extends Controller
       $allProperties = Property::published()
                               ->where('province_id',$province_id)
                               ->orderBy('created_at','desc')
-                              ->get();      
+                              // ->get();
+                              ->paginate($this->limit);      
       $district_id = $request->input('district');
       // return $district_id;
       $districts = District::where("province_id",$province_id)
@@ -89,7 +90,8 @@ class HomeController extends Controller
                                 ->where("province_id",$province_id)
                                 ->where('district_id',$district_id)
                                 ->orderBy('created_at','desc')
-                                ->get();                                
+                                // ->get();
+                                ->paginate($this->limit);
         // return $allProperties;
         if($commune_id){
           $allProperties = Property::published()
@@ -97,7 +99,8 @@ class HomeController extends Controller
                                           ->where('district_id',$district_id)
                                           ->where('commune_id',$commune_id)
                                           ->orderBy('created_at','desc')
-                                          ->get();
+                                          // ->get();
+                                          ->paginate($this->limit);
           // return $allProperties;                                                        
         }                                
       }
@@ -105,7 +108,8 @@ class HomeController extends Controller
     } else {
       $allProperties = Property::published()
                                 ->orderBy('created_at','desc')
-                                ->get();      
+                                // ->get();
+                                ->paginate($this->limit);
     }
     return view('front.all_properties',compact('categories','category_by_properties','provinces','allProperties','province_id','districts','district_id','communes','commune_id'));
   }
@@ -120,7 +124,8 @@ class HomeController extends Controller
       $allProperties = Property::published()
                               ->where('province_id',$province_id)
                               ->orderBy('created_at','desc')
-                              ->get();      
+                              // ->get();
+                              ->paginate($this->limit);      
       $district_id = $request->input('district');
       // return $district_id;
       $districts = District::where("province_id",$province_id)
@@ -133,7 +138,8 @@ class HomeController extends Controller
                                 ->where("province_id",$province_id)
                                 ->where('district_id',$district_id)
                                 ->orderBy('created_at','desc')
-                                ->get();                                
+                                // ->get();
+                                ->paginate($this->limit);                                
         // return $allProperties;
         if($commune_id){
           $allProperties = Property::published()
@@ -141,7 +147,8 @@ class HomeController extends Controller
                                           ->where('district_id',$district_id)
                                           ->where('commune_id',$commune_id)
                                           ->orderBy('created_at','desc')
-                                          ->get();
+                                          // ->get();
+                                          ->paginate($this->limit);
           // return $allProperties;                                                        
         }                                
       }
@@ -149,7 +156,8 @@ class HomeController extends Controller
     } else {
       $allProperties = Property::published()
                                 ->orderBy('created_at','desc')
-                                ->get();      
+                                // ->get();
+                                ->paginate($this->limit);      
     }
     return view('front.all_properties-grid',compact('categories','category_by_properties','provinces','allProperties','province_id','districts','district_id','communes','commune_id'));
   }  
