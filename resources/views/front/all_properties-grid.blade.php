@@ -51,20 +51,30 @@
 							<div class="filter_title">Refine your Results</div>
 								<form class="form" id="ftr_left" method="get" action="#property/all-property.html?">
 									{{-- Provinces --}}
-										<div class="form-group filter-group ">
-											<label class="filter-title">City/Province</label>
-											<div class="filter-data">
-												<select class="form-control fter_d form-control-" name="province" id="province">
-													<option value="0">All</option>
-													@foreach ($provinces as $key => $province)
-														<option value="{{$key}}"{{$key==$province_id?'selected':''}}>{{$province}}</option>
-													@endforeach
-												</select>
-											</div>
+									<div class="form-group filter-group ">
+										@if ($province_id !=0)
+											<span class="clear_filter fter_d">
+												<a rel="nofollow" class="a_fter_d" data-name="location" href="javascript:void(0);">Clear</a>
+											</span>
+										@endif
+										<label class="filter-title">City/Province</label>
+										<div class="filter-data">
+											<select class="form-control fter_d form-control-" name="province" id="province">
+												<option value="0">All</option>
+												@foreach ($provinces as $key => $province)
+													<option value="{{$key}}"{{$key==$province_id?'selected':''}}>{{$province}}</option>
+												@endforeach
+											</select>
 										</div>
+									</div>
 									{{-- District --}}
 									@if ($province_id !=0)
 										<div class="form-group filter-group ">
+											@if ($district_id !=0)
+												<span class="clear_filter fter_d">
+													<a rel="nofollow" class="a_fter_d" data-name="location" href="javascript:void(0);">Clear</a>
+												</span>
+											@endif											
 											<label class="filter-title">Khan/District</label>
 											<div class="filter-data scrollbar-light">
 												<select class="form-control list_filter list-unstyled fter_d  form-control-" name="district" id="district">
@@ -80,19 +90,26 @@
 									@endif
 									{{-- Commune --}}
 									@if (isset($district_id))
-										<div class="form-group filter-group ">
-											<label class="filter-title">Sangkat/Commune</label>
-											<div class="filter-data scrollbar-light">
-												<select class="form-control list_filter list-unstyled fter_d form-control-" name="commune" id="commune">
-													<option value="0">All</option>
-														@if (isset($communes))
-															@foreach ($communes as $key => $commune)
-																<option value="{{$key}}"{{$key==$commune_id?'selected':''}}>{{$commune}}</option>
-															@endforeach
-													@endif
-												</select>
+										@if ($district_id!=0)
+											<div class="form-group filter-group ">
+											@if ($commune_id !=0)
+												<span class="clear_filter fter_d">
+													<a rel="nofollow" class="a_fter_d" data-name="location" href="javascript:void(0);">Clear</a>
+												</span>
+											@endif													
+												<label class="filter-title">Sangkat/Commune</label>
+												<div class="filter-data scrollbar-light">
+													<select class="form-control list_filter list-unstyled fter_d form-control-" name="commune" id="commune">
+														<option value="0">All</option>
+															@if (isset($communes))
+																@foreach ($communes as $key => $commune)
+																	<option value="{{$key}}"{{$key==$commune_id?'selected':''}}>{{$commune}}</option>
+																@endforeach
+														@endif
+													</select>
+												</div>
 											</div>
-										</div>
+										@endif
 									@endif
 								</form>
 						</div>

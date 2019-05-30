@@ -52,6 +52,11 @@
 								<form class="form" id="ftr_left" method="get" action="{{route('property.allProperties')}}">
 									{{-- Provinces --}}
 										<div class="form-group filter-group ">
+											@if ($province_id !=0)
+												<span class="clear_filter fter_d">
+													<a rel="nofollow" class="a_fter_d" data-name="location" href="javascript:void(0);">Clear</a>
+												</span>
+											@endif
 											<label class="filter-title">City/Province</label>
 											<div class="filter-data">
 												<select class="form-control fter_d form-control-" name="province" id="province">
@@ -65,6 +70,11 @@
 									{{-- District --}}
 									@if ($province_id !=0)
 										<div class="form-group filter-group ">
+											@if ($district_id !=0)
+												<span class="clear_filter fter_d">
+													<a rel="nofollow" class="a_fter_d" data-name="location" href="javascript:void(0);">Clear</a>
+												</span>
+											@endif											
 											<label class="filter-title">Khan/District</label>
 											<div class="filter-data scrollbar-light">
 												<select class="form-control list_filter list-unstyled fter_d  form-control-" name="district" id="district">
@@ -80,19 +90,26 @@
 									@endif
 									{{-- Commune --}}
 									@if (isset($district_id))
-										<div class="form-group filter-group ">
-											<label class="filter-title">Sangkat/Commune</label>
-											<div class="filter-data scrollbar-light">
-												<select class="form-control list_filter list-unstyled fter_d form-control-" name="commune" id="commune">
-													<option value="0">All</option>
-														@if (isset($communes))
-															@foreach ($communes as $key => $commune)
-																<option value="{{$key}}"{{$key==$commune_id?'selected':''}}>{{$commune}}</option>
-															@endforeach
-													@endif
-												</select>
+										@if ($district_id!=0)
+											<div class="form-group filter-group ">
+											@if ($commune_id !=0)
+												<span class="clear_filter fter_d">
+													<a rel="nofollow" class="a_fter_d" data-name="location" href="javascript:void(0);">Clear</a>
+												</span>
+											@endif													
+												<label class="filter-title">Sangkat/Commune</label>
+												<div class="filter-data scrollbar-light">
+													<select class="form-control list_filter list-unstyled fter_d form-control-" name="commune" id="commune">
+														<option value="0">All</option>
+															@if (isset($communes))
+																@foreach ($communes as $key => $commune)
+																	<option value="{{$key}}"{{$key==$commune_id?'selected':''}}>{{$commune}}</option>
+																@endforeach
+														@endif
+													</select>
+												</div>
 											</div>
-										</div>
+										@endif
 									@endif									
 								</form>
 						</div>
@@ -188,67 +205,6 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){	
-		// distrct get data by provice change
-		  $('#province').change(function(){
-		 	 	var provinceID = $(this).val();
-		    if(provinceID>=1){
-		        $.ajax({
-		           type:"GET",
-		           url:"{{url('get-district-list')}}?province_id="+provinceID,
-		           success:function(res){               
-		            if(res){
-		            		// $("#district").removeAttr('disabled');
-		            		$("#district" ).prop( "disabled", false );
-		                $("#district").empty();
-		                $("#district").append('<option value="0" data-value="">Select a Khan/District</option>');
-		                $.each(res,function(key,value){
-		                    $("#district").append('<option value="'+key+'">'+value+'</option>');
-		                });           
-		            }else{
-		               $("#district").empty();
-		               $("#district" ).prop( "disabled", true );
-		               $("#commune" ).prop( "disabled", true );
-		            }
-		           }
-		        });
-		    }else{
-		        $("#district").empty();
-		        $("#commune").empty();
-		        $("#district").append('<option value="0" data-value="0">Select a Khan/District</option>');
-		        $("#commune").append('<option value="0" data-value="0">Select a Sangkat/Commune</option>');
-		        $("#district" ).prop( "disabled", true );
-		        $("#commune" ).prop( "disabled", true );
-		    }      
-		  });
-		// commune get data by district change    
-		  $('#district').on('change',function(){
-		    var districtID = $(this).val();
-		    if(districtID>=1){
-		        $.ajax({
-		           type:"GET",
-		           url:"{{url('get-commune-list')}}?district_id="+districtID,
-		           success:function(res){               
-		            if(res){
-		            		$("#commune" ).prop( "disabled", false );
-		                $("#commune").empty();
-		                $("#commune").append('<option value="0" data-value="0">Select a Sangkat/Commune</option>');
-		                										
-		                $.each(res,function(key,value){
-		                  $("#commune").append('<option value="'+key+'">'+value+'</option>');
-		                });
-		           
-		            }else{
-		               $("#commune").empty();
-		               $("#commune" ).prop( "disabled", true );
-		            }
-		           }
-		        });
-		    }else{
-		      $("#commune").empty();
-		      $("#commune").append('<option value="0" data-value="">Select a Sangkat/Commune</option>');
-		      $("#commune" ).prop( "disabled", true );
-		    }        
-		  });
 
 			$('#ftr_left select, input[type="radio"]').change(function(){				
 				// var selectedCountry = $(this).children("option:selected").val();
