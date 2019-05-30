@@ -150,36 +150,37 @@
 							<ul class="list-unstyled list-items item-grid">
 								@foreach ($allProperties as $property)
 									<li class="item  special-item  top-item ">
-									<a class="border post" href="{{route('post.show',$property->slug)}}" title="{{$property->title}}">
-									<article>
-									<div class="item-image">
-									<img class="img-cover" src="{{asset('uploads/property/galleries/'.$property->galleries[1]->gallery_image)}}" alt="{{$property->title}}">
-									</div>
-									<div class="item-detail">
-									<h2 class="item-title truncate truncate-2 ">{{$property->title}}</h2>
-									<ul class="list-unstyled summary">
-										<li>{{ $property->province->name_en }}</li>
-										<li>
-											<time datetime="{{$property->created_at}}">{{$property->updated_at->diffForHumans()}}</time>
-										</li>
-										<li>{{$property->size}}</li>
-									</ul>
-									<p class="item-price m-0 text-red">${{$property->price}}</p>
-									<div class="list_thumb">
-										<span class="thumb">
-											<img class="img-cover" src="{{asset('uploads/property/galleries/'.$property->galleries[3]->gallery_image)}}">
-										</span>
-										<span class="thumb">
-											<img class="img-cover" src="{{asset('uploads/property/galleries/'.$property->galleries[2]->gallery_image)}}">
-										</span>
-										<span class="thumb">
-											<img class="img-cover" src="{{asset('uploads/property/galleries/'.$property->galleries[1]->gallery_image)}}">
-										</span>
-									</div>
-									</div>
-									</article>
-									</a>
-									<a class="username-tag" href="#{{$property->user->firstname}}">{{$property->user->firstname}}</a> </li>									
+										<a class="border post" href="{{route('post.show',$property->slug)}}" title="{{$property->title}}">
+										<article>
+											<div class="item-image">
+											<img class="img-cover" src="{{asset('uploads/property/galleries/'.$property->galleries[1]->gallery_image)}}" alt="{{$property->title}}">
+											</div>
+											<div class="item-detail">
+												<h2 class="item-title truncate truncate-2 ">{{$property->title}}</h2>
+												<ul class="list-unstyled summary">
+													<li>{{ $property->province->name_en }}</li>
+													<li>
+														<time datetime="{{$property->created_at}}">{{$property->updated_at->diffForHumans()}}</time>
+													</li>
+													<li>{{$property->size}}</li>
+												</ul>
+												<p class="item-price m-0 text-red">${{$property->price}}</p>
+												<div class="list_thumb">
+													<span class="thumb">
+														<img class="img-cover" src="{{asset('uploads/property/galleries/'.$property->galleries[3]->gallery_image)}}">
+													</span>
+													<span class="thumb">
+														<img class="img-cover" src="{{asset('uploads/property/galleries/'.$property->galleries[2]->gallery_image)}}">
+													</span>
+													<span class="thumb">
+														<img class="img-cover" src="{{asset('uploads/property/galleries/'.$property->galleries[1]->gallery_image)}}">
+													</span>
+												</div>
+											</div>
+										</article>
+										</a>
+										<a class="username-tag" href="#{{$property->user->firstname}}"></a>
+									</li>									
 								@endforeach
 							</ul>
 						</div>
@@ -201,13 +202,6 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){	
-			// $('.btn-change-view').click(function(e){
-				// 	e.preventDefault();
-				// 	var type = $(this).attr('data-type');
-				// 	$.get('#change-ad-view.html',function(respone){
-				// 		location.reload();
-				// 	});
-			// });
 
 			$('#ftr_left select, input[type="radio"]').change(function(){
 				$('#ftr_left').submit();

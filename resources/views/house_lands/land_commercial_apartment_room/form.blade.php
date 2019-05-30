@@ -170,13 +170,13 @@
 			</div>
 		</div>
 		{{-- location Detail --}}
-		<div class="form-group">
+		<div class="form-group location">
 			<label for="address" class="col control-label">Location Details<i class="red">*</i></label>
-			<div class="col col-8 form-input">
-			<textarea name="location" id="location" class="form-control" required="">
-				{{ isset($property)?$property->location :'' }}
-			</textarea>
-			</div>
+				<div class="col col-8 form-input">
+					<textarea name="location" id="location" class="form-control" required="">
+						{{ isset($property)?$property->location :'' }}
+					</textarea>
+				</div>
 		</div>
 	</div>	
 </div>

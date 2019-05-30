@@ -4,7 +4,8 @@
 	<link  href="{{asset('assets/css/post.css')}}" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="{{asset('css/upload.css')}}">
 	<link rel="stylesheet" href="{{asset('css/bootstrap-fileupload.min.css')}}">
-	{{-- <link rel="stylesheet" href="{{asset('css/dropzone.css')}}"> --}}
+	<link rel="stylesheet" href="{{asset('assets/simpleMDE/simplemde.min.css')}}">
+	<link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
 	<style type="text/css">
     .pddb20 {
         padding-bottom: 20px;
@@ -68,8 +69,8 @@
 		</div>
 		<div class="post_form p-3">
 			<div class="post_form">
-				<form action="{{route('post.store')}}" class="form form-horizontal" method="post" accept-charset="utf-8" enctype="multipart/form-data" id="form_post">
-					{{csrf_field()}}		
+				<form action="{{route('post.store')}}" class="form" method="post" accept-charset="utf-8" enctype="multipart/form-data" id="form_post">
+					{{csrf_field()}}
 						@include('house_lands.land_commercial_apartment_room.form')
 				</form>
 			</div>
@@ -92,9 +93,11 @@
 
 @push('js')
 <script src="{{asset('js/upload.js')}}"></script>
-{{-- <script src="{{asset('js/dropzone.js')}}"></script> --}}
+<script src="{{asset('assets/simpleMDE/simplemde.min.js')}}"></script>
 <script>
 	$(document).ready(function(){
+		var simplemde = new SimpleMDE({ element: $("#description")[0] });
+		var simplemde = new SimpleMDE({ element: $("#location")[0] });
 	// distrct get data by provice change
 	  $('#province').change(function(){
 	 	 	var provinceID = $(this).val();
