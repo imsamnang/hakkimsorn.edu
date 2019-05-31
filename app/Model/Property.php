@@ -59,7 +59,12 @@ class Property extends Eloquent
   public function galleries()
   {
 		return $this->hasMany(PropertyGallery::class,'property_id','id');
-  }	
+  }
+
+  public function propertyType()
+	{
+		return $this->belongsTo(propertyType::class,'property_type_id','type_id');
+	}
 
   public function scopePublished($query)
   {

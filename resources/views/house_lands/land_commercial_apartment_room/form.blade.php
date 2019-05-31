@@ -1,6 +1,7 @@
 <input type="hidden" name="category_id" value="{{$category->id}}">
 <input type="hidden" name="parent_id" value="{{$subcategory->id}}">
-<input type="hidden" name="property_type" value="{{$subcategory->type}}">
+<input type="hidden" name="property_type_id" value="{{$subcategory->type}}">
+<input type="hidden" name="sub_type_id" value="{{$subcategory->sub_type}}">
 {{-- category --}}
 <div class="form-group">
 	<label for="title" class="col control-label">Category</label>

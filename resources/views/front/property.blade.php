@@ -14,7 +14,7 @@
 		<div class="home-page">
 			<!-- top menu -->
 			<section class="bg-white border-bottom nav-header-bar menu-items">
-					<div class="my-container">
+				<div class="my-container">
 					<ul class="nav">
 						<li class="nav-item">
 							<a class="nav-link active" href="{{ route('home') }}"><span class="icon icon-home"></span></a>
@@ -97,75 +97,27 @@
 						</div>
 						<div class="content">
 							<ul class="list-unstyled items-has-image sale-categories">
-								<li class="">
-									<div class="item">
-										<div class="detail">
-											<div class="image">
-												<img class="img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/photo-house.jpg" />
+								@foreach ($property_types as $type)									
+									<li class="">
+										<div class="item">
+											<div class="detail">
+												<div class="image">
+													<img class="img-cover" src="{{ asset('assets/img/'.$type->image) }}" />
+												</div>
+												<div class="title">{{ $type->name_en }}</div>
 											</div>
-											<div class="title">House</div>
-										</div>
-										<div class="controls">
-											<a href="#house-for-sale.html"><span class="btn">Buy</span></a>
-											<a href="#house-for-rent.html"><span class="btn">Rent</span></a>
-										</div>
-									</div>
-								</li>
-								<li class="">
-									<div class="item">
-										<div class="detail">
-											<div class="image">
-												<img class="img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/photo-land.jpg" />
+											@if ($type->childs->count()>1)
+												<div class="controls">
+											@else
+												<div class="controls one">
+											@endif
+												@foreach ($type->childs as $subtype)
+													<a href="{{route('propery.by.type',$subtype->id)}}"><span class="btn">{{ $subtype->name_en }}</span></a>
+												@endforeach
 											</div>
-											<div class="title">Lands</div>
 										</div>
-										<div class="controls">
-											<a href="#landed-properties-for-sale.html"><span class="btn">Buy</span></a>
-											<a href="#landed-properties-for-rent.html"><span class="btn">Rent</span></a>
-										</div>
-									</div>
-								</li>
-								<li class="">
-									<div class="item">
-										<div class="detail">
-										<div class="image">
-										<img class="img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/photo-apartment.jpg" />
-										</div>
-										<div class="title">Apartment</div>
-										</div>
-										<div class="controls">
-										<a href="#apartment-for-sale.html"><span class="btn">Buy</span></a>
-										<a href="#apartment-for-rent.html"><span class="btn">Rent</span></a>
-										</div>
-									</div>
-								</li>
-								<li class="">
-									<div class="item">
-										<div class="detail">
-										<div class="image">
-										<img class="img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/photo-commercial-properties.jpg" />
-										</div>
-										<div class="title">Commercial Properties</div>
-										</div>
-										<div class="controls">
-										<a href="#commercial-properties-for-sale.html"><span class="btn">Buy</span></a>
-										<a href="#commercial-properties-for-rent.html"><span class="btn">Rent</span></a>
-										</div>
-									</div>
-								</li>
-								<li class="">
-									<div class="item">
-										<div class="detail">
-										<div class="image">
-										<img class="img-cover" src="https://www.khmer24.com/khmer24-reform21/template/img/categories/photo-room.jpg" />
-										</div>
-										<div class="title">Room</div>
-										</div>
-										<div class="controls one">
-										<a href="#room-for-rent.html"><span class="btn">Rent</span></a>
-										</div>
-									</div>
-								</li>
+									</li>
+								@endforeach
 							</ul>
 						</div>
 					</div>

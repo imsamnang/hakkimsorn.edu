@@ -69,7 +69,8 @@ class PostController extends Controller
       $property->user_id = auth()->user()->id;
       $property->category_id = $request->category_id;
       $property->parent_id = $request->parent_id;
-      $property->property_type = $request->property_type;
+      $property->property_type_id = $request->property_type_id;
+      $property->sub_type_id = $request->sub_type_id;
       $property->title = $request->title;
       $property->slug = $this->make_slug($request->title);
       $property->size = $request->size;
@@ -118,6 +119,8 @@ class PostController extends Controller
     $property->user_id = auth()->user()->id;
     $property->category_id = $request->category_id;
     $property->parent_id = $request->parent_id;
+    $property->property_type_id = $request->property_type_id;
+    $property->sub_type_id = $request->sub_type_id;
     $property->title = $request->title;
     $property->slug = $this->make_slug($request->title);
     $property->size = $request->size;

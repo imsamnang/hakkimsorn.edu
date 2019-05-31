@@ -17,8 +17,7 @@ class HomeController extends Controller
 
   public function index(Request $request)
   {
-    $pro_type = PropertyType::where('parent_id',0)->get();
-    return $pro_type;
+    $property_types = PropertyType::where('parent_id',0)->get();
     $search = $request->input('q');
     $parent_id = $request->input('category');
     $province_id = $request->input('location');
@@ -51,7 +50,7 @@ class HomeController extends Controller
     }
     $provinces = Province::get();
     $category_by_properties = Category::where(['parent_id'=>5])->get();
-    return view('front.property',compact('properties','provinces','categories','category_by_properties','search','parent_id','location'));
+    return view('front.property',compact('properties','provinces','categories','category_by_properties','search','parent_id','location','property_types'));
   }
 
   public function property_by_province($id)
@@ -163,5 +162,13 @@ class HomeController extends Controller
                                 ->paginate($this->limit);      
     }
     return view('front.all_properties-grid',compact('categories','category_by_properties','provinces','allProperties','province_id','districts','district_id','communes','commune_id'));
-  }  
+  }
+
+  public function property_by_type($id)
+  {
+    $properties = Property::where('property_type_id',2)
+                          ->where('sub_type_id',1)
+                          ->get();
+    return $properties;                           
+  }
 }
