@@ -1,5 +1,6 @@
 <input type="hidden" name="category_id" value="{{$category->id}}">
 <input type="hidden" name="parent_id" value="{{$subcategory->id}}">
+<input type="hidden" name="property_type" value="{{$subcategory->type}}">
 {{-- category --}}
 <div class="form-group">
 	<label for="title" class="col control-label">Category</label>
@@ -9,7 +10,12 @@
 				<li>{{$category->category_name}}</li>
 				<li>{{$subcategory->category_name}}</li>
 			</ul>
-				<a class="btn btn-sm  btn-primary btn_change_cat" href="{{route('post.index')}}">Change</a>
+			@if (Request::route()->getName() == "post.edit")
+				<a class="btn btn-sm  btn-primary btn_change_cat" href="{{route('post.indexEdit',[$property->id,$property->parent_id])}}">Change</a>
+			@endif
+			@if (Request::route()->getName() == "post.create")
+    		<a class="btn btn-sm  btn-primary btn_change_cat" href="{{route('post.index')}}">Change</a>
+     	@endif			
 		</div>
 	</div>
 </div>
@@ -172,11 +178,11 @@
 		{{-- location Detail --}}
 		<div class="form-group location">
 			<label for="address" class="col control-label">Location Details<i class="red">*</i></label>
-				<div class="col col-8 form-input">
-					<textarea name="location" id="location" class="form-control" required="">
-						{{ isset($property)?$property->location :'' }}
-					</textarea>
-				</div>
+			<div class="col col-8 form-input">
+			<textarea name="location" id="location" class="form-control" required="">
+				{{ isset($property)?$property->location :'' }}
+			</textarea>
+			</div>
 		</div>
 	</div>	
 </div>
@@ -199,32 +205,32 @@
 </div>
 
 {{-- 	<div class="modal fade" id="account-question" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="account-question-box">
-				<div class="title-head">
-					<div class="text">Please! register or login to publish your ad</div>
-					<div class="icon">
-					<span class="user-photo" style="background: url('https://www.khmer24.com/khmer24-reform21/template/img/default_profile.jpg') no-repeat center; background-size: cover;"></span>
-					</div>
-					<button class="btn btn-clear btn-close-modal"><span class="icon icon-cross"></span></button>
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="account-question-box">
+			<div class="title-head">
+				<div class="text">Please! register or login to publish your ad</div>
+				<div class="icon">
+				<span class="user-photo" style="background: url('https://www.khmer24.com/khmer24-reform21/template/img/default_profile.jpg') no-repeat center; background-size: cover;"></span>
 				</div>
-				<div class="detail-box">
-					<div>
-						<div class="info">Already have an account?</div>
-						<a class="btn btn_blue btn-primary btn-md" href="https://www.khmer24.com/en/login">Log in</a>
-					</div>
-					<div class="devide">
-						<span>Or</span>
-					</div>
-					<div>
-						<div class="info">No account yet?</div>
-						<a class="btn btn-warning btn-yellow_dark btn-md" href="https://www.khmer24.com/en/register">Register</a>
-					</div>
+				<button class="btn btn-clear btn-close-modal"><span class="icon icon-cross"></span></button>
+			</div>
+			<div class="detail-box">
+				<div>
+					<div class="info">Already have an account?</div>
+					<a class="btn btn_blue btn-primary btn-md" href="https://www.khmer24.com/en/login">Log in</a>
+				</div>
+				<div class="devide">
+					<span>Or</span>
+				</div>
+				<div>
+					<div class="info">No account yet?</div>
+					<a class="btn btn-warning btn-yellow_dark btn-md" href="https://www.khmer24.com/en/register">Register</a>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div> --}}
 
-<a href="#totop" id="totop"><i class="icon-up"></i></a>
+

@@ -1,3 +1,4 @@
+@@ -1,58 +0,0 @@
   <!--  Popup Newsletter-->
     {{-- @include('layouts.front.ads.news_letter') --}}
   <!--Popup Newsletter-->

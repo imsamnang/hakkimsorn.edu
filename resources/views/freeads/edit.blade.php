@@ -32,6 +32,12 @@
 						{{csrf_field()}}
 						{{ method_field('PUT') }}
 							@include('freeads.form')
+					</form>
+				</div>
+			</div>
+
+			<a href="#totop" id="totop"><i class="icon-up"></i></a>			
+		</div>
 	</div>
 	
 @endsection

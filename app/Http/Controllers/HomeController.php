@@ -6,6 +6,7 @@ use App\Model\Category;
 use App\Model\Commune;
 use App\Model\District;
 use App\Model\Property;
+use App\Model\PropertyType;
 use App\Model\Province;
 use App\Model\User;
 use Illuminate\Http\Request;
@@ -16,6 +17,8 @@ class HomeController extends Controller
 
   public function index(Request $request)
   {
+    $pro_type = PropertyType::where('parent_id',0)->get();
+    return $pro_type;
     $search = $request->input('q');
     $parent_id = $request->input('category');
     $province_id = $request->input('location');

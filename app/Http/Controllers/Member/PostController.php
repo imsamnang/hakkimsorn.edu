@@ -58,16 +58,18 @@ class PostController extends Controller
     $view_name = $subcategory->form_name;
 		$category = Category::where('id',$subcategory->parent_id)->first();
     $categories = Category::where(['parent_id'=>0])->get();
-  	return view($view_name,compact('subcategory','category','provinces','categories'));
+  	return view($view_name.'.create',compact('subcategory','category','provinces','categories','view_name'));
   }
 
 	public function saveProperties(Request $request)
   {
+    return  $request->all();
     if (Auth::check()){
       $property = new Property();
       $property->user_id = auth()->user()->id;
       $property->category_id = $request->category_id;
       $property->parent_id = $request->parent_id;
+      $property->property_type = $request->property_type;
       $property->title = $request->title;
       $property->slug = $this->make_slug($request->title);
       $property->size = $request->size;
@@ -100,12 +102,10 @@ class PostController extends Controller
     $provinces = Province::pluck('name_en','id');
     $districts = District::where('province_id',$property->province_id)->get();
     $communes = Commune::where('district_id',$property->commune->district_id)->get();
-
     $subcategory = Category::where(['id'=>$cat_id])->first();
     $view_name = $subcategory->form_name;
     $category = Category::where('id',$property->category_id)->first();
-
-    return view('freeads.edit',compact('pr  operty','subcategory','category','provinces','districts','communes','images','categories'));
+    return view($view_name.'.edit',compact('property','subcategory','category','provinces','districts','communes','images','categories','view_name'));
   }
 
   public function updateProperties(Request $request, $id)
@@ -164,7 +164,6 @@ class PostController extends Controller
 
   public function showProperties($slug)
   {
-    // $property = Property::findOrFail($id);
     $categories = Category::where(['parent_id'=>0])->published()->get();
     $property = Property::where('slug',$slug)->first();
     $view_name = $property->parent->form_name;
@@ -250,7 +249,7 @@ class PostController extends Controller
     $random_properties = Property::inRandomOrder()->take(15)->get();
     // return $operator_name3;
     $images = PropertyGallery::where('property_id',$property->id)->get();
-    return view('freeads.show',compact('property','images','categories','operator_name1','operator_name2','operator_name3','random_properties','phone1','phone2','phone3'));
+    return view($view_name.'.show',compact('property','images','categories','operator_name1','operator_name2','operator_name3','random_properties','phone1','phone2','phone3'));
   }
 
   function make_slug($string) {
