@@ -105,7 +105,7 @@ class PostController extends Controller
     $view_name = $subcategory->form_name;
     $category = Category::where('id',$property->category_id)->first();
 
-    return view($view_name,compact('property','subcategory','category','provinces','districts','communes','images','categories'));
+    return view('freeads.edit',compact('pr  operty','subcategory','category','provinces','districts','communes','images','categories'));
   }
 
   public function updateProperties(Request $request, $id)
@@ -168,7 +168,6 @@ class PostController extends Controller
     $categories = Category::where(['parent_id'=>0])->published()->get();
     $property = Property::where('slug',$slug)->first();
     $view_name = $property->parent->form_name;
-    return $view_name;
     $cellcards = Operator::pluck('cellcard')->toArray();
     $smarts = Operator::pluck('smart')->toArray();
     $metfones = Operator::pluck('metfone')->toArray();
