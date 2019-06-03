@@ -109,13 +109,15 @@
 											</div>
 											@if ($type->childs->count()>1)
 												<div class="controls">
-												@else
+											@else
 												<div class="controls one">
 											@endif
 												@foreach ($type->childs as $subtype)
-													<input type="hidden" name="sub_type_id" id="sub_type_id" value="{{ $subtype->cateSub->sub_type }}">
+													<input type="hidden" name="sub_type_id" id="sub_type_id" value="{{ $subtype->id }}">
 													{{-- <a href="{{route('propery.by.type',[$type->id,$subtype->id])}}"><span class="btn">{{ $subtype->name_en }}</span></a> --}}
-													<a href="{{route('propery.by.type',[$type->id])}}"><span class="btn">{{ $subtype->name_en }}</span></a>
+													@foreach ($subtype->cateType as $slug)
+														<a href="{{ route('propery.by.type',$slug->category_name) }}"><span class="btn">{{ $slug->subtype->name_en }}</span></a>
+													@endforeach
 												@endforeach
 											</div>
 										</div>

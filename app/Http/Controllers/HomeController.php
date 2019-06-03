@@ -17,14 +17,14 @@ class HomeController extends Controller
 
   public function test()
   {
+    $property_types = PropertyType::where('parent_id',0)->get();
     $categories = Category::where(['parent_id'=>0])->published()->get();
-    return view('test',compact('categories'));
+    return view('test',compact('categories','property_types'));
   }
 
   public function index(Request $request)
   {
     $property_types = PropertyType::where('parent_id',0)->get();
-    $categorhy_types = Category::where('type',1)->get();
     $search = $request->input('q');
     $parent_id = $request->input('category');
     $province_id = $request->input('location');
@@ -57,7 +57,7 @@ class HomeController extends Controller
     }
     $provinces = Province::get();
     $category_by_properties = Category::where(['parent_id'=>5])->get();
-    return view('front.property',compact('properties','provinces','categories','category_by_properties','search','parent_id','location','property_types','categorhy_types'));
+    return view('front.property',compact('properties','provinces','categories','category_by_properties','search','parent_id','location','property_types'));
   }
 
   public function property_by_province($id)
@@ -171,13 +171,51 @@ class HomeController extends Controller
     return view('front.all_properties-grid',compact('categories','category_by_properties','provinces','allProperties','province_id','districts','district_id','communes','commune_id'));
   }
 
-  public function property_by_type(Request $request,$type_id,$sub_type_id)
+  public function property_by_type(Request $request,$slug)
   {
-    $property = Property::where('property_type_id',$type_id)
-                          ->where('sub_type_id',$sub_type_id)
-                          ->first();
-    $category_id = $property->parent_id;                          
-    $property_type = Property::where('parent_id',$category_id)->get();
-    return $property_type;                           
+    $property_by_categories = Category::with('properties')->where('category_name',$slug)->get();
+    $province_id = $request->input('province');
+    $categories = Category::where(['parent_id'=>0])->published()->get();
+    $provinces = Province::pluck('name_en','id');
+    if ($province_id!=0) {
+      $allProperties = Property::published()
+                              ->where('province_id',$province_id)
+                              ->orderBy('created_at','desc')
+                              // ->get();
+                              ->paginate($this->limit);      
+      $district_id = $request->input('district');
+      // return $district_id;
+      $districts = District::where("province_id",$province_id)
+                            ->pluck("name_en","id");
+      if($district_id){
+        $commune_id = $request->input('commune');
+        $communes = Commune::where("district_id",$district_id)
+                                ->pluck("name_en","id");
+        $allProperties = Property::published()
+                                ->where("province_id",$province_id)
+                                ->where('district_id',$district_id)
+                                ->orderBy('created_at','desc')
+                                // ->get();
+                                ->paginate($this->limit);
+        // return $allProperties;
+        if($commune_id){
+          $allProperties = Property::published()
+                                          ->where("province_id",$province_id)
+                                          ->where('district_id',$district_id)
+                                          ->where('commune_id',$commune_id)
+                                          ->orderBy('created_at','desc')
+                                          // ->get();
+                                          ->paginate($this->limit);
+          // return $allProperties;                                                        
+        }                                
+      }
+
+    } else {
+      $allProperties = Property::published()
+                                ->orderBy('created_at','desc')
+                                // ->get();
+                                ->paginate($this->limit);
+    }
+    return view('front.properties_by_category',compact('categories','property_by_categories','provinces','allProperties','province_id','districts','district_id','communes','commune_id'));
   }
 }

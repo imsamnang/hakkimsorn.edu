@@ -38,7 +38,7 @@ class Category extends upload
 
   public function subtype()
   {
-  	return $this->belongsTo(PropertyType::class,'sub_type','sub_type_id');
+  	return $this->belongsTo(PropertyType::class,'sub_type_id','type_id');
   }
 
   public function properties()

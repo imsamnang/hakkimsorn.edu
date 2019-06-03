@@ -20,7 +20,7 @@ class PropertyType extends Model
 
   public function cateType()
   {
-  	return $this->hasOne(Category::class,'id','type');
+  	return $this->hasMany(Category::class,'type_id','parent_id');
   }
 
   // public function cateSub()
