@@ -10,4 +10,9 @@ class Commune extends Model
 	{
 		return $this->belongsTo(District::class,'district_id','id');
 	}
+
+	public function properties()
+	{
+		return $this->hasMany(Property::class,'id','commune_id');
+	}	
 }

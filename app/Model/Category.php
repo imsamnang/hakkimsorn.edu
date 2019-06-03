@@ -28,6 +28,16 @@ class Category extends upload
 
   public function scopePublished($query)
   {
-      return $query->where('is_active',1);
-  }	
+    return $query->where('is_active',1);
+  }
+
+  public function subtype()
+  {
+  	return $this->belongsTo(PropertyType::class,'sub_type','type_id');
+  }
+
+  public function typesub()
+  {
+  	return $this->belongsTo(PropertyType::class,'type','id');
+  }
 }

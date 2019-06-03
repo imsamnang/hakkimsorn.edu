@@ -10,4 +10,10 @@ class Province extends Model
 	{
 		return $this->hasMany(District::class,'province_id','id');
 	}
+
+	public function properties()
+	{
+		return $this->hasMany(Property::class,'id','province_id');
+	}
+	
 }

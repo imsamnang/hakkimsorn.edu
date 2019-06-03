@@ -97,22 +97,25 @@
 						</div>
 						<div class="content">
 							<ul class="list-unstyled items-has-image sale-categories">
-								@foreach ($property_types as $type)									
+								@foreach ($property_types as $type)								
 									<li class="">
 										<div class="item">
 											<div class="detail">
 												<div class="image">
 													<img class="img-cover" src="{{ asset('assets/img/'.$type->image) }}" />
 												</div>
+												<input type="hidden" name="type_id" id="type_id" value="{{ $type->id  }}">
 												<div class="title">{{ $type->name_en }}</div>
 											</div>
 											@if ($type->childs->count()>1)
 												<div class="controls">
-											@else
+												@else
 												<div class="controls one">
 											@endif
 												@foreach ($type->childs as $subtype)
-													<a href="{{route('propery.by.type',$subtype->id)}}"><span class="btn">{{ $subtype->name_en }}</span></a>
+													<input type="hidden" name="sub_type_id" id="sub_type_id" value="{{ $subtype->cateSub->sub_type }}">
+													{{-- <a href="{{route('propery.by.type',[$type->id,$subtype->id])}}"><span class="btn">{{ $subtype->name_en }}</span></a> --}}
+													<a href="{{route('propery.by.type',[$type->id])}}"><span class="btn">{{ $subtype->name_en }}</span></a>
 												@endforeach
 											</div>
 										</div>

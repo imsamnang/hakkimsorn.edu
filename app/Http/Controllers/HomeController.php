@@ -15,9 +15,16 @@ class HomeController extends Controller
 {
   protected $limit = 10;
 
+  public function test()
+  {
+    $categories = Category::where(['parent_id'=>0])->published()->get();
+    return view('test',compact('categories'));
+  }
+
   public function index(Request $request)
   {
     $property_types = PropertyType::where('parent_id',0)->get();
+    $categorhy_types = Category::where('type',1)->get();
     $search = $request->input('q');
     $parent_id = $request->input('category');
     $province_id = $request->input('location');
@@ -50,7 +57,7 @@ class HomeController extends Controller
     }
     $provinces = Province::get();
     $category_by_properties = Category::where(['parent_id'=>5])->get();
-    return view('front.property',compact('properties','provinces','categories','category_by_properties','search','parent_id','location','property_types'));
+    return view('front.property',compact('properties','provinces','categories','category_by_properties','search','parent_id','location','property_types','categorhy_types'));
   }
 
   public function property_by_province($id)
@@ -164,11 +171,13 @@ class HomeController extends Controller
     return view('front.all_properties-grid',compact('categories','category_by_properties','provinces','allProperties','province_id','districts','district_id','communes','commune_id'));
   }
 
-  public function property_by_type($id)
+  public function property_by_type(Request $request,$type_id,$sub_type_id)
   {
-    $properties = Property::where('property_type_id',2)
-                          ->where('sub_type_id',1)
-                          ->get();
-    return $properties;                           
+    $property = Property::where('property_type_id',$type_id)
+                          ->where('sub_type_id',$sub_type_id)
+                          ->first();
+    $category_id = $property->parent_id;                          
+    $property_type = Property::where('parent_id',$category_id)->get();
+    return $property_type;                           
   }
 }
