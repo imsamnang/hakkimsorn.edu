@@ -15,14 +15,39 @@
 		<ul style="list-style-type:none;">
 			@foreach ($categories as $element)
 				@foreach ($element->childs as $child)
-					<a href="#">&nbsp;&nbsp;{{ $child->typesub->name_en }}</a>
+				  	<a href="#">&nbsp;&nbsp;{{ $child->type->name_en }}</a>
 				  <li>
-				  	<a href="#">&nbsp;&nbsp;{{ $child->subtype->name_en }}</a>
+						<a href="#">&nbsp;&nbsp;{{ $child->subtype->name_en }}</a>
 				  </li>
 				@endforeach			  
 			@endforeach
-
 		</ul>
+
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+				@foreach ($categories as $element)
+					@foreach ($element->childs as $child)
+						@foreach ($child->properties as $pro)
+						<tr>
+							<td>{{$pro->id}}</td>
+							<td>{{$pro->title}}</td>
+						</tr>
+						@endforeach
+						<tr>
+							<td>{{$child->id}}</td>
+							<td>{{$child->category_name}}</td>
+						</tr>
+					@endforeach
+				@endforeach					
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

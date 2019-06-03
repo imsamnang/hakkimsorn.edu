@@ -31,13 +31,21 @@ class Category extends upload
     return $query->where('is_active',1);
   }
 
-  public function subtype()
+  public function type()
   {
-  	return $this->belongsTo(PropertyType::class,'sub_type','type_id');
+  	return $this->belongsTo(PropertyType::class,'type_id','id');
   }
 
-  public function typesub()
+  public function subtype()
   {
-  	return $this->belongsTo(PropertyType::class,'type','id');
+  	return $this->belongsTo(PropertyType::class,'sub_type','sub_type_id');
   }
+
+  public function properties()
+  {
+  	return $this->hasMany(Property::class,'parent_id','id');
+  }
+
+
+
 }
