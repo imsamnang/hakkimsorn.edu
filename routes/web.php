@@ -50,6 +50,14 @@ Route::get('get-commune-list','Member\PostController@getCommuneList');
     // Route::post('/password/reset', 'AuthAdmin\ResetPasswordController@reset');
 	});
 
+// member route
+	Route::prefix('member')->group(function() {	
+		Route::get('/edit-profile','Member\DashboardController@editProfile')->name('member.edit-profile');
+		Route::get('/change-password','Member\DashboardController@changePassword')->name('member.change-password');
+		Route::get('/store','Member\DashboardController@store')->name('member.store');
+		Route::get('/store-banner','Member\DashboardController@storeBanner')->name('member.store-banner');
+	});
+
 // Ajax crud
 	Route::get('ajax','AjaxController@index')->name('ajax.index');
 	Route::get('ajax-read','AjaxController@readData')->name('ajax.create');

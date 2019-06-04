@@ -10,7 +10,6 @@
 @endpush
 
 @section('content')
-
 	<div class="listing-page">
 		<div class="my-breadcrumb">
 			<div class="my-container">
@@ -35,7 +34,7 @@
 				<div class="lists-categories">
 					<ul class="list-unstyled sub_categories">
 						@foreach ($category_by_properties as $category)
-							<li><a href="#">{{$category->category_name}}</a></li>	
+							<li><a href="{{ route('propery.by.type',$category->slug) }}">{{$category->category_name}}</a></li>	
 						@endforeach
 					</ul>
 				</div>
@@ -191,11 +190,6 @@
 				<!-- pagination -->
 					<div class="p-3">					
 							{{$allProperties->links()}}
-						{{-- <div class="Page navigation my-pagination"> --}}
-						{{-- <ul class="pagination justify-content-center m-0">
-								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							</ul> --}}
-						{{-- </div> --}}
 					</div>
 					</div>
 				</div>

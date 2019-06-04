@@ -25,13 +25,10 @@ class HomeController extends Controller
 
   public function index(Request $request)
   {
-    // $type = PropertyType::where('type_id',1)->first()->cateSub()->get();
-    // return $type;
     $protypes = PropertyType::where('parent_id','>',0)
                                   ->orderBy('id')
                                   ->groupBy('name_en')                                  
                                   ->get();
-    // return $protypes;                                  
     $property_types = PropertyType::where('parent_id',0)->take(5)->get();
     $search = $request->input('q');
     $parent_id = $request->input('category');
@@ -85,8 +82,14 @@ class HomeController extends Controller
 
   public function allProperties(Request $request)
   {
+    $protypes = PropertyType::where('parent_id','>',0)
+                                  ->orderBy('id')
+                                  ->groupBy('name_en')                                  
+                                  ->get();
     $province_id = $request->input('province');
-    $category_by_properties = Category::where(['parent_id'=>5])->Published()->get();
+    $category_by_properties = Category::where(['parent_id'=>5])
+                                      ->Published()
+                                      ->get();
     $categories = Category::where(['parent_id'=>0])->published()->get();
     $provinces = Province::pluck('name_en','id');
     if ($province_id!=0) {
@@ -125,10 +128,9 @@ class HomeController extends Controller
     } else {
       $allProperties = Property::published()
                                 ->orderBy('created_at','desc')
-                                // ->get();
                                 ->paginate($this->limit);
     }
-    return view('front.all_properties',compact('categories','category_by_properties','provinces','allProperties','province_id','districts','district_id','communes','commune_id'));
+    return view('front.all_properties',compact('categories','category_by_properties','provinces','allProperties','province_id','districts','district_id','communes','commune_id','protypes'));
   }
 
   public function allPropertiesGrid(Request $request)

@@ -25,4 +25,31 @@ class DashboardController extends Controller
     return view('member.dashboard',compact('user','properties','categories'));
   }
 
+  public function editProfile()
+  {
+    $categories = Category::where(['parent_id'=>0])->published()->get();
+    $user = User::where('id',Auth::user()->id)->first();
+    return view('member.edit_profile',compact('user','categories'));
+  }
+
+  public function changePassword()
+  {
+    $categories = Category::where(['parent_id'=>0])->published()->get();
+    $user = User::where('id',Auth::user()->id)->first();
+    return view('member.change_password',compact('user','categories'));
+  }
+
+  public function store()
+  {
+    $categories = Category::where(['parent_id'=>0])->published()->get();
+    $user = User::where('id',Auth::user()->id)->first();
+    return view('member.store_information',compact('user','categories'));
+  }
+
+  public function storeBanner()
+  {
+    $categories = Category::where(['parent_id'=>0])->published()->get();
+    $user = User::where('id',Auth::user()->id)->first();
+    return view('member.store_baner',compact('user','categories'));
+  }  
 }
