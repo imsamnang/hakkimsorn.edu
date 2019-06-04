@@ -5,7 +5,7 @@
 				<a href="{{route('home')}}" class="navbar-brand"><img src="{{asset('assets/img/tinhtoday_navbar.png')}}" alt="Khmer24"></a>
 				<ul class="nav mr-auto left-nav">
 				<li class="nav-item">
-				<a class="nav-link disabled btn-change-lang" href="#manage-ads.html"><span class="icon khmer-flage"></span></a>
+				{{--<a class="nav-link disabled btn-change-lang" href="#manage-ads.html"><span class="icon khmer-flage"></span></a> --}}
 				</li>
 				</ul>
 				<ul class="nav nav-pills justify-content-end right-nav">

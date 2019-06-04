@@ -10,6 +10,7 @@ use App\Model\PropertyType;
 use App\Model\Province;
 use App\Model\User;
 use Illuminate\Http\Request;
+use DB;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,14 @@ class HomeController extends Controller
 
   public function index(Request $request)
   {
-    $property_types = PropertyType::where('parent_id',0)->get();
+    // $type = PropertyType::where('type_id',1)->first()->cateSub()->get();
+    // return $type;
+    $protypes = PropertyType::where('parent_id','>',0)
+                                  ->orderBy('id')
+                                  ->groupBy('name_en')                                  
+                                  ->get();
+    // return $protypes;                                  
+    $property_types = PropertyType::where('parent_id',0)->take(5)->get();
     $search = $request->input('q');
     $parent_id = $request->input('category');
     $province_id = $request->input('location');
@@ -57,7 +65,7 @@ class HomeController extends Controller
     }
     $provinces = Province::get();
     $category_by_properties = Category::where(['parent_id'=>5])->get();
-    return view('front.property',compact('properties','provinces','categories','category_by_properties','search','parent_id','location','property_types'));
+    return view('front.property',compact('properties','provinces','categories','category_by_properties','search','parent_id','location','property_types','protypes'));
   }
 
   public function property_by_province($id)
@@ -173,7 +181,7 @@ class HomeController extends Controller
 
   public function property_by_type(Request $request,$slug)
   {
-    $property_by_categories = Category::with('properties')->where('category_name',$slug)->get();
+    $property_by_categories = Category::with('properties')->where('slug',$slug)->get();
     $province_id = $request->input('province');
     $categories = Category::where(['parent_id'=>0])->published()->get();
     $provinces = Province::pluck('name_en','id');

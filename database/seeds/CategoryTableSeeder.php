@@ -12,14 +12,14 @@ class CategoryTableSeeder extends Seeder
     	\DB::table('categories')->insert(['parent_id' => '0','type_id'=>'0','sub_type_id'=>'0','slug'=>'computers-and-accessories', 'category_name' => 'Computers & Accessories','icon'=>'computer-and-accessories.png']);
     	\DB::table('categories')->insert(['parent_id' => '0','type_id'=>'0','sub_type_id'=>'0','slug'=>'electronics-and-appliances', 'category_name' => 'Electronics & Appliances','icon'=>'electronics-appliances.png']);
     	\DB::table('categories')->insert(['parent_id' => '0','type_id'=>'0','sub_type_id'=>'0','slug'=>'cars-and-vehicles', 'category_name' => 'Cars and Vehicles','icon'=>'cars-and-vehicles.png']);
-    	\DB::table('categories')->insert(['parent_id' => '0','type_id'=>'0','sub_type_id'=>'0','slug'=>'house-and-land', 'category_name' => ' House & Lands','icon'=>'property-housing-rentals.png']);
-    	\DB::table('categories')->insert(['parent_id' => '0','type_id'=>'0','sub_type_id'=>'0','slug'=>'jobs', 'category_name' => 'Jobs','icon'=>'jobs.png']);
-    	\DB::table('categories')->insert(['parent_id' => '0','type_id'=>'0','sub_type_id'=>'0','slug'=>'services', 'category_name' => 'Services','icon'=>'services.png']);
-    	\DB::table('categories')->insert(['parent_id' => '0','type_id'=>'0','sub_type_id'=>'0','slug'=>'ashion-and-beauty', 'category_name' => 'Fashion & Beauty','icon'=>'fashion-beauty.png']);
-    	\DB::table('categories')->insert(['parent_id' => '0','type_id'=>'0','sub_type_id'=>'0','slug'=>'books-sports-hobbies', 'category_name' => 'Books, Sports & Hobbies','icon'=>'books-sports-hobbies.png']);
-    	\DB::table('categories')->insert(['parent_id' => '0','type_id'=>'0','sub_type_id'=>'0','slug'=>'furniture-and-decor', 'category_name' => 'Furniture & Decor','icon'=>'furniture-decor.png']);
-    	\DB::table('categories')->insert(['parent_id' => '0','type_id'=>'0','sub_type_id'=>'0','slug'=> 'category_name' => 'Pets','icon'=>'pets.png']);  	  	  	  	  	  	  	  	
-    	\DB::table('categories')->insert(['parent_id' => '0','type_id'=>'0','sub_type_id'=>'0','slug'=>'foods', 'category_name' => 'Foods','icon'=>'foods.png']);
+    	\DB::table('categories')->insert(['parent_id' => '0','type_id'=>'0','sub_type_id'=>'0','slug'=>'house-and-land', 'category_name' => ' House & Lands','icon'=>'property-housing-rentals.png','is_active'=>1]);
+    	\DB::table('categories')->insert(['parent_id' => '0', 'type_id'=>'0','sub_type_id'=>'0', 'slug' => 'jobs','category_name' => 'Jobs','icon'=>'jobs.png']);
+      \DB::table('categories')->insert(['parent_id' => '0', 'type_id'=>'0','sub_type_id'=>'0', 'slug' => 'services','category_name' => 'Services','icon'=>'services.png']);
+      \DB::table('categories')->insert(['parent_id' => '0', 'type_id'=>'0','sub_type_id'=>'0', 'slug' => 'fashion-and-beauty','category_name' => 'Fashion & Beauty','icon'=>'fashion-beauty.png']);
+      \DB::table('categories')->insert(['parent_id' => '0', 'type_id'=>'0','sub_type_id'=>'0', 'slug' => 'books-sports-hobbies','category_name' => 'Books, Sports & Hobbies','icon'=>'books-sports-hobbies.png']);
+      \DB::table('categories')->insert(['parent_id' => '0', 'type_id'=>'0','sub_type_id'=>'0', 'slug' => 'furniture-decor','category_name' => 'Furniture & Decor','icon'=>'furniture-decor.png']);
+      \DB::table('categories')->insert(['parent_id' => '0', 'type_id'=>'0','sub_type_id'=>'0', 'slug' => 'pets','category_name' => 'Pets','icon'=>'pets.png']);      
+      \DB::table('categories')->insert(['parent_id' => '0', 'type_id'=>'0','sub_type_id'=>'0', 'slug' => 'foods','category_name' => 'foods','icon'=>'foods.png']);  	  	  	  	  	  	  	
 
     // parent_category
       // Phones, Tablets
@@ -53,13 +53,13 @@ class CategoryTableSeeder extends Seeder
       	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'1','sub_type_id'=>'2','slug'=>'house-for-rent', 'category_name' => 'House for Rent','form_name'=>'house_lands.house']);
       	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'3','sub_type_id'=>'1','slug'=>'apartment-for-sale', 'category_name' => 'Apartment for Sale','form_name'=>'house_lands.land_commercial_apartment_room']);
       	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'3','sub_type_id'=>'2','slug'=>'apartment-for-rent', 'category_name' => 'Apartment for Rent','form_name'=>'house_lands.land_commercial_apartment_room']);
-      	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'2','sub_type_id'=>'1','slug'=>'land-for-sale', 'category_name' => 'Land for Sale','form_name'=>'house_lands.land_commercial_apartment_room']);
-      	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'2','sub_type_id'=>'2','slug'=>'land-for-rent', 'category_name' => 'Land for Rent','form_name'=>'house_lands.land_commercial_apartment_room']); 
+      	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'2','sub_type_id'=>'1','slug'=>'land-for-sale', 'category_name' => 'Land for Sale','form_name'=>'house_lands.land_commercial_apartment_room','is_active'=>1]);
+      	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'2','sub_type_id'=>'2','slug'=>'land-for-rent', 'category_name' => 'Land for Rent','form_name'=>'house_lands.land_commercial_apartment_room','is_active'=>1]); 
       	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'4','sub_type_id'=>'1','slug'=>'commercial-for-sale', 'category_name' => 'Commercial for Sale','form_name'=>'house_lands.land_commercial_apartment_room']);
       	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'4','sub_type_id'=>'2','slug'=>'commercial-for-rent', 'category_name' => 'Commercial for Rent','form_name'=>'house_lands.land_commercial_apartment_room']);
       	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'5','sub_type_id'=>'1','slug'=>'room-for-rent', 'category_name' => 'Room for Rent','form_name'=>'house_lands.land_commercial_apartment_room']);
-      	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'6','sub_type_id'=>'1','slug'=>'', 'category_name' => 'Properties Wanted','form_name'=>'house_lands.properties_wanted_agent_other']);
-      	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'7','sub_type_id'=>'1','slug'=>'properties-wanted', 'category_name' => 'Agent Services','form_name'=>'house_lands.properties_wanted_agent_other']);
+      	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'6','sub_type_id'=>'1','slug'=>'properties-wanted', 'category_name' => 'Properties Wanted','form_name'=>'house_lands.properties_wanted_agent_other']);
+      	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'7','sub_type_id'=>'1','slug'=>'agent-services', 'category_name' => 'Agent Services','form_name'=>'house_lands.properties_wanted_agent_other']);
       	\DB::table('categories')->insert(['parent_id' => '5','type_id'=>'8','sub_type_id'=>'1','slug'=>'others', 'category_name' => 'Others','form_name'=>'house_lands.properties_wanted_agent_other']);
       // Jobs
       	\DB::table('categories')->insert(['parent_id' => '6','type_id'=>'0','sub_type_id'=>'0','slug'=>'accounting', 'category_name' => 'Accounting','form_name'=>'jobs']);
@@ -106,8 +106,8 @@ class CategoryTableSeeder extends Seeder
       	\DB::table('categories')->insert(['parent_id' => '7','type_id'=>'0','sub_type_id'=>'0','slug'=>'construction', 'category_name' => 'Construction, Arch. & Interiors','form_name'=>'services']);
       	\DB::table('categories')->insert(['parent_id' => '7','type_id'=>'0','sub_type_id'=>'0','slug'=>'education-and-training', 'category_name' => 'Education & Training','form_name'=>'services']);
       	\DB::table('categories')->insert(['parent_id' => '7','type_id'=>'0','sub_type_id'=>'0','slug'=>'engineering', 'category_name' => 'Engineering','form_name'=>'services']);
-      	\DB::table('categories')->insert(['parent_id' => '7','type_id'=>'0','sub_type_id'=>'0','slug'=>'', 'category_name' => 'Insurance','form_name'=>'services']);
-      	\DB::table('categories')->insert(['parent_id' => '7','type_id'=>'0','sub_type_id'=>'0','slug'=>'insurance', 'category_name' => 'Massage & Spa','form_name'=>'services']);
+      	\DB::table('categories')->insert(['parent_id' => '7','type_id'=>'0','sub_type_id'=>'0','slug'=>'insurance', 'category_name' => 'Insurance','form_name'=>'services']);
+      	\DB::table('categories')->insert(['parent_id' => '7','type_id'=>'0','sub_type_id'=>'0','slug'=>'massage-and-spa', 'category_name' => 'Massage & Spa','form_name'=>'services']);
       	\DB::table('categories')->insert(['parent_id' => '7','type_id'=>'0','sub_type_id'=>'0','slug'=>'hospitality-travel-and-tourism', 'category_name' => 'Hospitality, Travel & Tourism','form_name'=>'services']);
       	\DB::table('categories')->insert(['parent_id' => '7','type_id'=>'0','sub_type_id'=>'0','slug'=>'health-medical-and-pharma', 'category_name' => 'Health, Medical & Pharma','form_name'=>'services']);
       	\DB::table('categories')->insert(['parent_id' => '7','type_id'=>'0','sub_type_id'=>'0','slug'=>'it-and-telecom', 'category_name' => 'IT & Telecom','form_name'=>'services']);

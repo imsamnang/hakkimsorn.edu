@@ -19,38 +19,22 @@
 						<li class="nav-item">
 							<a class="nav-link active" href="{{ route('home') }}"><span class="icon icon-home"></span></a>
 						</li>
-						<li class="nav-item">
-							<div class="dropdown">
-								<button class="nav-link btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Buy</button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="#house-for-sale.html">House for Sale</a>
-									<a class="dropdown-item" href="#apartment-for-sale.html">Apartment for Sale</a>
-									<a class="dropdown-item" href="#landed-properties-for-sale.html">Land for Sale</a>
-									<a class="dropdown-item" href="#commercial-properties-for-sale.html">Commercial for Sale</a>
+						@foreach ($protypes as $ptype)
+							<li class="nav-item">
+								<div class="dropdown">
+									@if ($ptype->cateSub->count()>1)
+										<button class="nav-link btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{$ptype->name_en}}</button>
+									@else
+										<a class="nav-link" href="{{route('propery.by.type',$cat->slug)}}">{{$ptype->name_en}}</a>
+									@endif									
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+										@foreach ($ptype->cateSub as $cat)
+											<a class="dropdown-item" href="{{route('propery.by.type',$cat->slug)}}">{{$cat->category_name}}</a>
+										@endforeach
+									</div>
 								</div>
-							</div>
-						</li>
-						<li class="nav-item">
-							<div class="dropdown">
-							<button class="nav-link btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">	Rent</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#house-for-rent.html" House for Rent></a>
-								<a class="dropdown-item" href="#apartment-for-rent.html">Apartment for Rent</a>
-								<a class="dropdown-item" href="#landed-properties-for-rent.html">Landed for Rent</a>
-								<a class="dropdown-item" href="#commercial-properties-for-rent.html">Commercial for Rent</a>
-								<a class="dropdown-item" href="#room-for-rent.html">Room for Rent</a>
-							</div>
-							</div>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#properties-wanted.html">Properties Wanted</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#agent-services.html">Agent Services</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#others-properties.html">Other Categories</a>
-						</li>
+							</li>
+						@endforeach
 					</ul>
 				</div>
 			</section>
@@ -114,9 +98,8 @@
 											@endif
 												@foreach ($type->childs as $subtype)
 													<input type="hidden" name="sub_type_id" id="sub_type_id" value="{{ $subtype->id }}">
-													{{-- <a href="{{route('propery.by.type',[$type->id,$subtype->id])}}"><span class="btn">{{ $subtype->name_en }}</span></a> --}}
 													@foreach ($subtype->cateType as $slug)
-														<a href="{{ route('propery.by.type',$slug->category_name) }}"><span class="btn">{{ $slug->subtype->name_en }}</span></a>
+														<a href="{{ route('propery.by.type',$slug->slug) }}"><span class="btn">{{ $slug->subtype->name_en }}</span></a>
 													@endforeach
 												@endforeach
 											</div>

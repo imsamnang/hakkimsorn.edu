@@ -11,6 +11,7 @@ Route::prefix('property')->group(function(){
 	Route::get('/allproperties-grid','HomeController@allPropertiesGrid')->name('property.allProperties.grid');
 	// Route::get('{type}/list_by_type/{sub_type}','HomeController@property_by_type')->name('propery.by.type');
 	Route::get('/{slug}','HomeController@property_by_type')->name('propery.by.type');
+
 });
 
 Auth::routes();

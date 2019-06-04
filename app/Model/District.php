@@ -18,6 +18,6 @@ class District extends Model
 
 	public function properties()
 	{
-		eturn $this->hasMany(Property::class,'id','district_id');
+		return $this->hasMany(Property::class,'id','district_id');
 	}	
 }
