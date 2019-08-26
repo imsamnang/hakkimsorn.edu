@@ -83,7 +83,7 @@
 					<li>khmer24.com assumes no responsibility for the accuracy of any advertisements posted on the site</li>
 				</ul>
 				<div>
-					<a target="_blank" href="https://www.khmer24.com/en/posting-rule.html">More rules...</a>
+					<a target="_blank" href="https://www.tinhtoday.com">More rules...</a>
 				</div>
 			</div>
 		</div>
