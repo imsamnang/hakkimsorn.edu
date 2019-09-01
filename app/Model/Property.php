@@ -44,7 +44,7 @@ class Property extends Eloquent
 	public function commune()
 	{
 		return $this->belongsTo(Commune::class,'commune_id','id');
-	}	
+	}
 
 	public function category()
 	{
@@ -77,5 +77,5 @@ class Property extends Eloquent
   							->where('province_id','=', $location)
   							->where('title','like','%' .$search. '%');
   }
-  
+
 }

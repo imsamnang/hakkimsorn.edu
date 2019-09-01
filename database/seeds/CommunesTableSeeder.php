@@ -297,13 +297,11 @@ class CommunesTableSeeder extends Seeder
 				\DB::table('communes')->insert(['name_en' => 'Nokor Pheas','name_kh' => '','district_id'=>27]);
 				\DB::table('communes')->insert(['name_en' => 'Srae Khvav','name_kh' => '','district_id'=>27]);
 				\DB::table('communes')->insert(['name_en' => 'Tasoam','name_kh' => '','district_id'=>27]);
-
 			// Angkor Thom						
 				\DB::table('communes')->insert(['name_en' => 'Chub Tatrav','name_kh' => '','district_id'=>28]);
 				\DB::table('communes')->insert(['name_en' => 'Leang Dai','name_kh' => '','district_id'=>28]);
 				\DB::table('communes')->insert(['name_en' => 'Peak Snaeng','name_kh' => '','district_id'=>28]);
 				\DB::table('communes')->insert(['name_en' => 'Svay Chek','name_kh' => '','district_id'=>28]);
-
 			// Banteay Srey								
 				\DB::table('communes')->insert(['name_en' => 'Khnar Sanday','name_kh' => '','district_id'=>29]);
 				\DB::table('communes')->insert(['name_en' => 'Khun Ream','name_kh' => '','district_id'=>29]);
@@ -311,7 +309,6 @@ class CommunesTableSeeder extends Seeder
 				\DB::table('communes')->insert(['name_en' => 'Romchek','name_kh' => '','district_id'=>29]);
 				\DB::table('communes')->insert(['name_en' => 'Run Ta Aek','name_kh' => '','district_id'=>29]);
 				\DB::table('communes')->insert(['name_en' => 'Tbaeng','name_kh' => '','district_id'=>29]);
-
 			// Chi Kraeng
 				\DB::table('communes')->insert(['name_en' => 'Anlong Samnor','name_kh' => '','district_id'=>30]);
 				\DB::table('communes')->insert(['name_en' => 'Chi Kraeng','name_kh' => '','district_id'=>30]);
@@ -336,7 +333,6 @@ class CommunesTableSeeder extends Seeder
 				\DB::table('communes')->insert(['name_en' => 'Snoul','name_kh' => '','district_id'=>31]);
 				\DB::table('communes')->insert(['name_en' => 'Sronal','name_kh' => '','district_id'=>31]);
 				\DB::table('communes')->insert(['name_en' => 'Ta An','name_kh' => '','district_id'=>31]);
-
 			// Pouk
 				\DB::table('communes')->insert(['name_en' => '','name_kh' => '','district_id'=>22]);
 				\DB::table('communes')->insert(['name_en' => '','name_kh' => '','district_id'=>22]);
@@ -352,7 +348,6 @@ class CommunesTableSeeder extends Seeder
 				\DB::table('communes')->insert(['name_en' => '','name_kh' => '','district_id'=>22]);
 				\DB::table('communes')->insert(['name_en' => '','name_kh' => '','district_id'=>22]);
 				\DB::table('communes')->insert(['name_en' => '','name_kh' => '','district_id'=>22]);
-
 			// Prasat Bakong
 				\DB::table('communes')->insert(['name_en' => '','name_kh' => '','district_id'=>22]);
 				\DB::table('communes')->insert(['name_en' => '','name_kh' => '','district_id'=>22]);

@@ -90,11 +90,11 @@ class PostController extends Controller
       }
         return redirect()->route('member.home');
         alert()->success('SuccessAlert','Property Update Successfully!')->autoClose(2000);
-    } else {      
+    } else {
       return redirect()->route('login');
     }
   }
-  
+
   public function editProperties($id,$cat_id)
   {
     $categories = Category::where(['parent_id'=>0])->published()->get();
@@ -146,12 +146,12 @@ class PostController extends Controller
       }
     }
       alert()->success('SuccessAlert','Property Update Successfully!')->autoClose(2000);
-      return redirect()->route('member.home');      
+      return redirect()->route('member.home');
   }
 
   public function deleteProperties(Request $request)
   {
-    if($request->ajax()){      
+    if($request->ajax()){
       $property = Property::findOrFail($request->id);
       $imageGalleries = PropertyGallery::where('property_id',$property->id)->get();
       if($property->delete()){
@@ -181,17 +181,17 @@ class PostController extends Controller
     $phone2 = $property->phone2;
     $phone3 = $property->phone3;
 
-    if ($property->phone1!='') {      
+    if ($property->phone1!='') {
       $operator1 = substr($property->phone1, 0,3);
     } else {
       $operator1='';
     }
-    if ($property->phone2!='') {      
+    if ($property->phone2!='') {
       $operator2 = substr($property->phone2, 0,3);
     } else {
       $operator2='';
     }
-    if ($property->phone3!='') {      
+    if ($property->phone3!='') {
       $operator3 = substr($property->phone3, 0,3);
     } else {
       $operator3='';

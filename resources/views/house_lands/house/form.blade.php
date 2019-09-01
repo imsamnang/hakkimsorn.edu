@@ -68,7 +68,7 @@
 						<option value="west" data-value="west" class="empty1">West</option>
 					</select>
 				</div>
-			</div>			
+			</div>
 			{{-- Size --}}
 			<div class="form-group input-ad_year">
 				<label for="size" class="col-sm-3 control-label">Size(m<sup>2</sup>)</label>
@@ -115,8 +115,8 @@
 								@foreach ($images as $image)
 	            		<div id="selector_{{$image->id}}" class="vpb_wrapper">
 				            <img class="vpb_image_style" class="img-thumbnail" src="{{asset('uploads/property/galleries/'.$image->gallery_image)}}"
-				            alt="{{$image->gallery_image}}" /><br /> 
-				            <a style="cursor:pointer;padding-top:5px;" title="Click here to remove" 
+				            alt="{{$image->gallery_image}}" /><br />
+				            <a style="cursor:pointer;padding-top:5px;" title="Click here to remove"
 				            onclick="vpb_remove_selected()">Remove</a>
 	            		</div>
 								@endforeach
@@ -169,7 +169,7 @@
 							<select data-placeholder="Select a province" id="province" name="province_id" class="form-control map_form" required>
 								<option value="0" data-value="0">Select a City/Province</option>
 								@foreach ($provinces as $key => $province)
-									@if (isset($property))											
+									@if (isset($property))
 										@if ($key==$property->id)
 											<option data-en-title="{{$province}}" value="{{$key}}" data-value="{{$province}}" data-chained="{{ $province }}" class="{{ $province }}" selected>{{$province}}</option>
 										@else
@@ -208,11 +208,11 @@
 								<option value="0" data-value="">Select a Sangkat/Commune</option>
 									@if (isset($property))
 										@foreach ($communes as $commune)
-												@if ($commune->id==$property->commune_id)
-													<option data-en-title="{{$commune->name_en}}" value="{{$commune->id}}" data-value="{{$commune->name_en}}" data-chained="{{$commune->name_en}}" class="{{$commune->name_en}}" selected>{{$commune->name_en}}</option>
-												@else
-													<option data-en-title="{{$commune->name_en}}" value="{{$commune->id}}" data-value="{{$commune->name_en}}" data-chained="{{$commune->name_en}}" class="{{$commune->name_en}}">{{$commune->name_en}}</option>
-												@endif
+                                                    @if ($commune->id==$property->commune_id)
+                                                        <option data-en-title="{{$commune->name_en}}" value="{{$commune->id}}" data-value="{{$commune->name_en}}" data-chained="{{$commune->name_en}}" class="{{$commune->name_en}}" selected>{{$commune->name_en}}</option>
+                                                    @else
+                                                        <option data-en-title="{{$commune->name_en}}" value="{{$commune->id}}" data-value="{{$commune->name_en}}" data-chained="{{$commune->name_en}}" class="{{$commune->name_en}}">{{$commune->name_en}}</option>
+                                                    @endif
 										@endforeach
 									@endif
 							</select>
@@ -227,7 +227,7 @@
 						</textarea>
 						</div>
 					</div>
-				</div>	
+				</div>
 			</div>
 			{{-- save contact information --}}
 			<div class="form-group">

@@ -4,8 +4,8 @@
 Route::get('/','HomeController@index')->name('home');
 Route::get('/test','HomeController@test')->name('test');
 
-Route::prefix('property')->group(function(){	
-	Route::get('/all-properties-in-{slug}','HomeController@property_by_province')->name('propery.by.province');	
+Route::prefix('property')->group(function(){
+	Route::get('/all-properties-in-{slug}','HomeController@property_by_province')->name('propery.by.province');
 	Route::get('/list_by_category','HomeController@listProperties')->name('property.by_category');
 	Route::get('/allproperties','HomeController@allProperties')->name('property.allProperties');
 	Route::get('/allproperties-grid','HomeController@allPropertiesGrid')->name('property.allProperties.grid');
@@ -20,7 +20,7 @@ Route::get('get-district-list','Member\PostController@getDistrictList');
 Route::get('get-commune-list','Member\PostController@getCommuneList');
 
 // free post ads route
-	Route::prefix('post')->group(function(){	
+	Route::prefix('post')->group(function(){
 		Route::get('/','Member\PostController@index')->name('post.index');
 		Route::get('{id}/category={cat_id}','Member\PostController@indexEdit')->name('post.indexEdit');
 		Route::get('category={cate_id}','Member\PostController@create')->name('post.create');
@@ -51,7 +51,7 @@ Route::get('get-commune-list','Member\PostController@getCommuneList');
 	});
 
 // member route
-	Route::prefix('member')->group(function() {	
+	Route::prefix('member')->group(function() {
 		Route::get('/edit-profile','Member\DashboardController@editProfile')->name('member.edit-profile');
 		Route::get('/change-password','Member\DashboardController@changePassword')->name('member.change-password');
 		Route::get('/store','Member\DashboardController@store')->name('member.store');

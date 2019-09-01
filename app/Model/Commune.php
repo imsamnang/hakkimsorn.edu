@@ -14,5 +14,5 @@ class Commune extends Model
 	public function properties()
 	{
 		return $this->hasMany(Property::class,'id','commune_id');
-	}	
+	}
 }
